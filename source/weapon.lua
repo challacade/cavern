@@ -2,15 +2,15 @@
 weapons = {}
 
 -- Spawns an individual weapon and puts it in the weapons table
-function spawnWeapon(x, y, type)
+function spawnWeapon(x, y)
 
   -- New weapon being spawned
   local weapon = {}
-  weapon.type = type
+  weapon.type = player.weapon
   weapon.dead = false
 
   -- Checks which weapon is being spawned and sets appropriate properties
-  if type == "basic" then
+  if weapon.type == 1 then
     weapon.physics = world:newCircleCollider(x, y, 20)
     weapon.physics:setCollisionClass('P_Weapon')
 

@@ -19,7 +19,7 @@ function love.update(dt)
   local updateGameplay = require("source/update")
   updateGameplay(dt)
 
-  debug = mapdata.room.height
+  debug = player.weapon
 
 end
 
@@ -44,9 +44,10 @@ end
 
 function love.mousepressed( x, y, button, istouch )
 
-  -- If the left mouse button is pressed
-  if button == 1 then
-    player:shoot()
-  end
+end
 
+function love.keypressed(key, scancode, isrepeat)
+  if key == "space" then
+    player:swapWeapon()
+  end
 end
