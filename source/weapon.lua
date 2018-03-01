@@ -29,11 +29,13 @@ function weapons:update(dt)
   -- Iterate through all weapons
   for i, w in ipairs(weapons) do
 
+    -- When the weapon collides with a wall
     if w.physics:enter('Wall') then
       w.physics:destroy()
       w.dead = true
     end
 
+    -- When the weapon collides with an enemy
     if w.physics:enter('Enemy') then
       local e = w.physics:getEnterCollisionData('Enemy')
       e.collider.parent.health = e.collider.parent.health - w.power

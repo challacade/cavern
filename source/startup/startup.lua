@@ -42,5 +42,5 @@ function startup()
   getGlobals()
 
   -- Sets first map of the game
-  changeToMap(maps.blank)
+  changeToMap("blank")
 end

@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 131,
+  nextobjectid = 132,
   properties = {},
   tilesets = {
     {
@@ -202,6 +202,36 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Transitions",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 131,
+          name = "blank2",
+          type = "",
+          shape = "rectangle",
+          x = 3712,
+          y = 1024,
+          width = 128,
+          height = 384,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["relativeX"] = 0,
+            ["relativeY"] = 384,
+            ["spawnX"] = 200,
+            ["spawnY"] = 0
+          }
         }
       }
     }

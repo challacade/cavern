@@ -1,6 +1,6 @@
 player = {}
 
-player.physics = world:newBSGRectangleCollider(300, 500, 96, 192, 22)
+player.physics = world:newBSGRectangleCollider(3000, 500, 96, 192, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
 player.physics:setFixedRotation(true)
@@ -50,6 +50,9 @@ function player:update(dt)
     player:shoot()
   end
 
+  -- Handles all collisions for the player
+  player:collisions(dt)
+
 end
 
 -- Player shoots his equipped weapon
@@ -82,10 +85,22 @@ function player:swapWeapon()
 
 end
 
--- Player gets hurt
+-- Player takes damage
 function player:hurt(damage)
   if self.damaged == 0 then
     self.damaged = 1
     self.health = self.health - damage
   end
+end
+
+-- Called in player:update, handles all collisions
+function player:collisions(dt)
+
+  if self.physics:enter('Transition') then
+    local t = self.physics:getEnterCollisionData('Transition')
+    -- Change to the map (stored in the transition's name), and pass t.collider
+    -- Note: t.collider is just the transition object
+    changeToMap(t.collider.toMap, t.collider)
+  end
+
 end

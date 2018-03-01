@@ -14,6 +14,6 @@ function getGlobals()
   require("source/cam")
 
   sti = require("source/libraries/sti")
-  require("source/map_loader")
+  require("source/levels/map_loader")
   loadMaps()
 end

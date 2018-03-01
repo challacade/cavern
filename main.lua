@@ -19,8 +19,6 @@ function love.update(dt)
   local updateGameplay = require("source/update")
   updateGameplay(dt)
 
-  debug = player.weapon
-
 end
 
 function love.draw()
