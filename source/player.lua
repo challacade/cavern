@@ -1,5 +1,7 @@
 player = {}
 
+player.state = 1  -- 0 (cutscene), 1 (free to move)
+
 player.physics = world:newBSGRectangleCollider(3000, 500, 96, 192, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
@@ -10,9 +12,8 @@ player.maxSpeed = 400
 player.health = 10
 player.damaged = 0 -- timer for the damage flash
 
-player.weapon = 1 -- 0 (none), 1 (blaster), 2 (missile), 3 (harpoon)
+player.weapon = 0 -- 0 (none), 1 (blaster), 2 (missile), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
-
 
 function player:update(dt)
 
@@ -57,6 +58,11 @@ end
 
 -- Player shoots his equipped weapon
 function player:shoot()
+  -- Don't spawn anything if the player doesn't have a weapon
+  if player.weapon == 0 then
+    return nil
+  end
+
   self.shotCooldown = 0 -- amount of time (in seconds) between each shot
 
   if self.weapon == 1 then -- Blaster

@@ -9,6 +9,7 @@ function getGlobals()
 
   require("source/player")
   require("source/weapon")
+  require("source/pickup")
   require("source/enemies/enemy")
 
   require("source/cam")

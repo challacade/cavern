@@ -1,3 +1,4 @@
+-- Collision Classes used with windfield (see the libraries)
 function getCollisionClasses()
   world:addCollisionClass('Ignore', {ignores = {'Ignore'}})
   world:addCollisionClass('Player', {ignores = {'Ignore'}})
@@ -5,4 +6,5 @@ function getCollisionClasses()
   world:addCollisionClass('P_Weapon', {ignores = {'Ignore', 'Player'}})
   world:addCollisionClass('Wall', {ignores = {'Ignore'}})
   world:addCollisionClass('Transition', {ignores = {'Ignore'}})
+  world:addCollisionClass('Pickup', {ignores = {'Ignore'}})
 end

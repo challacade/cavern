@@ -34,4 +34,5 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Pickups"/>
 </map>

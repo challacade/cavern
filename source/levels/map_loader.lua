@@ -55,6 +55,12 @@ function changeToMap(newMap, transition)
     mapdata.transitions[i] = nil
   end
 
+  -- Destroy all pickup objects from the previous map
+  for i, p in ipairs(pickups) do
+    p.physics:destroy()
+    pickups[i] = nil
+  end
+
   -- Adds wall colliders into the game world
   for i, w in ipairs(mapdata.map.layers["Walls"].objects) do
     local newWall = world:newRectangleCollider(w.x, w.y, w.width, w.height)
@@ -65,7 +71,7 @@ function changeToMap(newMap, transition)
 
   -- Adds all transition colliders in the current map
   for i, t in ipairs(mapdata.map.layers["Transitions"].objects) do
-    local newTransition = world:newRectangleCollider(t.x, t.y, t.width, t.height)
+    local newTransition = world:newRectangleCollider(t.x,t.y,t.width,t.height)
     newTransition:setCollisionClass('Transition')
     newTransition:setType('static')
 
@@ -88,6 +94,11 @@ function changeToMap(newMap, transition)
     newTransition.relativeY = t.properties["relativeY"]
 
     table.insert(mapdata.transitions, newTransition)
+  end
+
+  -- Spawns all pickups in the current map
+  for i, p in ipairs(mapdata.map.layers["Pickups"].objects) do
+    spawnPickup(p.name, p.x, p.y)
   end
 
   -- Used by the camera

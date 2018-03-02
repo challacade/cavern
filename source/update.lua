@@ -12,6 +12,9 @@ local function updateGameplay(dt)
   -- Update all enemies
   enemies:update(dt)
 
+  -- Update all pickup objects in the current map
+  pickups:update(dt)
+
   -- Update camera
   cam:update(dt)
 

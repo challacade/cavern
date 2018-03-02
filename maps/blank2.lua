@@ -247,6 +247,17 @@ return {
           }
         }
       }
+    },
+    {
+      type = "objectgroup",
+      name = "Pickups",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {}
     }
   }
 }

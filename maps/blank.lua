@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 132,
+  nextobjectid = 133,
   properties = {},
   tilesets = {
     {
@@ -232,6 +232,31 @@ return {
             ["spawnX"] = 200,
             ["spawnY"] = 0
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Pickups",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 132,
+          name = "blaster",
+          type = "",
+          shape = "rectangle",
+          x = 1983.64,
+          y = 831.636,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }
