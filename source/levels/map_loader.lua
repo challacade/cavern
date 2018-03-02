@@ -61,6 +61,12 @@ function changeToMap(newMap, transition)
     pickups[i] = nil
   end
 
+  -- Destroy all enemies from the previous map
+  for i, e in ipairs(enemies) do
+    e.physics:destroy()
+    enemies[i] = nil
+  end
+
   -- Adds wall colliders into the game world
   for i, w in ipairs(mapdata.map.layers["Walls"].objects) do
     local newWall = world:newRectangleCollider(w.x, w.y, w.width, w.height)
@@ -99,6 +105,11 @@ function changeToMap(newMap, transition)
   -- Spawns all pickups in the current map
   for i, p in ipairs(mapdata.map.layers["Pickups"].objects) do
     spawnPickup(p.name, p.x, p.y)
+  end
+
+  -- Spawns all enemies in the current map
+  for i, e in ipairs(mapdata.map.layers["Enemies"].objects) do
+    spawnEnemy(e.x, e.y, e.type)
   end
 
   -- Used by the camera

@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 133,
+  nextobjectid = 134,
   properties = {},
   tilesets = {
     {
@@ -252,6 +252,31 @@ return {
           shape = "rectangle",
           x = 1983.64,
           y = 831.636,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Enemies",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 133,
+          name = "",
+          type = "bat",
+          shape = "rectangle",
+          x = 640,
+          y = 640,
           width = 128,
           height = 128,
           rotation = 0,
