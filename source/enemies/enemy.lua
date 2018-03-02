@@ -8,6 +8,7 @@ function spawnEnemy(x, y, type)
   -- Generic properties that all enemies have
   enemy.dead = false
   enemy.hitPower = 1
+  enemy.type = type
 
   -- Function that sets the properties of the new enemy
   local init
@@ -30,8 +31,13 @@ function spawnEnemy(x, y, type)
     if self.physics:enter('Player') then
       player:hurt(self.hitPower)
 
+      -- Certain enemies "bounce" off the player when they collide
       if self.type == "bat" then
-
+        local mx, my = self.physics:getPosition()
+        local recoilDir = toPlayerVector(mx, my) * -1500
+        self.physics:applyLinearImpulse(recoilDir:unpack())
+        -- give the player some recoil as well
+        player.physics:applyLinearImpulse((recoilDir*-2):unpack())
       end
 
     end
