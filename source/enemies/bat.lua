@@ -17,8 +17,9 @@ local function batInit(enemy, x, y)
     local speed = speedFromVelocity( self.physics:getLinearVelocity() )
     if speed < self.maxSpeed then
       local ex, ey = self.physics:getPosition()
-      local fx, fy = playerVector(ex, ey)
-      self.physics:applyForce(fx * self.moveForce, fy * self.moveForce)
+      local dir = toPlayerVector(ex, ey)
+      dir = dir * self.moveForce
+      self.physics:applyForce(dir:unpack())
     end
   end
 

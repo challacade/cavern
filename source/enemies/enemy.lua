@@ -29,6 +29,11 @@ function spawnEnemy(x, y, type)
     -- Hurt player on contact
     if self.physics:enter('Player') then
       player:hurt(self.hitPower)
+
+      if self.type == "bat" then
+
+      end
+
     end
 
   end

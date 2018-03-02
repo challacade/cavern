@@ -17,8 +17,9 @@ function spawnWeapon(x, y)
     weapon.power = 4
 
     local speed = 4000
-    local vx, vy = playerVector()
-    weapon.physics:applyLinearImpulse(vx * speed, vy * speed)
+    local dir = toPlayerVector()
+    dir = dir * speed
+    weapon.physics:applyLinearImpulse(dir:unpack())
   end
 
   table.insert(weapons, weapon)

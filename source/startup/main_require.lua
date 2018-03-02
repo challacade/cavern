@@ -5,7 +5,7 @@ function getGlobals()
   getCollisionClasses()
 
   Camera = require("source/libraries/hump/camera")
-  require("source/libraries/hump/vector")
+  vector = require("source/libraries/hump/vector")
 
   require("source/player")
   require("source/weapon")
