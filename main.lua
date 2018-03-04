@@ -19,6 +19,10 @@ function love.update(dt)
   local updateGameplay = require("source/update")
   updateGameplay(dt)
 
+  scroll:update(dt)
+
+  debug = scroll.text
+
 end
 
 function love.draw()
@@ -47,5 +51,8 @@ end
 function love.keypressed(key, scancode, isrepeat)
   if key == "space" then
     player:swapWeapon()
+  end
+  if key == "m" then
+    scroll:showMessage("blaster")
   end
 end

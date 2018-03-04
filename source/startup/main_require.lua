@@ -14,6 +14,9 @@ function getGlobals()
 
   require("source/cam")
 
+  require("source/ui/messages")
+  require("source/ui/scrollText")
+
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")
   loadMaps()
