@@ -15,13 +15,14 @@ end
 
 function love.update(dt)
 
-  -- Handles most updating for the game
-  local updateGameplay = require("source/update")
-  updateGameplay(dt)
+  if gameState.state == 1 then
+    -- Handles most updating for the game
+    local updateGameplay = require("source/update")
+    updateGameplay(dt)
+  end
 
   scroll:update(dt)
-
-  debug = scroll.text
+  textBox:update(dt)
 
 end
 
@@ -39,6 +40,8 @@ function love.draw()
 
   cam:detach()
 
+  textBox:draw()
+
   love.graphics.print(debug)
   love.graphics.print(debug2, 0, 20)
 
@@ -53,6 +56,7 @@ function love.keypressed(key, scancode, isrepeat)
     player:swapWeapon()
   end
   if key == "m" then
-    scroll:showMessage("blaster")
+    --scroll:showMessage("blaster")
+    textBox:start("blaster")
   end
 end

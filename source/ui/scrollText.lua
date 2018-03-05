@@ -6,14 +6,11 @@ scroll.text = ""         -- Text currently on screen
 scroll.fullMessage = ""  -- Full message that will be displayed
 scroll.messageObj = nil  -- Message object pulled from messages.lua
 scroll.charTimer = 0     -- Timer until next letter is displayed
-scroll.textSpeed = 0.05   -- Display a new character every 0.2 seconds
+scroll.textSpeed = 0.025   -- Display a new character every 0.2 seconds
 scroll.messageNum = 1    -- Which string from the message object
 scroll.charNum = 0       -- Which character of the full message we're on
 
 function scroll:showMessage(m)
-
-  -- Freezes everything (mostly)
-  gameState.state = 0
 
   -- Sets the first set of text for the message
   self.fullMessage = messages[m][1]
@@ -25,9 +22,6 @@ function scroll:showMessage(m)
 
   -- The messages table contains other tables, each containing a set of strings
   -- which will be displayed in order to the text window.
-
-
-
 
 end
 
@@ -59,7 +53,6 @@ function scroll:update(dt)
       return
     end
 
-    gameState.state = 1
     self.messageObj = nil
 
   end

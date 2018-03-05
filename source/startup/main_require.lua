@@ -13,9 +13,11 @@ function getGlobals()
   require("source/enemies/enemy")
 
   require("source/cam")
+  require("source/fonts")
 
   require("source/ui/messages")
   require("source/ui/scrollText")
+  require("source/ui/textBox")
 
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")

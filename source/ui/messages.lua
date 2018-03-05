@@ -4,5 +4,5 @@ messages = {}
 
 messages.blaster = {
   "You got the blaster!",
-  "Use the mouse to aim, then <LEFT CLICK> to shoot!"
+  "Use the mouse to aim, then <LEFT CLICK>\nto shoot!"
 }
