@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 134,
+  nextobjectid = 135,
   properties = {},
   tilesets = {
     {
@@ -250,8 +250,21 @@ return {
           name = "blaster",
           type = "",
           shape = "rectangle",
-          x = 1983.64,
-          y = 831.636,
+          x = 2048,
+          y = 768,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 134,
+          name = "rocket",
+          type = "",
+          shape = "rectangle",
+          x = 1792,
+          y = 768,
           width = 128,
           height = 128,
           rotation = 0,

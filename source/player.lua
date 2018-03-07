@@ -12,7 +12,7 @@ player.maxSpeed = 400
 player.health = 10
 player.damaged = 0 -- timer for the damage flash
 
-player.weapon = 0 -- 0 (none), 1 (blaster), 2 (missile), 3 (harpoon)
+player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
 
 function player:update(dt)
@@ -67,7 +67,7 @@ function player:shoot()
 
   if self.weapon == 1 then -- Blaster
     self.shotCooldown = 0.35
-  elseif self.weapon == 2 then -- Missile
+  elseif self.weapon == 2 then -- Rocket
     self.shotCooldown = 3
   elseif self.weapon == 3 then -- Harpoon
     self.shotCooldown = 1.5
@@ -80,8 +80,8 @@ end
 -- Cycle between each weapon
 function player:swapWeapon()
 
-  -- Order is Blaster, then Missile, then Harpoon, then back to Blaster
-  if player.weapon == 1 and gameState.pickups.missile then
+  -- Order is Blaster, then Rocket, then Harpoon, then back to Blaster
+  if player.weapon == 1 and gameState.pickups.rocket then
     player.weapon = 2
   elseif player.weapon == 2 and gameState.pickups.harpoon then
     player.weapon = 3

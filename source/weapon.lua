@@ -13,13 +13,22 @@ function spawnWeapon(x, y)
   if weapon.type == 1 then
     weapon.physics = world:newCircleCollider(x, y, 20)
     weapon.physics:setCollisionClass('P_Weapon')
-
     weapon.power = 4
+    weapon.speed = 4000
+  elseif weapon.type == 2 then
+    weapon.physics = world:newCircleCollider(x, y, 30)
+    weapon.physics:setCollisionClass('P_Weapon')
+    weapon.power = 22
+    weapon.speed = 8000
+  end
 
-    local speed = 4000
-    local dir = toPlayerVector()
-    dir = dir * speed
-    weapon.physics:applyLinearImpulse(dir:unpack())
+  local dir = toPlayerVector()
+  dir = dir * weapon.speed
+  weapon.physics:applyLinearImpulse(dir:unpack())
+
+  -- Rocket Launcher kickback
+  if weapon.type == 2 then
+    player.physics:applyLinearImpulse((dir * -3):unpack())
   end
 
   table.insert(weapons, weapon)

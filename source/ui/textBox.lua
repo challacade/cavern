@@ -25,7 +25,7 @@ function textBox:start(m)
   -- Freezes everything (mostly)
   gameState.state = 0
 
-  if m == "blaster" or m == "missile" or m == "harpoon" then
+  if m == "blaster" or m == "rocket" or m == "harpoon" then
     textBox:init("pickup")
   end
 

@@ -7,5 +7,5 @@ gameState.state = 1
 
 -- Which pickups have been obtained
 gameState.pickups.blaster = false
-gameState.pickups.missile = false
+gameState.pickups.rocket = false
 gameState.pickups.harpoon = false

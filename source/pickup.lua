@@ -18,7 +18,7 @@ function spawnPickup(name, x, y)
     pickup.physics = world:newCircleCollider(x, y, 32)
   end
 
-  if name == "missile" then
+  if name == "rocket" then
     pickup.physics = world:newCircleCollider(x, y, 32)
   end
 
