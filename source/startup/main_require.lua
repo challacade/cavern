@@ -12,6 +12,8 @@ function getGlobals()
   require("source/pickup")
   require("source/enemies/enemy")
 
+  require("source/environment/explosion")
+
   require("source/cam")
   require("source/fonts")
 

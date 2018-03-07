@@ -2,7 +2,7 @@ player = {}
 
 player.state = 1  -- 0 (cutscene), 1 (free to move)
 
-player.physics = world:newBSGRectangleCollider(3000, 500, 96, 192, 22)
+player.physics = world:newBSGRectangleCollider(2500, 500, 96, 192, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
 player.physics:setFixedRotation(true)

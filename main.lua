@@ -8,8 +8,9 @@ function love.load()
   debug = 0
   debug2 = 0
 
-  -- TEMPORARY! Just a test enemy
-  --spawnEnemy(500, 200, "bat")
+  -- Temporary, used for drawing Explosion radius before particles
+  expX = 0
+  expY = 0
 
 end
 
@@ -37,6 +38,9 @@ function love.draw()
     -- Draw the colliders for all physics objects
     -- Commented out for final game, used for debugging
     world:draw(150)
+
+    love.graphics.setColor(180, 0, 0, 120)
+    love.graphics.circle("fill", expX, expY, 350, 100)
 
   cam:detach()
 

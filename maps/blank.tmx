@@ -38,6 +38,6 @@
   <object id="134" name="rocket" x="1792" y="768" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Enemies">
-  <object id="133" type="bat" x="640" y="640" width="128" height="128"/>
+  <object id="133" type="bat" x="384" y="512" width="128" height="128"/>
  </objectgroup>
 </map>

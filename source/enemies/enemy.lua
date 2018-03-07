@@ -44,6 +44,10 @@ function spawnEnemy(x, y, type)
 
   end
 
+  function enemy:damage(d)
+    self.health = self.health - d
+  end
+
   table.insert(enemies, enemy)
 end
 

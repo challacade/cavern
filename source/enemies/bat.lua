@@ -1,9 +1,10 @@
 local function batInit(enemy, x, y)
 
   -- Initialize physics
-  enemy.physics = world:newCircleCollider(x, y, 24)
+  enemy.physics = world:newBSGRectangleCollider(x, y, 48, 48, 14)
   enemy.physics:setCollisionClass('Enemy')
   enemy.physics:setLinearDamping(2)
+  enemy.physics:setFixedRotation(true)
   -- We need this to access the table itself given the physics
   enemy.physics.parent = enemy
 
