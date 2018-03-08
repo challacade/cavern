@@ -6,6 +6,7 @@ function getGlobals()
 
   Camera = require("source/libraries/hump/camera")
   vector = require("source/libraries/hump/vector")
+  flux = require("source/libraries/flux")
 
   require("source/player")
   require("source/weapon")
@@ -17,9 +18,10 @@ function getGlobals()
   require("source/cam")
   require("source/fonts")
 
-  require("source/ui/messages")
-  require("source/ui/scrollText")
-  require("source/ui/textBox")
+  require("source/text/messages")
+  require("source/text/scrollText")
+  require("source/text/textBox")
+  require("source/text/damage")
 
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")

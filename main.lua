@@ -63,4 +63,8 @@ function love.keypressed(key, scancode, isrepeat)
     --scroll:showMessage("blaster")
     textBox:start("blaster")
   end
+  if key == "p" then
+    local px, py = player.physics:getPosition()
+    damages:spawnDamage(px, py, 8)
+  end
 end

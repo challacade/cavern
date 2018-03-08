@@ -18,6 +18,12 @@ local function updateGameplay(dt)
   -- Update camera
   cam:update(dt)
 
+  -- Update damage text
+  damages:update(dt)
+
+  -- Update tweens
+  flux.update(dt)
+
 end
 
 return updateGameplay
