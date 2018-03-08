@@ -70,7 +70,7 @@ end
 function damages:draw()
   for _,d in ipairs(damages) do
 		love.graphics.setColor(255, 50, 50, d.alpha)
-		--love.graphics.setFont(fonts.munro)
+		love.graphics.setFont(fonts.damage)
 		love.graphics.print(d.val, d.x, d.y)
 		love.graphics.setColor(255, 255, 255, 255)
 	end

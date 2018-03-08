@@ -65,6 +65,6 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "p" then
     local px, py = player.physics:getPosition()
-    damages:spawnDamage(px, py, 8)
+    damages:spawnDamage(px, py, 3)
   end
 end
