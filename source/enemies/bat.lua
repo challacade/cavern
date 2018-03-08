@@ -13,6 +13,7 @@ local function batInit(enemy, x, y)
   enemy.hitPower = 2
   enemy.moveForce = 2000
   enemy.maxSpeed = 400
+  enemy.barY = 62
 
   function enemy:update(dt)
     local speed = speedFromVelocity( self.physics:getLinearVelocity() )

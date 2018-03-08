@@ -6,9 +6,19 @@ function spawnEnemy(x, y, type)
   local enemy = {}
 
   -- Generic properties that all enemies have
+  enemy.health = 10
   enemy.dead = false
   enemy.hitPower = 1
   enemy.type = type
+
+  -- Distance above the enemy where its healthbar is displayed
+  enemy.barY = 40
+
+  enemy.showBar = true -- set to false for the boss
+
+  -- Width and Height of the healthbar
+  enemy.barWidth = 100
+  enemy.barHeight = 16
 
   -- Function that sets the properties of the new enemy
   local init
@@ -17,6 +27,8 @@ function spawnEnemy(x, y, type)
   end
 
   enemy = init(enemy, x, y)
+
+  enemy.maxHealth = enemy.health
 
   -- This update function is the same for all enemies, regardless of type
   function enemy:genericUpdate(dt)
@@ -44,6 +56,26 @@ function spawnEnemy(x, y, type)
 
   end
 
+  function enemy:drawHealthBar()
+    -- Only show healthbar if enemy is not at full health and not dead
+    -- Also check the showBar value, it is false for some enemies
+    if self.health < self.maxHealth and self.health > 0 and self.showBar then
+
+      local ex, ey = self.physics:getPosition()
+
+      -- back part of the bar
+      love.graphics.setColor(255, 0, 0, 255)
+      love.graphics.rectangle("fill", ex-self.barWidth/2, ey-self.barY,
+        self.barWidth, self.barHeight)
+
+      -- front part, that shows the amount of health left
+      love.graphics.setColor(0, 255, 0, 255)
+      love.graphics.rectangle("fill", ex-self.barWidth/2, ey-self.barY,
+        self.barWidth * (self.health / self.maxHealth), self.barHeight)
+
+    end
+  end
+
   function enemy:damage(d)
     self.health = self.health - d
   end
@@ -68,4 +100,11 @@ function enemies:update(dt)
     end
   end
 
+end
+
+-- Draw all healthbars
+function enemies:drawHealthBars()
+  for i,e in ipairs(self) do
+    e:drawHealthBar()
+  end
 end
