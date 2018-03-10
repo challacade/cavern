@@ -108,8 +108,10 @@ function changeToMap(newMap, transition)
   end
 
   -- Spawns all enemies in the current map
-  for i, e in ipairs(mapdata.map.layers["Enemies"].objects) do
-    spawnEnemy(e.x, e.y, e.type)
+  if mapdata.map.layers["Enemies"] then
+    for i, e in ipairs(mapdata.map.layers["Enemies"].objects) do
+      spawnEnemy(e.x, e.y, e.type)
+    end
   end
 
   -- Used by the camera
