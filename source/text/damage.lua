@@ -10,10 +10,10 @@ function damages:spawnDamage(x, y, val, who)
 	if val < 10 then
 		damage.x = damage.x + 11
 	end
-  damage.y = y
+  damage.y = y - 24
 
   -- Information for the bouncing tween used to animate the text
-  damage.start_y = y
+  damage.start_y = damage.y
 	damage.val = val * -1
 	damage.jump_tween_x = nil
 	damage.jump_tween_y = nil
@@ -22,7 +22,7 @@ function damages:spawnDamage(x, y, val, who)
 	damage.dead = false
 
   -- Random value determining how far left or right the text will bounce
-	damage.rx = math.random(-70, 70)
+	damage.rx = math.random(-100, 100)
 
 	function damage:update()
 
@@ -44,7 +44,7 @@ function damages:spawnDamage(x, y, val, who)
 			self.jump_tween_x = flux.to(self, 1, {x = rx})
 		end
 		if self.jump_tween_y == nil then
-			self.jump_tween_y = flux.to(self, 0.5, {y = y - 150}):oncomplete(on_y_complete):ease("quadout")
+			self.jump_tween_y = flux.to(self, 0.5, {y = y - 176}):oncomplete(on_y_complete):ease("quadout")
 		end
 	end
 
@@ -61,7 +61,7 @@ function damages:update(dt)
   -- Iterate through all damages in reverse to remove dead ones from table
   for i=#damages,1,-1 do
     if damages[i].dead then
-      table.remove(weapons, i)
+      table.remove(damages, i)
     end
   end
 

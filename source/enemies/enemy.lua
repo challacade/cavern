@@ -78,6 +78,8 @@ function spawnEnemy(x, y, type)
 
   function enemy:damage(d)
     self.health = self.health - d
+    local ex, ey = self.physics:getPosition()
+    damages:spawnDamage(ex, ey, d)
   end
 
   table.insert(enemies, enemy)
