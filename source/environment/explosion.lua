@@ -8,6 +8,8 @@ function explode(x, y)
     e.parent:damage(100)
   end
 
+  shake:start(0.01, 12, 0.005, 0.25)
+
   expX = x
   expY = y
 

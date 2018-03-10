@@ -18,6 +18,9 @@ local function updateGameplay(dt)
   -- Update camera
   cam:update(dt)
 
+  -- Update the screen-shake (called right after cam:update)
+  shake:update(dt)
+
   -- Update damage text
   damages:update(dt)
 

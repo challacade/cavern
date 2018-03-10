@@ -1,4 +1,7 @@
+-- 0.5 * scale zooms the camera out. Start at player's position
 cam = Camera(player.physics:getX(), player.physics:getY(), 0.5*scale)
+cam.x = 0
+cam.y = 0
 
 function cam:update(dt)
   local lookX = player.physics:getX()
@@ -33,4 +36,10 @@ function cam:update(dt)
   end
 
   cam:lookAt(lookX, lookY)
+
+  -- cam.x and cam.y keep track of where the camera is located
+  -- the lookAt value may be moved if a screenshake is happening, so these
+  -- values know where the camera should be, regardless of lookAt
+  cam.x = lookX
+  cam.y = lookY
 end

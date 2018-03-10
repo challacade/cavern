@@ -15,8 +15,9 @@ function getGlobals()
 
   require("source/environment/explosion")
 
-  require("source/cam")
-  
+  require("source/global/cam")
+  require("source/global/shake")
+
   require("source/startup/defineFonts")
 
   require("source/text/messages")

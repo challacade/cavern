@@ -67,4 +67,7 @@ function love.keypressed(key, scancode, isrepeat)
     local px, py = player.physics:getPosition()
     damages:spawnDamage(px, py, 13)
   end
+  if key == "z" then
+    shake:start(1, 16, 0.01, 2)
+  end
 end
