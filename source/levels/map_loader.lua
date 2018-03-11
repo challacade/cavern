@@ -70,6 +70,10 @@ function changeToMap(newMap, transition)
   -- Adds wall colliders into the game world
   for i, w in ipairs(mapdata.map.layers["Walls"].objects) do
     local newWall = world:newRectangleCollider(w.x, w.y, w.width, w.height)
+    newWall.x = w.x
+    newWall.y = w.y
+    newWall.width = w.width
+    newWall.height = w.height
     newWall:setCollisionClass('Wall')
     newWall:setType('static')
     table.insert(mapdata.walls, newWall)
