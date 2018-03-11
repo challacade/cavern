@@ -14,6 +14,7 @@ function getGlobals()
   require("source/enemies/enemy")
 
   require("source/environment/explosion")
+  require("source/environment/breakable")
 
   require("source/global/cam")
   require("source/global/shake")

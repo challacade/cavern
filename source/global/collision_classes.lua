@@ -6,5 +6,6 @@ function getCollisionClasses()
   world:addCollisionClass('Enemy', {ignores = {'Ignore', 'Pickup'}})
   world:addCollisionClass('P_Weapon', {ignores = {'Ignore', 'Player', 'Pickup'}})
   world:addCollisionClass('Wall', {ignores = {'Ignore'}})
+  world:addCollisionClass('Breakable', {ignores = {'Ignore'}})
   world:addCollisionClass('Transition', {ignores = {'Ignore'}})
 end

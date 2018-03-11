@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 135,
+  nextobjectid = 136,
   properties = {},
   tilesets = {
     {
@@ -340,6 +340,31 @@ return {
           y = 512,
           width = 128,
           height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Breakables",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 135,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 3200,
+          y = 1152,
+          width = 256,
+          height = 256,
           rotation = 0,
           visible = true,
           properties = {}

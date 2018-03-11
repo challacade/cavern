@@ -27,6 +27,9 @@ local function updateGameplay(dt)
   -- Update tweens
   flux.update(dt)
 
+  -- Update to remove dead breakable walls
+  breakables:update(dt)
+
 end
 
 return updateGameplay

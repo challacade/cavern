@@ -107,14 +107,23 @@ function changeToMap(newMap, transition)
   end
 
   -- Spawns all pickups in the current map
-  for i, p in ipairs(mapdata.map.layers["Pickups"].objects) do
-    spawnPickup(p.name, p.x, p.y)
+  if mapdata.map.layers["Pickups"] then
+    for i, p in ipairs(mapdata.map.layers["Pickups"].objects) do
+      spawnPickup(p.name, p.x, p.y)
+    end
   end
 
   -- Spawns all enemies in the current map
   if mapdata.map.layers["Enemies"] then
     for i, e in ipairs(mapdata.map.layers["Enemies"].objects) do
       spawnEnemy(e.x, e.y, e.type)
+    end
+  end
+
+  -- Spawns all breakable walls in the current map
+  if mapdata.map.layers["Breakables"] then
+    for i, b in ipairs(mapdata.map.layers["Breakables"].objects) do
+      spawnBreakable(b.x, b.y)
     end
   end
 
