@@ -1,7 +1,10 @@
 local function updateGameplay(dt)
 
-  -- Update the physics world
+  -- Update the main physics world
   world:update(dt)
+
+  -- Update the gravity physics world
+  gravWorld:update(dt)
 
   -- Update the player
   player:update(dt)
@@ -23,6 +26,9 @@ local function updateGameplay(dt)
 
   -- Update damage text
   damages:update(dt)
+
+  -- Update all particles
+  particles:update(dt)
 
   -- Update tweens
   flux.update(dt)

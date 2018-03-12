@@ -36,6 +36,7 @@ function startup()
   -- https://github.com/SSYGEN/windfield
   local wf = require("source/libraries/windfield")
   world = wf.newWorld(0, 0, true) -- No gravity, bodies can sleep
+  gravWorld = wf.newWorld(0, 1000, true)
 
   -- Requires all global source files
   require("source/startup/main_require")

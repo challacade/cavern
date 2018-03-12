@@ -8,4 +8,6 @@ function getCollisionClasses()
   world:addCollisionClass('Wall', {ignores = {'Ignore'}})
   world:addCollisionClass('Breakable', {ignores = {'Ignore'}})
   world:addCollisionClass('Transition', {ignores = {'Ignore'}})
+
+  gravWorld:addCollisionClass('Particle', {ignores = {'Particle'}})
 end

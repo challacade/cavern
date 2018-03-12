@@ -16,14 +16,25 @@ function spawnBreakable(x, y)
 
 end
 
+-- spawns all particles for when a wall is blown up
+function breakParticles(x, y)
+
+  spawnParticle(x, y, "break", vector(-2500, -4500))
+  spawnParticle(x, y, "break", vector(2500, -4500))
+  spawnParticle(x, y, "break", vector(-4500, -2500))
+  spawnParticle(x, y, "break", vector(4500, -2500))
+
+end
+
 function breakables:update(dt)
 
   -- Iterate through all breakables in reverse to remove dead ones
   for i=#breakables,1,-1 do
     if breakables[i].dead then
 
-      -- SPAWN PARTICLES HERE
-      
+      local bx, by = breakables[i].physics:getPosition()
+      breakParticles(bx, by)
+
       breakables[i].physics:destroy()
       table.remove(breakables, i)
 

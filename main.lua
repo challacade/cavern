@@ -38,6 +38,7 @@ function love.draw()
     -- Draw the colliders for all physics objects
     -- Commented out for final game, used for debugging
     world:draw(150)
+    gravWorld:draw(150)
 
     love.graphics.setColor(180, 0, 0, 120)
     love.graphics.circle("fill", expX, expY, 350, 100)
@@ -69,5 +70,8 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "z" then
     shake:start(1, 16, 0.01, 2)
+  end
+  if key == "k" then
+    spawnParticle(player.physics:getX(), player.physics:getY(), "break", vector(-3500, -3500))
   end
 end
