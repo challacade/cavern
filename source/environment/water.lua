@@ -34,8 +34,14 @@ end
 -- Draws the anim8 animation for all ripple objects
 function ripples:draw()
 
+  love.graphics.setColor(99, 128, 138, 120)
+
   for i,r in ipairs(self) do
     r.animation:draw(self.spr, r.x, r.y)
+  end
+
+  for i,w in ipairs(mapdata.water) do
+    love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
   end
 
 end

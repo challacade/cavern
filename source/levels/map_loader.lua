@@ -96,9 +96,9 @@ function changeToMap(newMap, transition)
       local newWater = world:newRectangleCollider(w.x, w.y + 64,
         w.width, w.height - 64)
       newWater.x = w.x
-      newWater.y = w.y
+      newWater.y = w.y + 64
       newWater.width = w.width
-      newWater.height = w.height
+      newWater.height = w.height - 64
       newWater:setCollisionClass('Ignore')
       newWater:setType('static')
       table.insert(mapdata.water, newWater)
