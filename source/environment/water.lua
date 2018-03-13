@@ -16,6 +16,7 @@ function spawnRipple(x, y)
   ripple.y = y
 
   ripple.animation = anim8.newAnimation(ripples.grid('1-20', 1), 0.1)
+  ripple.animation:gotoFrame(math.random(1, 20))
 
   table.insert(ripples, ripple)
 
