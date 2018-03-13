@@ -1,6 +1,7 @@
 -- Stores info about the current map
 mapdata = {}
 mapdata.walls = {}
+mapdata.water = {}
 mapdata.transitions = {}
 mapdata.room = nil
 
@@ -49,6 +50,15 @@ function changeToMap(newMap, transition)
     mapdata.walls[i] = nil
   end
 
+  -- Destroy all walls that were spawned for the previous map
+  for i, w in ipairs(mapdata.water) do
+    w:destroy()
+    mapdata.water[i] = nil
+  end
+
+  -- Destroys all water ripples
+  ripples:destroy()
+
   -- Destroy all transition objects from the previous map
   for i, t in ipairs(mapdata.transitions) do
     t:destroy()
@@ -77,6 +87,28 @@ function changeToMap(newMap, transition)
     newWall:setCollisionClass('Wall')
     newWall:setType('static')
     table.insert(mapdata.walls, newWall)
+  end
+
+  -- Spawns water and ripple animations
+  if mapdata.map.layers["Water"] then
+    for i, w in ipairs(mapdata.map.layers["Water"].objects) do
+
+      local newWater = world:newRectangleCollider(w.x, w.y + 64,
+        w.width, w.height - 64)
+      newWater.x = w.x
+      newWater.y = w.y
+      newWater.width = w.width
+      newWater.height = w.height
+      newWater:setCollisionClass('Ignore')
+      newWater:setType('static')
+      table.insert(mapdata.water, newWater)
+
+      -- Spawn ripple animations (one at every 64px interval on the water)
+      for itr=0, (w.width/64)-1 do
+        spawnRipple(w.x + (itr * 64), w.y)
+      end
+
+    end
   end
 
   -- Adds all transition colliders in the current map

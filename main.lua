@@ -12,8 +12,6 @@ function love.load()
   expX = 0
   expY = 0
 
-  spawnRipple(1000, 500)
-
 end
 
 function love.update(dt)

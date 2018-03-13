@@ -38,3 +38,11 @@ function ripples:draw()
   end
 
 end
+
+function ripples:destroy()
+
+  for i=#ripples,1,-1 do
+    table.remove(ripples, i)
+  end
+
+end
