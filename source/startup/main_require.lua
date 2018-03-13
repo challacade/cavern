@@ -1,4 +1,7 @@
 function getGlobals()
+  require("source/startup/loadFonts")
+  require("source/startup/loadSprites")
+
   require("source/global/utilities")
   require("source/global/collision_classes")
   require("source/global/gameState")
@@ -7,6 +10,7 @@ function getGlobals()
   Camera = require("source/libraries/hump/camera")
   vector = require("source/libraries/hump/vector")
   flux = require("source/libraries/flux")
+  anim8 = require("source/libraries/anim8")
 
   require("source/player")
   require("source/weapon")
@@ -16,11 +20,10 @@ function getGlobals()
   require("source/environment/particle")
   require("source/environment/explosion")
   require("source/environment/breakable")
+  require("source/environment/water")
 
   require("source/global/cam")
   require("source/global/shake")
-
-  require("source/startup/defineFonts")
 
   require("source/text/messages")
   require("source/text/scrollText")

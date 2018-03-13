@@ -30,6 +30,9 @@ local function updateGameplay(dt)
   -- Update all particles
   particles:update(dt)
 
+  -- Update water ripple animations
+  ripples:update(dt)
+
   -- Update tweens
   flux.update(dt)
 

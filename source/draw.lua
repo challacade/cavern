@@ -12,6 +12,7 @@ local function drawGameplay()
 
   enemies:drawHealthBars()
   damages:draw()
+  ripples:draw()
 end
 
 return drawGameplay
