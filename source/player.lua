@@ -75,6 +75,12 @@ function player:shoot()
     return nil
   end
 
+  -- Can't shoot the blaster or rocket launcher if underwater
+  if (player.weapon == 1 or player.weapon == 2) and player.submerged then
+    -- put an "error" sound effect here
+    return nil
+  end
+
   self.shotCooldown = 0 -- amount of time (in seconds) between each shot
 
   if self.weapon == 1 then -- Blaster
