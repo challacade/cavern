@@ -52,6 +52,7 @@ function changeToMap(newMap, transition)
 
   -- Destroy all walls that were spawned for the previous map
   for i, w in ipairs(mapdata.water) do
+    w.ripplePhysics:destroy()
     w:destroy()
     mapdata.water[i] = nil
   end
@@ -95,11 +96,18 @@ function changeToMap(newMap, transition)
 
       local newWater = world:newRectangleCollider(w.x, w.y + 64,
         w.width, w.height - 64)
+
+      -- Collider for the top of the body of water
+      newWater.ripplePhysics = world:newRectangleCollider(w.x, w.y + 8,
+        w.width, 56)
+      newWater.ripplePhysics:setCollisionClass('Ripple')
+      newWater.ripplePhysics:setType('static')
+
       newWater.x = w.x
       newWater.y = w.y + 64
       newWater.width = w.width
       newWater.height = w.height - 64
-      newWater:setCollisionClass('Ignore')
+      newWater:setCollisionClass('Water')
       newWater:setType('static')
       table.insert(mapdata.water, newWater)
 

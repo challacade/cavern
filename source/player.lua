@@ -15,6 +15,8 @@ player.damaged = 0 -- timer for the damage flash
 player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
 
+player.submerged = false -- true if the player is underwater
+
 function player:update(dt)
 
   -- Player movement
@@ -53,6 +55,16 @@ function player:update(dt)
 
   -- Handles all collisions for the player
   player:collisions(dt)
+
+  -- This section handles the player interacting with Water
+  local px, py = self.physics:getPosition()
+  local waters = world:queryCircleArea(px, py, 40, {'Water'})
+  local ripples = world:queryCircleArea(px, py, 40, {'Ripple'})
+  if #ripples > 0 and #waters == 0 then
+    player.submerged = false
+  elseif #ripples > 0 and #waters > 0 then
+    player.submerged = true
+  end
 
 end
 
