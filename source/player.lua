@@ -88,7 +88,7 @@ function player:shoot()
   elseif self.weapon == 2 then -- Rocket
     self.shotCooldown = 3
   elseif self.weapon == 3 then -- Harpoon
-    self.shotCooldown = 1.5
+    self.shotCooldown = 0.25
   end
 
   local px, py = self.physics:getPosition()

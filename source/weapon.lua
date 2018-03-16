@@ -10,26 +10,40 @@ function spawnWeapon(x, y)
   weapon.dead = false
   weapon.onDestroy = nil
 
+  weapon.dir = toPlayerVector()
+
   -- Checks which weapon is being spawned and sets appropriate properties
   if weapon.type == 1 then
     weapon.physics = world:newCircleCollider(x, y, 20)
-    weapon.physics:setCollisionClass('P_Weapon')
     weapon.power = 4
     weapon.speed = 4000
   elseif weapon.type == 2 then
     weapon.physics = world:newCircleCollider(x, y, 30)
-    weapon.physics:setCollisionClass('P_Weapon')
     weapon.power = 22
     weapon.speed = 8000
+  elseif weapon.type == 3 then
+    local offsetVec = weapon.dir * 140
+    local wx, wy = offsetVec:unpack()
+
+    local width = 80
+    local height = 40
+
+    weapon.physics = world:newRectangleCollider(x + wx - width/2,
+      y + wy - height/2, width, height)
+    weapon.physics:setAngle(math.atan2(wy, wx))
+    weapon.power = 14
+    weapon.speed = 12000
   end
+
+  -- Set the weapon's collision class
+  weapon.physics:setCollisionClass('P_Weapon')
 
   -- Store x and y value of physics for some "onDestroy" functions
   weapon.x = x
   weapon.y = y
 
-  local dir = toPlayerVector()
-  dir = dir * weapon.speed
-  weapon.physics:applyLinearImpulse(dir:unpack())
+  weapon.dir = weapon.dir * weapon.speed
+  weapon.physics:applyLinearImpulse(weapon.dir:unpack())
 
   -- Rocket Launcher kickback
   if weapon.type == 2 then

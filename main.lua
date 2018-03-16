@@ -74,4 +74,7 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "k" then
     spawnParticle(player.physics:getX(), player.physics:getY(), "break", vector(-3500, -3500))
   end
+  if key == "3" then
+    player.weapon = 3
+  end
 end
