@@ -88,6 +88,22 @@ function player:draw()
   love.graphics.setColor(255, 255, 255, 255)
   local px, py = self.physics:getPosition()
 
+  -- Determine arm data
+  local armSprite = sprites.player.armEmpty -- sprite to draw for the arm
+  local moveDown = 14
+  local ox = 18 -- offset x
+  local oy = 18 -- offset y
+
+  if player.weapon == 1 then
+    armSprite = sprites.player.armBlaster
+    ox = 18
+    oy = 27
+  elseif player.weapon == 2 then
+
+  elseif player.weapon == 3 then
+
+  end
+
   -- flip is used to decide if the sprite needs to flip vertically
   local flip = 1
   local mx, my = cam:mousePosition()
@@ -101,6 +117,12 @@ function player:draw()
   love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
   love.graphics.draw(sprites.player.helmet, px, py-50, math.atan2(vy, vx), 1, flip, 50, 50)
+  -- only rotate the arm if it has a weapon equipped
+  if player.weapon == 0 then
+    --love.graphics.draw(armSprite, px, py + moveDown, nil, player.facing, 1, ox, oy)
+  else
+    love.graphics.draw(armSprite, px, py + moveDown, math.atan2(vy, vx), 1, flip, ox, oy)
+  end
 
 end
 
