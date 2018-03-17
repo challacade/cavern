@@ -88,8 +88,19 @@ function player:draw()
   love.graphics.setColor(255, 255, 255, 255)
   local px, py = self.physics:getPosition()
 
+  -- flip is used to decide if the sprite needs to flip vertically
+  local flip = 1
+  local mx, my = cam:mousePosition()
+  if mx < px then
+    flip = -1
+  end
+
+  local vx, vy = (toPlayerVector(mx, my)*-1):unpack()
+
+  -- body uses player.facing to turn the correct direction (towards the mouse)
   love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
-  love.graphics.draw(sprites.player.helmet, px, py-50, nil, player.facing, 1, 50, 50)
+  -- helmet rotates towards the mouse, flips vertically if facing left
+  love.graphics.draw(sprites.player.helmet, px, py-50, math.atan2(vy, vx), 1, flip, 50, 50)
 
 end
 
