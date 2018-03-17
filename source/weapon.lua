@@ -12,11 +12,19 @@ function spawnWeapon(x, y)
 
   weapon.dir = toPlayerVector()
 
+  -- offset the weapon, to more accurately come from the barrel
+  y = y + 14
+
   -- Checks which weapon is being spawned and sets appropriate properties
   if weapon.type == 1 then
-    weapon.physics = world:newCircleCollider(x, y, 20)
+
+    -- offset (in pixels) outside the center of the player
+    local offdir = weapon.dir * 86
+    local ox, oy = offdir:unpack()
+    weapon.physics = world:newCircleCollider(x + ox, y + oy, 20)
     weapon.power = 4
     weapon.speed = 4000
+
   elseif weapon.type == 2 then
     weapon.physics = world:newCircleCollider(x, y, 30)
     weapon.power = 22
