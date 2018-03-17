@@ -12,6 +12,11 @@ local function drawGameplay()
 
   enemies:drawHealthBars()
   damages:draw()
+
+  player:draw()
+
+  -- Draw water and ripples after everything else to give underwater objects
+  -- a blue tint (since the drawing is translucent)
   ripples:draw()
 end
 

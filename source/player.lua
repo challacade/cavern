@@ -2,7 +2,11 @@ player = {}
 
 player.state = 1  -- 0 (cutscene), 1 (free to move)
 
-player.physics = world:newBSGRectangleCollider(2500, 500, 96, 192, 22)
+player.width = 96
+player.height = 192
+
+player.physics = world:newBSGRectangleCollider(2500, 500, player.width,
+  player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
 player.physics:setFixedRotation(true)
@@ -16,6 +20,7 @@ player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
 
 player.submerged = false -- true if the player is underwater
+player.facing = 1 -- 1 = right, -1 = left
 
 function player:update(dt)
 
@@ -65,6 +70,26 @@ function player:update(dt)
   elseif #ripples > 0 and #waters > 0 then
     player.submerged = true
   end
+
+  -- "facing" is used for drawing the player sprites
+  -- flip to the side of the player the mouse is at
+  local mx, my = cam:mousePosition()
+  if mx < px then
+    player.facing = -1
+  else
+    player.facing = 1
+  end
+
+end
+
+-- Draw the player
+function player:draw()
+
+  love.graphics.setColor(255, 255, 255, 255)
+  local px, py = self.physics:getPosition()
+
+  love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(sprites.player.helmet, px, py-50, nil, player.facing, 1, 50, 50)
 
 end
 

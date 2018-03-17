@@ -47,7 +47,7 @@ function spawnWeapon(x, y)
 
   -- Rocket Launcher kickback
   if weapon.type == 2 then
-    player.physics:applyLinearImpulse((dir * -3):unpack())
+    player.physics:applyLinearImpulse((weapon.dir * -3):unpack())
   end
 
   table.insert(weapons, weapon)
