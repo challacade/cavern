@@ -26,6 +26,9 @@ function spawnPickup(name, x, y)
     pickup.physics = world:newCircleCollider(x, y, 32)
   end
 
+  -- Set the pickup's collision class
+  pickup.physics:setCollisionClass('Pickup')
+
   -- Needed so we can reference the pickup table given its physics
   pickup.physics.parent = pickup
 
