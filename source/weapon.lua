@@ -45,6 +45,7 @@ function spawnWeapon(x, y)
 
   -- Set the weapon's collision class
   weapon.physics:setCollisionClass('P_Weapon')
+  weapon.physics.parent = weapon
 
   -- Store x and y value of physics for some "onDestroy" functions
   weapon.x = x

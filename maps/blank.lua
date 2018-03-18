@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 139,
+  nextobjectid = 140,
   properties = {},
   tilesets = {
     {
@@ -405,6 +405,31 @@ return {
           y = 1024,
           width = 1536,
           height = 384,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Vines",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 139,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 896,
+          width = 128,
+          height = 512,
           rotation = 0,
           visible = true,
           properties = {}

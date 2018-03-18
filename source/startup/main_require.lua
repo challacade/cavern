@@ -22,6 +22,7 @@ function getGlobals()
   require("source/environment/explosion")
   require("source/environment/breakable")
   require("source/environment/water")
+  require("source/environment/vine")
 
   require("source/global/cam")
   require("source/global/shake")

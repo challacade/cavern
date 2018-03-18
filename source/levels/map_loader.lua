@@ -50,6 +50,12 @@ function changeToMap(newMap, transition)
     mapdata.walls[i] = nil
   end
 
+  -- Destroy all vines that were spawned for the previous map
+  for i, v in ipairs(vines) do
+    v:destroy()
+    vines[i] = nil
+  end
+
   -- Destroy all walls that were spawned for the previous map
   for i, w in ipairs(mapdata.water) do
     w.ripplePhysics:destroy()
@@ -164,6 +170,13 @@ function changeToMap(newMap, transition)
   if mapdata.map.layers["Breakables"] then
     for i, b in ipairs(mapdata.map.layers["Breakables"].objects) do
       spawnBreakable(b.x, b.y)
+    end
+  end
+
+  -- Spawns vines in the current map
+  if mapdata.map.layers["Vines"] then
+    for i, v in ipairs(mapdata.map.layers["Vines"].objects) do
+      spawnVine(v.x, v.y)
     end
   end
 

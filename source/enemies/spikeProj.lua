@@ -27,7 +27,7 @@ function spawnSpike(x, y, num)
     spike.dir = vector.new(1, 0)
   end
 
-  spike.physics = world:newBSGRectangleCollider(x, y, 32, 32, 5)
+  spike.physics = world:newCircleCollider(x, y, 20)
   spike.physics:setCollisionClass('E_Weapon')
   spike.dir = spike.dir:normalized()
 
