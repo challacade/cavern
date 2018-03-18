@@ -156,7 +156,7 @@ function changeToMap(newMap, transition)
   -- Spawns all enemies in the current map
   if mapdata.map.layers["Enemies"] then
     for i, e in ipairs(mapdata.map.layers["Enemies"].objects) do
-      spawnEnemy(e.x, e.y, e.type)
+      spawnEnemy(e.x, e.y, e.type, e.properties["arg"])
     end
   end
 

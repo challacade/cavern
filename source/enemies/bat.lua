@@ -1,4 +1,4 @@
-local function batInit(enemy, x, y)
+local function batInit(enemy, x, y, arg)
 
   -- Initialize physics
   enemy.physics = world:newBSGRectangleCollider(x, y, 48, 48, 14)

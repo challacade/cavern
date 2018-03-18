@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 138,
+  nextobjectid = 139,
   properties = {},
   tilesets = {
     {
@@ -299,7 +299,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 2048,
-          y = 768,
+          y = 512,
           width = 128,
           height = 128,
           rotation = 0,
@@ -312,7 +312,7 @@ return {
           type = "",
           shape = "rectangle",
           x = 1792,
-          y = 768,
+          y = 512,
           width = 128,
           height = 128,
           rotation = 0,
@@ -343,6 +343,21 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 138,
+          name = "",
+          type = "spike",
+          shape = "rectangle",
+          x = 1920,
+          y = 896,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["arg"] = "down"
+          }
         }
       }
     },

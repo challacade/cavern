@@ -16,6 +16,7 @@ function getGlobals()
   require("source/weapon")
   require("source/pickup")
   require("source/enemies/enemy")
+  require("source/enemies/spikeProj")
 
   require("source/environment/particle")
   require("source/environment/explosion")

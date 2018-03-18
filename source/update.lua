@@ -33,6 +33,9 @@ local function updateGameplay(dt)
   -- Update water ripple animations
   ripples:update(dt)
 
+  -- Update projectiles shot by spike enemies
+  spikes:update(dt)
+
   -- Update tweens
   flux.update(dt)
 

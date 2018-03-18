@@ -2,7 +2,7 @@
 enemies = {}
 
 -- Creates a new enemy and adds it to the enemies table
-function spawnEnemy(x, y, type)
+function spawnEnemy(x, y, type, arg)
   local enemy = {}
 
   -- Generic properties that all enemies have
@@ -24,9 +24,11 @@ function spawnEnemy(x, y, type)
   local init
   if type == "bat" then
     init = require("source/enemies/bat")
+  elseif type == "spike" then
+    init = require("source/enemies/spike")
   end
 
-  enemy = init(enemy, x, y)
+  enemy = init(enemy, x, y, arg)
 
   enemy.maxHealth = enemy.health
 
