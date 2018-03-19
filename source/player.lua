@@ -13,7 +13,7 @@ player.physics:setFixedRotation(true)
 player.moveForce = 40000
 player.maxSpeed = 400
 
-player.health = 10
+player.health = gameState.maxHealth
 player.damaged = 0 -- timer for the damage flash
 
 player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)

@@ -64,6 +64,13 @@ function pickups:update(dt)
 
       if p.name == "blaster" then
         player.weapon = 1
+      elseif p.name == "rocket" then
+        player.weapon = 2
+      elseif p.name == "harpoon" then
+        player.weapon = 3
+      elseif p.name == "health1" or p.name == "health2" then
+        gameState.maxHealth = gameState.maxHealth + 5
+        player.health = gameState.maxHealth
       end
     end
 

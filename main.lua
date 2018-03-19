@@ -25,6 +25,8 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
+  debug = player.health
+
 end
 
 function love.draw()
