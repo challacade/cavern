@@ -5,8 +5,8 @@ pickups = {}
 function spawnPickup(name, x, y)
 
   -- If we already collected the pickup, don't spawn it
-  if gameState.pickups["name"] then
-      return nil
+  if gameState.pickups[name] then
+    return nil
   end
 
   local pickup = {}
@@ -23,6 +23,18 @@ function spawnPickup(name, x, y)
   end
 
   if name == "harpoon" then
+    pickup.physics = world:newCircleCollider(x, y, 32)
+  end
+
+  if name == "aquaPack" then
+    pickup.physics = world:newCircleCollider(x, y, 32)
+  end
+
+  if name == "health1" then
+    pickup.physics = world:newCircleCollider(x, y, 32)
+  end
+
+  if name == "health2" then
     pickup.physics = world:newCircleCollider(x, y, 32)
   end
 
