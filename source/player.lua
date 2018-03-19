@@ -15,6 +15,8 @@ player.maxSpeed = 400
 
 player.health = gameState.maxHealth
 player.damaged = 0 -- timer for the damage flash
+player.faded = -1 -- determines if player is translucent for damage flash
+player.fadedTimer = 0 -- timer for flipping faded status
 
 player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
@@ -48,8 +50,9 @@ function player:update(dt)
 
   end
 
-  -- Handle damage flash timer
+  -- Handle damage flash timers
   self.damaged = updateTimer(self.damaged, dt)
+  self.fadedTimer = updateTimer(self.fadedTimer, dt)
 
   -- Update shot cooldown timer
   self.shotCooldown = updateTimer(self.shotCooldown, dt)
@@ -80,12 +83,26 @@ function player:update(dt)
     player.facing = 1
   end
 
+  if player.damaged > 0 then
+    if player.fadedTimer <= 0 then
+      player.fadedTimer = 0.04
+      player.faded = player.faded * -1
+    end
+  else
+    player.faded = 1
+  end
+
 end
 
 -- Draw the player
 function player:draw()
 
-  love.graphics.setColor(255, 255, 255, 255)
+  if player.faded == -1 then
+    love.graphics.setColor(255, 255, 255, 200) -- damage flash
+  else
+    love.graphics.setColor(255, 255, 255, 255)
+  end
+
   local px, py = self.physics:getPosition()
 
   -- Determine arm data
@@ -172,6 +189,8 @@ function player:hurt(damage)
   if self.damaged == 0 then
     self.damaged = 1
     self.health = self.health - damage
+    damages:spawnDamage(self.physics:getX(), self.physics:getY(), damage)
+    shake:start(0.05, 6, 0.01, 0.3)
   end
 end
 

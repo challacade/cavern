@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 141,
+  nextobjectid = 142,
   properties = {},
   tilesets = {
     {
@@ -371,6 +371,19 @@ return {
           properties = {
             ["arg"] = "down"
           }
+        },
+        {
+          id = 141,
+          name = "",
+          type = "fish",
+          shape = "rectangle",
+          x = 2944,
+          y = 1152,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

@@ -26,6 +26,8 @@ function spawnEnemy(x, y, type, arg)
     init = require("source/enemies/bat")
   elseif type == "spike" then
     init = require("source/enemies/spike")
+  elseif type == "fish" then
+    init = require("source/enemies/fish")
   end
 
   enemy = init(enemy, x, y, arg)
