@@ -6,9 +6,12 @@ function explode(x, y)
   local scl = 12
   local spd = 240
   local life = 0.8
-  for inc=1, 6 do
+  for inc=1, 7 do
     spd = spd * 0.8
     life = life * 1.1
+    if inc == 7 then
+      spd = 32 -- This is so the middle particles stay more centralized
+    end
     fires:spawnFire(x, y, life, vector(1, 1), scl, nil, spd)
     fires:spawnFire(x, y, life, vector(1, 0), scl, nil, spd)
     fires:spawnFire(x, y, life, vector(1, -1), scl, nil, spd)

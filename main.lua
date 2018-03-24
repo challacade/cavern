@@ -43,7 +43,7 @@ function love.draw()
     gravWorld:draw(150)
 
     love.graphics.setColor(180, 0, 0, 120)
-    love.graphics.circle("fill", expX, expY, 350, 100)
+    --love.graphics.circle("fill", expX, expY, 350, 100)
 
   cam:detach()
 
