@@ -72,6 +72,12 @@ function changeToMap(newMap, transition)
     mapdata.transitions[i] = nil
   end
 
+  -- Destroy all breakable objects from the previous map
+  for i, b in ipairs(breakables) do
+    b.physics:destroy()
+    breakables[i] = nil
+  end
+
   -- Destroy all pickup objects from the previous map
   for i, p in ipairs(pickups) do
     p.physics:destroy()
