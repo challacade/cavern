@@ -44,51 +44,9 @@ function changeToMap(newMap, transition)
     player.physics:setPosition(newX, newY)
   end
 
-  -- Destroy all walls that were spawned for the previous map
-  for i, w in ipairs(mapdata.walls) do
-    w:destroy()
-    mapdata.walls[i] = nil
-  end
-
-  -- Destroy all vines that were spawned for the previous map
-  for i, v in ipairs(vines) do
-    v:destroy()
-    vines[i] = nil
-  end
-
-  -- Destroy all walls that were spawned for the previous map
-  for i, w in ipairs(mapdata.water) do
-    w.ripplePhysics:destroy()
-    w:destroy()
-    mapdata.water[i] = nil
-  end
-
-  -- Destroys all water ripples
-  ripples:destroy()
-
-  -- Destroy all transition objects from the previous map
-  for i, t in ipairs(mapdata.transitions) do
-    t:destroy()
-    mapdata.transitions[i] = nil
-  end
-
-  -- Destroy all breakable objects from the previous map
-  for i, b in ipairs(breakables) do
-    b.physics:destroy()
-    breakables[i] = nil
-  end
-
-  -- Destroy all pickup objects from the previous map
-  for i, p in ipairs(pickups) do
-    p.physics:destroy()
-    pickups[i] = nil
-  end
-
-  -- Destroy all enemies from the previous map
-  for i, e in ipairs(enemies) do
-    e.physics:destroy()
-    enemies[i] = nil
-  end
+  -- Destroys all objects from the previous room
+  local destroyAll = require("source/levels/destroyAll")
+  destroyAll()
 
   -- Adds wall colliders into the game world
   for i, w in ipairs(mapdata.map.layers["Walls"].objects) do
