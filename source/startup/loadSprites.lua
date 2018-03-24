@@ -10,6 +10,7 @@ sprites.player.armBlaster = love.graphics.newImage('sprites/player/arm_blaster.p
 -- Images for everything relating to the environment and levels
 sprites.environment = {}
 sprites.environment.waterSheet = love.graphics.newImage('sprites/environment/waterSheet.png')
+sprites.environment.rockySurface = love.graphics.newImage('sprites/environment/rockySurface.png')
 
 -- Individual blob shapes for drawing fire
 sprites.fire = {}
