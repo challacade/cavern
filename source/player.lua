@@ -129,16 +129,34 @@ function player:draw()
   end
 
   local vx, vy = (toPlayerVector(mx, my)*-1):unpack()
+  local armAngle = math.atan2(vy, vx) -- angle that the arm will rotate
+  local headAngle = armAngle          -- angle that the head will rotate
+
+  -- Don't want head looking straight up or straight down, want to limit
+  -- this angle
+  if flip == 1 then
+    if headAngle < -0.8 then
+      headAngle = -0.8
+    elseif headAngle > 0.65 then
+      headAngle = 0.65
+    end
+  else
+    if headAngle < 0 and headAngle > -2.4 then
+      headAngle = -2.4
+    elseif headAngle > 0 and headAngle < 2.6 then
+      headAngle = 2.6
+    end
+  end
 
   -- body uses player.facing to turn the correct direction (towards the mouse)
   love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
-  love.graphics.draw(sprites.player.helmet, px, py-50, math.atan2(vy, vx), 1, flip, 50, 50)
+  love.graphics.draw(sprites.player.helmet, px, py-50, headAngle, 1, flip, 50, 50)
   -- only rotate the arm if it has a weapon equipped
   if player.weapon == 0 then
     --love.graphics.draw(armSprite, px, py + moveDown, nil, player.facing, 1, ox, oy)
   else
-    love.graphics.draw(armSprite, px, py + moveDown, math.atan2(vy, vx), 1, flip, ox, oy)
+    love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
   end
 
 end
