@@ -39,7 +39,7 @@ function love.draw()
 
     -- Draw the colliders for all physics objects
     -- Commented out for final game, used for debugging
-    --world:draw(150)
+    world:draw(150)
     gravWorld:draw(150)
 
     love.graphics.setColor(180, 0, 0, 120)

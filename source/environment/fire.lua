@@ -3,7 +3,7 @@
 -- that move, change color, and fade away
 fires = {}
 
-function fires:spawnFire(x, y, life, dir, scale, off, black, front, start_alpha)
+function fires:spawnFire(x, y, life, dir, scale, off, speed, smoke, start_alpha)
 
   -- p is a single fire particle
 	local p = {}
@@ -13,7 +13,8 @@ function fires:spawnFire(x, y, life, dir, scale, off, black, front, start_alpha)
 	p.x = x - p.width/2
 	p.y = y - p.height/2
 
-	p.black = black or false
+	p.speed = speed or 60
+	p.black = smoke or false
 	p.spr_rot = math.random(-3, 2) + math.random() -- 0 to pi radians
 
   -- sets a random blob sprite for the fire particle
@@ -36,7 +37,7 @@ function fires:spawnFire(x, y, life, dir, scale, off, black, front, start_alpha)
 	p.life = p.max_life         -- current timer counting down
 	p.scale = scale             -- size of the particle
 	p.front = front or false    -- used for draw order (drawn sooner or later)
-	p.direction = vector(0, -1) -- direction the particle will move
+	p.direction = dir or vector(0, -1) -- direction the particle will move
 
 	if dir ~= nil then
     -- set the direction of the particle
@@ -72,8 +73,8 @@ function fires:spawnFire(x, y, life, dir, scale, off, black, front, start_alpha)
 		p.color = {0, 0, 0}
 	end
 
-	function p:update(dt, i)
-		self.life = update_timer_var(self.life, dt)
+	function p:update(dt)
+		self.life = updateTimer(self.life, dt)
 		--if self.life > (self.max_life/6)*5 then
 			--p.color = {255, 255, 255}
 		if self.life > (self.max_life/6)*5 then
@@ -108,12 +109,37 @@ function fires:spawnFire(x, y, life, dir, scale, off, black, front, start_alpha)
 		end
 
 		local dx, dy = self.direction:unpack()
-		self.x = self.x + dx -- NEED TO TAKE DT INTO ACCOUNT!!
-		self.y = self.y + dy
+		self.x = self.x + (dx * self.speed * dt)
+		self.y = self.y + (dy * self.speed * dt)
 		if self.alpha < 1 then
 			self.dead = true
 		end
 	end
 
 	table.insert(fires, p)
+end
+
+function fires:update(dt) do
+
+	for i,f in ipairs(fires) do
+		f:update(dt)
+	end
+
+	-- Iterate through all fires in reverse to remove dead ones
+  for i=#fires,1,-1 do
+    if fires[i].dead then
+      table.remove(fires, i)
+    end
+  end
+
+end
+
+function fires:draw()
+
+	for i,f in ipairs(fires) do
+		love.graphics.setColor(f.color[1], f.color[2], f.color[3], f.alpha)
+    love.graphics.draw(f.sprite, f.x+f.width/2, f.y+f.height/2, f.spr_rot, f.scale or 1, f.scale or 1, f.sprite:getWidth()/2, f.sprite:getHeight()/2)
+	end
+
+end
 end

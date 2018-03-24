@@ -39,6 +39,9 @@ local function updateGameplay(dt)
   -- Update the vines that come up from the ground
   vines:update(dt)
 
+  -- Update fire particles
+  fires:update(dt)
+
   -- Update tweens
   flux.update(dt)
 

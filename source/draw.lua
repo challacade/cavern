@@ -1,10 +1,19 @@
 local function drawGameplay()
   love.graphics.setLineWidth(2)
 
+  player:draw()
+
+  -- Draw water and ripples after everything else to give underwater objects
+  -- a blue tint (since the drawing is translucent)
+  ripples:draw()
+
+  enemies:drawHealthBars()
+  damages:draw()
+
   -- Draw darkness wherever there is a wall object
   -- tiles will be drawn over this
-  --love.graphics.setColor(36, 31, 28, 255)
-  love.graphics.setColor(160, 90, 44, 255)
+  --love.graphics.setColor(36, 31, 28, 255) -- old darkness for tiles
+  love.graphics.setColor(63, 45, 29, 255)
   for i,w in ipairs(mapdata.walls) do
 
     love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
@@ -21,15 +30,7 @@ local function drawGameplay()
   love.graphics.setColor(255, 255, 255, 255)
   --mapdata.map:drawLayer(mapdata.map.layers["Main_Tiles"])
 
-
-  player:draw()
-
-  -- Draw water and ripples after everything else to give underwater objects
-  -- a blue tint (since the drawing is translucent)
-  ripples:draw()
-
-  enemies:drawHealthBars()
-  damages:draw()
+  fires:draw()
 end
 
 return drawGameplay

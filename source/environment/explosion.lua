@@ -1,6 +1,23 @@
 function explode(x, y)
 
-  local radius = 350
+  local radius = 250
+
+  -- Spawn the particles for the explosion
+  local scl = 12
+  local spd = 240
+  local life = 0.8
+  for inc=1, 6 do
+    spd = spd * 0.8
+    life = life * 1.1
+    fires:spawnFire(x, y, life, vector(1, 1), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(1, 0), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(1, -1), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(0, 1), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(-1, -1), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(-1, 0), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(-1, 1), scl, nil, spd)
+    fires:spawnFire(x, y, life, vector(0, -1), scl, nil, spd)
+	end
 
   -- finds all enemies in the blast radius
   local ens = world:queryCircleArea(x, y, radius, {'Enemy'})
