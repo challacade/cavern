@@ -24,6 +24,8 @@ player.shotCooldown = 0 -- timer for pause between weapon shots
 player.submerged = false -- true if the player is underwater
 player.facing = 1 -- 1 = right, -1 = left
 
+player.jetpackTimer = 0
+
 function player:update(dt)
 
   -- Player movement
@@ -90,6 +92,13 @@ function player:update(dt)
     end
   else
     player.faded = 1
+  end
+
+  -- Update jetpack timer (for spawning fire particles)
+  self.jetpackTimer = updateTimer(self.jetpackTimer, dt)
+
+  if self.jetpackTimer <= 0 then
+    --fires:spawnFire(px + (self.facing * -50), py + 30, 0.4, vector(0, 1))
   end
 
 end
