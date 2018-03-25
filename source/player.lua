@@ -203,8 +203,12 @@ function player:swapWeapon()
   -- Order is Blaster, then Rocket, then Harpoon, then back to Blaster
   if player.weapon == 1 and gameState.pickups.rocket then
     player.weapon = 2
-  elseif player.weapon == 2 and gameState.pickups.harpoon then
-    player.weapon = 3
+  elseif player.weapon == 2 then
+    if gameState.pickups.harpoon then
+      player.weapon = 3
+    else
+      player.weapon = 1
+    end
   elseif player.weapon == 3 then
     player.weapon = 1
   end
