@@ -57,6 +57,25 @@ function changeToMap(newMap, transition)
     newWall.height = w.height
     newWall:setCollisionClass('Wall')
     newWall:setType('static')
+
+    -- These values determine which sides of the wall to draw the rocky surface
+    newWall.left = false
+    newWall.right = false
+    newWall.up = false
+    newWall.down = false
+    if w.properties["left"] then
+      newWall.left = true
+    end
+    if w.properties["right"] then
+      newWall.right = true
+    end
+    if w.properties["up"] then
+      newWall.up = true
+    end
+    if w.properties["down"] then
+      newWall.down = true
+    end
+
     table.insert(mapdata.walls, newWall)
   end
 

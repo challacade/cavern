@@ -21,13 +21,46 @@
   <object id="121" name="main" x="128" y="128" width="3584" height="1536"/>
  </objectgroup>
  <objectgroup name="Walls">
-  <object id="123" x="0" y="0" width="256" height="1792"/>
-  <object id="124" x="256" y="1408" width="1408" height="384"/>
-  <object id="125" x="640" y="0" width="1920" height="384"/>
-  <object id="126" x="1664" y="1024" width="640" height="768"/>
-  <object id="127" x="2560" y="0" width="1280" height="768"/>
-  <object id="128" x="3200" y="768" width="640" height="256"/>
-  <object id="130" x="2304" y="1408" width="1536" height="384"/>
+  <object id="123" x="0" y="0" width="256" height="1792">
+   <properties>
+    <property name="right" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="124" x="256" y="1408" width="1408" height="384">
+   <properties>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="125" x="640" y="0" width="1920" height="384">
+   <properties>
+    <property name="down" type="bool" value="true"/>
+    <property name="left" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="126" x="1664" y="1024" width="640" height="768">
+   <properties>
+    <property name="left" type="bool" value="true"/>
+    <property name="right" type="bool" value="true"/>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="127" x="2560" y="0" width="1280" height="768">
+   <properties>
+    <property name="down" type="bool" value="true"/>
+    <property name="left" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="128" x="3200" y="768" width="640" height="256">
+   <properties>
+    <property name="down" type="bool" value="true"/>
+    <property name="left" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="130" x="2304" y="1408" width="1536" height="384">
+   <properties>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Transitions">
   <object id="131" name="blank2" x="3712" y="1024" width="128" height="384">
