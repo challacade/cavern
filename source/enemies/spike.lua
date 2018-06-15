@@ -20,6 +20,7 @@ local function spikeInit(enemy, x, y, arg)
   enemy.hitPower = 2
   enemy.barY = 62
   enemy.groundDir = "down"
+  enemy.id = math.random()
 
   enemy.moveTimer = math.random(0.5, 3)
   enemy.moveDir = -1
@@ -52,11 +53,11 @@ local function spikeInit(enemy, x, y, arg)
     if self.state == 1 and self.stateTimer == 0 then
 
       local ex, ey = self.physics:getPosition()
-      spawnSpike(ex, ey, 1)
-      spawnSpike(ex, ey, 2)
-      spawnSpike(ex, ey, 3)
-      spawnSpike(ex, ey, 4)
-      spawnSpike(ex, ey, 5)
+      spawnSpike(ex, ey, 1, self.id)
+      spawnSpike(ex, ey, 2, self.id)
+      spawnSpike(ex, ey, 3, self.id)
+      spawnSpike(ex, ey, 4, self.id)
+      spawnSpike(ex, ey, 5, self.id)
 
       self.stateTimer = 1
       self.state = 2

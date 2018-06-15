@@ -41,6 +41,16 @@ function spawnEnemy(x, y, type, arg)
     if self.health <= 0 then
       self.physics:destroy()
       self.dead = true
+
+      -- Destroy loaded spike projectiles that haven't launched yet
+      if self.type == "spike" then
+        for _,s in ipairs(spikes) do
+          if s.id == self.id then
+            s.dead = true
+          end
+        end
+      end
+
     end
 
     -- Hurt player on contact

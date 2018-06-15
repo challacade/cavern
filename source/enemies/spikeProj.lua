@@ -1,13 +1,14 @@
 -- spikes launched by "spike" enemies
 spikes = {}
 
-function spawnSpike(x, y, num)
+function spawnSpike(x, y, num, id)
 
   local spike = {}
   spike.dir = vector.new(-1, 0)
   spike.launchTimer = 0.5
   spike.dead = false
   spike.power = 6
+  spike.id = id
 
   if num == 1 then -- left
     x = x - 64
@@ -36,6 +37,10 @@ function spawnSpike(x, y, num)
     self.launchTimer = updateTimer(self.launchTimer, dt)
     if self.launchTimer < 0 then
       self.physics:applyLinearImpulse((self.dir * 1000):unpack())
+
+      -- self.id is used to destroy spikes that haven't launched yet
+      -- since this spike has launched, make the id invalid
+      self.id = -1
     end
 
     -- Hurt player on contact
