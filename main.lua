@@ -12,6 +12,9 @@ function love.load()
   expX = 0
   expY = 0
 
+  -- Temporary, used to determine if physics will be drawn
+  drawPhysics = true
+
 end
 
 function love.update(dt)
@@ -39,8 +42,10 @@ function love.draw()
 
     -- Draw the colliders for all physics objects
     -- Commented out for final game, used for debugging
-    --world:draw(150)
-    gravWorld:draw(150)
+    if drawPhysics then
+      world:draw(150)
+      gravWorld:draw(150)
+    end
 
     love.graphics.setColor(180, 0, 0, 120)
     --love.graphics.circle("fill", expX, expY, 350, 100)
@@ -78,5 +83,12 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "3" then
     player.weapon = 3
+  end
+  if key == "backspace" then
+    if drawPhysics then
+      drawPhysics = false
+    else
+      drawPhysics = true
+    end
   end
 end
