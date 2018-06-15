@@ -1,14 +1,7 @@
 local function spikeInit(enemy, x, y, arg)
 
   -- Initialize physics
-  local enW = 128
-  local enH = 128
-  if arg == "down" or arg == "up" then
-    enH = 84
-  else
-    enW = 84
-  end
-  enemy.physics = world:newBSGRectangleCollider(x, y, enW, enH, 30)
+  enemy.physics = world:newBSGRectangleCollider(x, y, 128, 128, 30)
   enemy.physics:setCollisionClass('Enemy')
   enemy.physics:setType('static')
   enemy.physics:setFixedRotation(true)
@@ -19,12 +12,12 @@ local function spikeInit(enemy, x, y, arg)
   enemy.health = 10
   enemy.hitPower = 2
   enemy.barY = 62
-  enemy.groundDir = "down"
+  enemy.groundDir = arg
   enemy.id = math.random()
 
   enemy.moveTimer = math.random(0.5, 3)
   enemy.moveDir = -1
-  enemy.speed = 20
+  enemy.speed = 28
 
   enemy.state = 0
   enemy.stateTimer = 0
@@ -53,11 +46,11 @@ local function spikeInit(enemy, x, y, arg)
     if self.state == 1 and self.stateTimer == 0 then
 
       local ex, ey = self.physics:getPosition()
-      spawnSpike(ex, ey, 1, self.id)
-      spawnSpike(ex, ey, 2, self.id)
-      spawnSpike(ex, ey, 3, self.id)
-      spawnSpike(ex, ey, 4, self.id)
-      spawnSpike(ex, ey, 5, self.id)
+      spawnSpike(ex, ey, 1, self.id, self.groundDir)
+      spawnSpike(ex, ey, 2, self.id, self.groundDir)
+      spawnSpike(ex, ey, 3, self.id, self.groundDir)
+      spawnSpike(ex, ey, 4, self.id, self.groundDir)
+      spawnSpike(ex, ey, 5, self.id, self.groundDir)
 
       self.stateTimer = 1
       self.state = 2

@@ -1,7 +1,7 @@
 -- spikes launched by "spike" enemies
 spikes = {}
 
-function spawnSpike(x, y, num, id)
+function spawnSpike(x, y, num, id, groundDir)
 
   local spike = {}
   spike.dir = vector.new(-1, 0)
@@ -10,23 +10,34 @@ function spawnSpike(x, y, num, id)
   spike.power = 6
   spike.id = id
 
+  -- Assign dir (vector)
   if num == 1 then -- left
-    x = x - 64
+    spike.dir = vector.new(-1, 0)
   elseif num == 2 then -- up-left
-    x = x - 32
-    y = y - 18
     spike.dir = vector.new(-1, -1)
   elseif num == 3 then -- up
-    y = y - 32
     spike.dir = vector.new(0, -1)
   elseif num == 4 then -- up-right
-    x = x + 32
-    y = y - 18
     spike.dir = vector.new(1, -1)
   elseif num == 5 then -- right
-    x = x + 64
     spike.dir = vector.new(1, 0)
   end
+
+  -- Rotate dir based on host's groundDir value
+  if groundDir == "left" then
+    spike.dir:rotateInplace(math.pi / 2) -- rotate by 90 degrees
+  elseif groundDir == "up" then
+    spike.dir:rotateInplace(math.pi) -- rotate by 180 degrees
+  elseif groundDir == "right" then
+    spike.dir:rotateInplace(math.pi / -2) -- rotate by -90 degrees
+  end
+
+  spike.dir:normalizeInplace()
+  spike.dir = spike.dir * 64 -- radius of spike enemies
+
+  local tempX, tempY = spike.dir:unpack()
+  x = x + tempX
+  y = y + tempY
 
   spike.physics = world:newCircleCollider(x, y, 20)
   spike.physics:setCollisionClass('E_Weapon')
