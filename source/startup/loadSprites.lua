@@ -12,6 +12,10 @@ sprites.environment = {}
 sprites.environment.waterSheet = love.graphics.newImage('sprites/environment/waterSheet.png')
 sprites.environment.rockySurface = love.graphics.newImage('sprites/environment/rockySurface.png')
 
+-- Images for enemies
+sprites.enemies = {}
+sprites.enemies.flyer1 = love.graphics.newImage('sprites/enemies/flyer1.png')
+
 -- Individual blob shapes for drawing fire
 sprites.fire = {}
 sprites.fire.f1 = love.graphics.newImage('sprites/fire/fire_1.png')

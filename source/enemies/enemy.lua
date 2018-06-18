@@ -118,9 +118,10 @@ function enemies:update(dt)
 
 end
 
--- Draw all healthbars
-function enemies:drawHealthBars()
+-- Draw enemies
+function enemies:draw()
   for i,e in ipairs(self) do
+    e:draw()
     e:drawHealthBar()
   end
 end

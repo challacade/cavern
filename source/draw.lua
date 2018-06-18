@@ -7,7 +7,7 @@ local function drawGameplay()
   -- a blue tint (since the drawing is translucent)
   ripples:draw()
 
-  enemies:drawHealthBars()
+  enemies:draw()
   damages:draw()
 
   -- Draw the ground

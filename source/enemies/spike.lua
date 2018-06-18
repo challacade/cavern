@@ -64,6 +64,10 @@ local function spikeInit(enemy, x, y, arg)
 
   end
 
+  function enemy:draw()
+
+  end
+
   return enemy
 
 end

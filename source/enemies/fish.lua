@@ -27,6 +27,10 @@ local function fishInit(enemy, x, y, arg)
     end
   end
 
+  function enemy:draw()
+
+  end
+
   return enemy
 
 end
