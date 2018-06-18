@@ -13,6 +13,8 @@ function startup()
   local w_scale = screen_width / gameWidth
   local h_scale = screen_height / gameHeight
 
+  love.graphics.setBackgroundColor( 14, 10, 7 )
+
   -- scale set to be the lesser of w_scale and h_scale
   -- this way, the game window will not ever exceed screen size
   if w_scale < h_scale then
