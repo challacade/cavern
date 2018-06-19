@@ -14,7 +14,9 @@ sprites.environment.rockySurface = love.graphics.newImage('sprites/environment/r
 
 -- Images for enemies
 sprites.enemies = {}
-sprites.enemies.flyer1 = love.graphics.newImage('sprites/enemies/flyer1.png')
+sprites.enemies.flyerBody = love.graphics.newImage('sprites/enemies/flyerBody.png')
+sprites.enemies.flyerWing1 = love.graphics.newImage('sprites/enemies/flyerWing1.png')
+sprites.enemies.flyerWing2 = love.graphics.newImage('sprites/enemies/flyerWing2.png')
 
 -- Individual blob shapes for drawing fire
 sprites.fire = {}
