@@ -11,7 +11,7 @@ local function batInit(enemy, x, y, arg)
   -- Properties
   enemy.health = 10
   enemy.hitPower = 2
-  enemy.moveForce = 6500
+  enemy.moveForce = 11000
   enemy.maxSpeed = 400
   enemy.barY = 62
 
@@ -62,6 +62,18 @@ local function batInit(enemy, x, y, arg)
     -- Draw the body of the flyer
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(self.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
+
+    -- Draw the eye of the flyer
+    -- Not to be confused with the Eye of the Tiger
+    local dir = toPlayerVector(sprX, sprY)
+    local eyeX, eyeY = (dir * 16):unpack()
+    sprW = sprites.enemies.flyerEye:getWidth()
+    sprH = sprites.enemies.flyerEye:getHeight()
+
+    local vx, vy = dir:normalized():unpack()
+    local rotate = math.atan2(vy, vx)
+
+    love.graphics.draw(sprites.enemies.flyerEye, sprX + eyeX, sprY + eyeY, rotate, 1, 1, sprW/2, sprH/2)
   end
 
   return enemy
