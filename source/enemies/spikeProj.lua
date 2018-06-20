@@ -94,7 +94,11 @@ function spikes:draw()
     local sprX, sprY = s.physics:getPosition()
     local sprW = s.sprite:getWidth()
     local sprH = s.sprite:getHeight()
-    love.graphics.draw(s.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
+
+    local vx, vy = s.dir:unpack()
+    local rotate = math.atan2(vy, vx)
+
+    love.graphics.draw(s.sprite, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
   end
 
 end
