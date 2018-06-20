@@ -9,6 +9,7 @@ function spawnSpike(x, y, num, id, groundDir)
   spike.dead = false
   spike.power = 6
   spike.id = id
+  spike.sprite = sprites.enemies.spikeProj
 
   -- Assign dir (vector)
   if num == 1 then -- left
@@ -39,7 +40,7 @@ function spawnSpike(x, y, num, id, groundDir)
   x = x + tempX
   y = y + tempY
 
-  spike.physics = world:newCircleCollider(x, y, 20)
+  spike.physics = world:newCircleCollider(x, y, 16)
   spike.physics:setCollisionClass('E_Weapon')
   spike.dir = spike.dir:normalized()
 
@@ -83,6 +84,17 @@ function spikes:update(dt)
       spikes[i].physics:destroy()
       table.remove(spikes, i)
     end
+  end
+
+end
+
+function spikes:draw()
+
+  for i,s in ipairs(self) do
+    local sprX, sprY = s.physics:getPosition()
+    local sprW = s.sprite:getWidth()
+    local sprH = s.sprite:getHeight()
+    love.graphics.draw(s.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
   end
 
 end
