@@ -22,12 +22,12 @@ function spawnWeapon(x, y)
     -- offset (in pixels) outside the center of the player
     local offdir = weapon.dir * 86
     local ox, oy = offdir:unpack()
-    weapon.physics = world:newCircleCollider(x + ox, y + oy, 20)
+    weapon.physics = world:newCircleCollider(x + ox, y + oy, 16)
     weapon.power = 4
     weapon.speed = 4000
 
     -- This weapon has a trail, which is spawned here
-    spawnTrail(weapon.id, 20, 30, {255, 0, 0, 255})
+    spawnTrail(weapon.id, 5, 15, {255, 0, 0, 255})
 
   elseif weapon.type == 2 then
 
@@ -77,13 +77,6 @@ function weapons:update(dt)
     -- Update table x and y for onDestroy functions
     w.x, w.y = w.physics:getPosition()
 
-    -- Updates the weapon's trail (if it has one)
-    for _,t in ipairs(trails) do
-      if t.id == w.id then
-        t:update(dt, w)
-      end
-    end
-
     -- When the weapon collides with a wall
     if w.physics:enter('Wall') then
       w.physics:destroy()
@@ -97,6 +90,15 @@ function weapons:update(dt)
 
       w.physics:destroy()
       w.dead = true
+    end
+
+    -- Updates the weapon's trail (if it has one)
+    if w.dead ~= true then
+      for _,t in ipairs(trails) do
+        if t.id == w.id then
+          t:update(dt, w)
+        end
+      end
     end
 
   end
