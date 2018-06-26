@@ -27,7 +27,7 @@ function spawnWeapon(x, y)
     weapon.speed = 4000
 
     -- This weapon has a trail, which is spawned here
-    spawnTrail(weapon.id, 5, 15, {255, 0, 0, 255})
+    spawnTrail(weapon.id, 5, 15, {255, 0, 0, 180})
 
   elseif weapon.type == 2 then
 
