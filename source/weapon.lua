@@ -6,6 +6,7 @@ function spawnWeapon(x, y)
 
   -- New weapon being spawned
   local weapon = {}
+  weapon.id = math.random()
   weapon.type = player.weapon
   weapon.dead = false
   weapon.onDestroy = nil
@@ -25,11 +26,17 @@ function spawnWeapon(x, y)
     weapon.power = 4
     weapon.speed = 4000
 
+    -- This weapon has a trail, which is spawned here
+    spawnTrail(weapon.id, 20, 30, {255, 0, 0, 255})
+
   elseif weapon.type == 2 then
+
     weapon.physics = world:newCircleCollider(x, y, 30)
     weapon.power = 22
     weapon.speed = 8000
+
   elseif weapon.type == 3 then
+
     local offsetVec = weapon.dir * 140
     local wx, wy = offsetVec:unpack()
 
@@ -69,6 +76,13 @@ function weapons:update(dt)
 
     -- Update table x and y for onDestroy functions
     w.x, w.y = w.physics:getPosition()
+
+    -- Updates the weapon's trail (if it has one)
+    for _,t in ipairs(trails) do
+      if t.id == w.id then
+        t:update(dt, w)
+      end
+    end
 
     -- When the weapon collides with a wall
     if w.physics:enter('Wall') then

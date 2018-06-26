@@ -43,6 +43,7 @@ function love.draw()
     -- Draw the colliders for all physics objects
     -- Commented out for final game, used for debugging
     if drawPhysics then
+      love.graphics.setLineWidth(2)
       world:draw(150)
       gravWorld:draw(150)
     end

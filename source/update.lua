@@ -6,6 +6,9 @@ local function updateGameplay(dt)
   -- Update the gravity physics world
   gravWorld:update(dt)
 
+  -- Update trail table (must be done before weapons are updated)
+  trails:update(dt)
+
   -- Update the player
   player:update(dt)
 
@@ -47,6 +50,9 @@ local function updateGameplay(dt)
 
   -- Update to remove dead breakable walls
   breakables:update(dt)
+
+  -- Handle trail fade-away (when its weapon is destroyed)
+  trails:fadeOut(dt)
 
 end
 

@@ -13,6 +13,9 @@ local function drawGameplay()
   -- Draw spike projectiles
   spikes:draw()
 
+  -- Draw trails
+  trails:draw()
+
   -- Draw the ground
   love.graphics.setColor(63, 45, 29, 255)
   for i,w in ipairs(mapdata.walls) do
