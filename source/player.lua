@@ -186,7 +186,7 @@ function player:shoot()
   self.shotCooldown = 0 -- amount of time (in seconds) between each shot
 
   if self.weapon == 1 then -- Blaster
-    self.shotCooldown = 0.35
+    self.shotCooldown = 0.5
   elseif self.weapon == 2 then -- Rocket
     self.shotCooldown = 3
   elseif self.weapon == 3 then -- Harpoon
