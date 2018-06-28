@@ -45,7 +45,8 @@ end
 
 function blasts:draw()
 	for _,e in ipairs(blasts) do
-		love.graphics.setColor(140, 140, 140, e.alpha)
+    local r, g, b = unpack(e.color)
+		love.graphics.setColor(r, g, b, e.alpha)
 		love.graphics.circle("fill", e.x, e.y, e.radius, math.ceil(e.radius/2))
 	end
 end
