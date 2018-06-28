@@ -110,6 +110,18 @@ function weapons:update(dt)
   for i=#weapons,1,-1 do
     if weapons[i].dead then
 
+      -- If weapon is a laser, break into debris
+      if weapons[i].type == 1 then
+          local x = weapons[i].x
+          local y = weapons[i].y
+          spawnParticle(x, y, "laserDebris", vector(-15, -50))
+          spawnParticle(x, y, "laserDebris", vector(15, -50))
+          spawnParticle(x, y, "laserDebris", vector(-35, -25))
+          spawnParticle(x, y, "laserDebris", vector(35, -25))
+          spawnParticle(x, y, "laserDebris", vector(-15, 0))
+          spawnParticle(x, y, "laserDebris", vector(15, 0))
+      end
+
       -- If weapon is a rocket, explode
       if weapons[i].type == 2 then
         explode(weapons[i].x, weapons[i].y)

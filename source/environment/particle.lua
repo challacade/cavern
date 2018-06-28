@@ -26,6 +26,13 @@ function spawnParticle(x, y, type, dir)
     particle.timer = 1.5
   end
 
+  if type == "laserDebris" then
+    particle.width = 8
+    particle.height = 8
+    particle.corner = 1
+    particle.timer = 0.75
+  end
+
   particle.physics = gravWorld:newBSGRectangleCollider(x, y, particle.width,
     particle.height, particle.corner)
   particle.physics:setFixedRotation(true)
