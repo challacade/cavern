@@ -33,6 +33,9 @@ local function updateGameplay(dt)
   -- Update all particles
   particles:update(dt)
 
+  -- Update all blasts
+  blasts:update(dt)
+
   -- Update water ripple animations
   ripples:update(dt)
 

@@ -26,6 +26,9 @@ function spawnWeapon(x, y)
     weapon.power = 4
     weapon.speed = 4000
 
+    spawnBlast(weapon.physics.body:getX(), weapon.physics.body:getY(), 40,
+      {255, 0, 0}, 0.3)
+
     -- This weapon has a trail, which is spawned here
     spawnTrail(weapon.id, 5, 15, {255, 0, 0, 180})
 
