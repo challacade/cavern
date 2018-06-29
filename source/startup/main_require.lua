@@ -2,11 +2,12 @@ function getGlobals()
   require("source/startup/loadFonts")
   require("source/startup/loadSprites")
 
-  require("scripts/libraries/Tserial")
+  require("source/libraries/Tserial")
 
   require("source/global/utilities")
   require("source/global/collision_classes")
   require("source/global/gameState")
+  require("source/global/saveGame")
   getCollisionClasses()
 
   Camera = require("source/libraries/hump/camera")

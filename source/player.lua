@@ -13,7 +13,7 @@ player.physics:setFixedRotation(true)
 player.moveForce = 40000
 player.maxSpeed = 400
 
-player.health = gameState.maxHealth
+player.health = gameState.player.maxHealth
 player.damaged = 0 -- timer for the damage flash
 player.faded = -1 -- determines if player is translucent for damage flash
 player.fadedTimer = 0 -- timer for flipping faded status

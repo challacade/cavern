@@ -1,12 +1,15 @@
 -- Stores global information about the player's progress
 gameState = {}
+gameState.player = {}
 gameState.pickups = {}
 
 -- State stores if update functions should occur
 gameState.state = 1
 
--- Player's maximum health
-gameState.maxHealth = 20
+-- Player information
+gameState.player.x = 0
+gameState.player.y = 0
+gameState.player.maxHealth = 20
 
 -- Which pickups have been obtained
 gameState.pickups.blaster = false

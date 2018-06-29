@@ -92,4 +92,10 @@ function love.keypressed(key, scancode, isrepeat)
       drawPhysics = true
     end
   end
+  if key == "k" then
+    saveGame()
+  end
+  if key == "l" then
+    loadGame()
+  end
 end
