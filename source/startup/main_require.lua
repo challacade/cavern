@@ -2,6 +2,8 @@ function getGlobals()
   require("source/startup/loadFonts")
   require("source/startup/loadSprites")
 
+  require("scripts/libraries/Tserial")
+
   require("source/global/utilities")
   require("source/global/collision_classes")
   require("source/global/gameState")
