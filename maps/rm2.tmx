@@ -19,14 +19,52 @@
   <object id="121" name="main" x="128" y="128" width="7296" height="1536"/>
  </objectgroup>
  <objectgroup name="Walls">
-  <object id="144" x="0" y="0" width="1280" height="640"/>
-  <object id="145" x="0" y="1152" width="1280" height="640"/>
-  <object id="146" x="1280" y="1536" width="1280" height="256"/>
-  <object id="147" x="2560" y="1280" width="640" height="512"/>
-  <object id="148" x="3200" y="1536" width="1280" height="256"/>
-  <object id="149" x="4480" y="640" width="1280" height="1152"/>
-  <object id="150" x="1280" y="0" width="6272" height="256"/>
-  <object id="151" x="5760" y="1152" width="1792" height="640"/>
+  <object id="144" x="0" y="0" width="1280" height="640">
+   <properties>
+    <property name="down" type="bool" value="true"/>
+    <property name="right" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="145" x="0" y="1152" width="1280" height="640">
+   <properties>
+    <property name="right" type="bool" value="true"/>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="146" x="1280" y="1536" width="1280" height="256">
+   <properties>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="147" x="2560" y="1280" width="640" height="512">
+   <properties>
+    <property name="left" type="bool" value="true"/>
+    <property name="right" type="bool" value="true"/>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="148" x="3200" y="1536" width="1280" height="256">
+   <properties>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="149" x="4480" y="640" width="1280" height="1152">
+   <properties>
+    <property name="left" type="bool" value="true"/>
+    <property name="right" type="bool" value="true"/>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="150" x="1280" y="0" width="6272" height="256">
+   <properties>
+    <property name="down" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="151" x="5760" y="1152" width="1792" height="640">
+   <properties>
+    <property name="up" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Transitions">
   <object id="131" name="rm3" x="7424" y="256" width="128" height="896">

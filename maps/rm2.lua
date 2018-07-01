@@ -157,7 +157,10 @@ return {
           height = 640,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["down"] = true,
+            ["right"] = true
+          }
         },
         {
           id = 145,
@@ -170,7 +173,10 @@ return {
           height = 640,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["right"] = true,
+            ["up"] = true
+          }
         },
         {
           id = 146,
@@ -183,7 +189,9 @@ return {
           height = 256,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["up"] = true
+          }
         },
         {
           id = 147,
@@ -196,7 +204,11 @@ return {
           height = 512,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["left"] = true,
+            ["right"] = true,
+            ["up"] = true
+          }
         },
         {
           id = 148,
@@ -209,7 +221,9 @@ return {
           height = 256,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["up"] = true
+          }
         },
         {
           id = 149,
@@ -222,7 +236,11 @@ return {
           height = 1152,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["left"] = true,
+            ["right"] = true,
+            ["up"] = true
+          }
         },
         {
           id = 150,
@@ -235,7 +253,9 @@ return {
           height = 256,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["down"] = true
+          }
         },
         {
           id = 151,
@@ -248,7 +268,9 @@ return {
           height = 640,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["up"] = true
+          }
         }
       }
     },
