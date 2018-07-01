@@ -55,7 +55,7 @@
   <object id="148" name="rm17" x="2432" y="2944" width="128" height="640">
    <properties>
     <property name="relativeX" type="int" value="0"/>
-    <property name="relativeY" type="int" value="0"/>
+    <property name="relativeY" type="int" value="-2688"/>
     <property name="spawnX" type="int" value="200"/>
     <property name="spawnY" type="int" value="0"/>
    </properties>
