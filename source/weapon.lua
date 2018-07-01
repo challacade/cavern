@@ -81,7 +81,7 @@ function weapons:update(dt)
     w.x, w.y = w.physics:getPosition()
 
     -- When the weapon collides with a wall
-    if w.physics:enter('Wall') then
+    if w.physics:enter('Wall') or w.physics:enter('Transition') then
       w.physics:destroy()
       w.dead = true
     end
