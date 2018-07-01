@@ -38,7 +38,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Transitions">
-  <object id="131" name="blank2" x="0" y="1024" width="128" height="512">
+  <object id="131" name="rm14" x="0" y="1024" width="128" height="512">
    <properties>
     <property name="relativeX" type="int" value="0"/>
     <property name="relativeY" type="int" value="0"/>

@@ -99,7 +99,10 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "l" then
     loadGame()
   end
-  if key == "q" then
+  if key == "1" then
     player.weapon = 1
+  end
+  if key == "2" then
+    player.weapon = 2
   end
 end
