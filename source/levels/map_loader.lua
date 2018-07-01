@@ -30,7 +30,13 @@ function changeToMap(newMap, transition)
     -- not 0. No levels spawn the player at X=0 or Y=0, so this indicates
     -- whether the Spawn value is being used for this new map.
     if transition.spawnX ~= 0 then
-      player.physics:setX(transition.spawnX)
+      if transition.spawnX > 0 then
+        player.physics:setX(transition.spawnX)
+      else
+        -- negative value spawns from right side of the map
+        local w = mapdata.map.width * mapdata.map.tilewidth
+        player.physics:setX(transition.spawnX + w)
+      end
     end
     if transition.spawnY ~= 0 then
       player.physics:setY(transition.spawnY)

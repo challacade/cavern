@@ -242,7 +242,7 @@ return {
           properties = {
             ["relativeX"] = 0,
             ["relativeY"] = -384,
-            ["spawnX"] = 3644,
+            ["spawnX"] = -200,
             ["spawnY"] = 0
           }
         }
