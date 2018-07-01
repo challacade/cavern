@@ -18,6 +18,7 @@ function loadMaps()
   maps.rm6 = sti("maps/rm6.lua")
   maps.rm7 = sti("maps/rm7.lua")
   maps.rm8 = sti("maps/rm8.lua")
+  maps.rm9 = sti("maps/rm9.lua")
 
   -- utilize maps["blank"] syntax to read map data
 end
