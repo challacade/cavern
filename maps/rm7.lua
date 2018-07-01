@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 146,
+  nextobjectid = 147,
   properties = {},
   tilesets = {
     {
@@ -220,6 +220,24 @@ return {
             ["relativeY"] = 0,
             ["spawnX"] = -200,
             ["spawnY"] = 0
+          }
+        },
+        {
+          id = 146,
+          name = "rm8",
+          type = "",
+          shape = "rectangle",
+          x = 768,
+          y = 1664,
+          width = 1024,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["relativeX"] = 0,
+            ["relativeY"] = 0,
+            ["spawnX"] = 0,
+            ["spawnY"] = 240
           }
         }
       }

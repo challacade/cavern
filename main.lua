@@ -28,7 +28,8 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  debug = player.health
+  debug = player.physics:getX()
+  debug2 = player.physics:getY()
 
 end
 

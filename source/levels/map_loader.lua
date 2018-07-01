@@ -17,6 +17,7 @@ function loadMaps()
   maps.rm5 = sti("maps/rm5.lua")
   maps.rm6 = sti("maps/rm6.lua")
   maps.rm7 = sti("maps/rm7.lua")
+  maps.rm8 = sti("maps/rm8.lua")
 
   -- utilize maps["blank"] syntax to read map data
 end
@@ -46,7 +47,13 @@ function changeToMap(newMap, transition)
       end
     end
     if transition.spawnY ~= 0 then
-      player.physics:setY(transition.spawnY)
+      if transition.spawnY > 0 then
+        player.physics:setY(transition.spawnY)
+      else
+        -- negative value spawns from bottom of the map
+        local h = mapdata.map.height * mapdata.map.tileheight
+        player.physics:setY(transition.spawnY + h)
+      end
     end
 
     -- Moves the player's position in the X or Y position by a certain amount
