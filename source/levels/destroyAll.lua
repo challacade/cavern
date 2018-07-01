@@ -18,7 +18,6 @@ local function destroyAll()
 
   -- Destroy all spikes that were spawned for the previous map
   for i, s in ipairs(spikes) do
-    s.physics:destroy()
     s.dead = true
   end
 
