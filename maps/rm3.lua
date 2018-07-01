@@ -254,7 +254,7 @@ return {
           visible = true,
           properties = {
             ["relativeX"] = 0,
-            ["relativeY"] = 0,
+            ["relativeY"] = -1408,
             ["spawnX"] = 200,
             ["spawnY"] = 0
           }

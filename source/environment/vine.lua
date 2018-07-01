@@ -3,7 +3,7 @@ vines = {}
 
 function spawnVine(x, y)
 
-  local vine = world:newRectangleCollider(x, y, 128, 512)
+  local vine = world:newRectangleCollider(x, y, 128, 640)
   vine:setCollisionClass('Wall')
   vine:setType('static')
 

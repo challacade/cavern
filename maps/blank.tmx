@@ -94,6 +94,6 @@
   <object id="136" x="2304" y="1024" width="1536" height="384"/>
  </objectgroup>
  <objectgroup name="Vines">
-  <object id="139" x="640" y="896" width="128" height="512"/>
+  <object id="139" x="640" y="768" width="128" height="640"/>
  </objectgroup>
 </map>

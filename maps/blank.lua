@@ -485,9 +485,9 @@ return {
           type = "",
           shape = "rectangle",
           x = 640,
-          y = 896,
+          y = 768,
           width = 128,
-          height = 512,
+          height = 640,
           rotation = 0,
           visible = true,
           properties = {}

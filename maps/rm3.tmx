@@ -69,7 +69,7 @@
   <object id="147" name="rm5" x="4992" y="2304" width="128" height="640">
    <properties>
     <property name="relativeX" type="int" value="0"/>
-    <property name="relativeY" type="int" value="0"/>
+    <property name="relativeY" type="int" value="-1408"/>
     <property name="spawnX" type="int" value="200"/>
     <property name="spawnY" type="int" value="0"/>
    </properties>

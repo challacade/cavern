@@ -7,8 +7,8 @@ local function drawGameplay()
   -- a blue tint (since the drawing is translucent)
   ripples:draw()
 
+  -- draw all enemies
   enemies:draw()
-  damages:draw()
 
   -- Draw spike projectiles
   spikes:draw()
@@ -64,8 +64,8 @@ local function drawGameplay()
   --mapdata.map:drawLayer(mapdata.map.layers["Main_Tiles"])
 
   fires:draw()
-
   blasts:draw()
+  damages:draw()
 end
 
 return drawGameplay
