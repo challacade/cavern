@@ -16,6 +16,12 @@ local function destroyAll()
     vines[i] = nil
   end
 
+  -- Destroy all spikes that were spawned for the previous map
+  for i, s in ipairs(spikes) do
+    s.physics:destroy()
+    s.dead = true
+  end
+
   -- Destroy all walls that were spawned for the previous map
   for i, w in ipairs(mapdata.water) do
     w.ripplePhysics:destroy()
