@@ -43,6 +43,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Pickups"/>
+ <objectgroup name="Enemies"/>
+ <objectgroup name="Breakables"/>
+ <objectgroup name="Water">
+  <object id="143" x="512" y="3584" width="1536" height="1664"/>
+ </objectgroup>
+ <objectgroup name="Vines"/>
  <objectgroup name="Transitions">
   <object id="131" name="rm15" x="2432" y="256" width="128" height="640">
    <properties>
@@ -60,20 +67,13 @@
     <property name="spawnY" type="int" value="0"/>
    </properties>
   </object>
-  <object id="149" name="rm17" x="512" y="5120" width="1536" height="128">
+  <object id="149" name="rm20" x="512" y="5120" width="1536" height="128">
    <properties>
     <property name="relativeX" type="int" value="0"/>
     <property name="relativeY" type="int" value="0"/>
     <property name="spawnX" type="int" value="0"/>
-    <property name="spawnY" type="int" value="200"/>
+    <property name="spawnY" type="int" value="240"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Pickups"/>
- <objectgroup name="Enemies"/>
- <objectgroup name="Breakables"/>
- <objectgroup name="Water">
-  <object id="143" x="512" y="3584" width="1536" height="1664"/>
- </objectgroup>
- <objectgroup name="Vines"/>
 </map>
