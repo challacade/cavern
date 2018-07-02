@@ -299,7 +299,7 @@ return {
         {
           id = 140,
           name = "",
-          type = "",
+          type = "top",
           shape = "rectangle",
           x = 2688,
           y = 1920,

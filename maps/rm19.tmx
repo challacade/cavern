@@ -79,7 +79,7 @@
   <object id="142" name="aquaPack" x="2112" y="1216" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Water">
-  <object id="140" x="2688" y="1920" width="640" height="1024"/>
+  <object id="140" type="top" x="2688" y="1920" width="640" height="1024"/>
   <object id="141" x="0" y="2304" width="2688" height="640"/>
  </objectgroup>
 </map>

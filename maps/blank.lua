@@ -368,6 +368,81 @@ return {
     },
     {
       type = "objectgroup",
+      name = "Breakables",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 135,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1152,
+          y = 1152,
+          width = 256,
+          height = 256,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Water",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 136,
+          name = "",
+          type = "top",
+          shape = "rectangle",
+          x = 2304,
+          y = 1024,
+          width = 1536,
+          height = 384,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Vines",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 139,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 768,
+          width = 128,
+          height = 640,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
       name = "Enemies",
       visible = true,
       opacity = 1,
@@ -413,81 +488,6 @@ return {
           y = 1152,
           width = 128,
           height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      name = "Breakables",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      draworder = "topdown",
-      properties = {},
-      objects = {
-        {
-          id = 135,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 1152,
-          y = 1152,
-          width = 256,
-          height = 256,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      name = "Water",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      draworder = "topdown",
-      properties = {},
-      objects = {
-        {
-          id = 136,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 2304,
-          y = 1024,
-          width = 1536,
-          height = 384,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      name = "Vines",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      draworder = "topdown",
-      properties = {},
-      objects = {
-        {
-          id = 139,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 640,
-          y = 768,
-          width = 128,
-          height = 640,
           rotation = 0,
           visible = true,
           properties = {}

@@ -116,7 +116,7 @@
   </object>
  </objectgroup>
  <objectgroup name="Water">
-  <object id="160" x="896" y="1920" width="1024" height="1024"/>
+  <object id="160" type="top" x="896" y="1920" width="1024" height="1024"/>
   <object id="161" x="1920" y="2304" width="3200" height="640"/>
  </objectgroup>
 </map>

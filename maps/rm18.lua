@@ -442,7 +442,7 @@ return {
         {
           id = 160,
           name = "",
-          type = "",
+          type = "top",
           shape = "rectangle",
           x = 896,
           y = 1920,

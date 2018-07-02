@@ -123,27 +123,34 @@ function changeToMap(newMap, transition)
   if mapdata.map.layers["Water"] then
     for i, w in ipairs(mapdata.map.layers["Water"].objects) do
 
-      local newWater = world:newRectangleCollider(w.x, w.y + 64,
-        w.width, w.height - 64)
+      local offset = 0
+      if w.type == "top" then
+        offset = 64
+      end
 
-      -- Collider for the top of the body of water
-      newWater.ripplePhysics = world:newRectangleCollider(w.x, w.y + 8,
-        w.width, 56)
-      newWater.ripplePhysics:setCollisionClass('Ripple')
-      newWater.ripplePhysics:setType('static')
+      local newWater = world:newRectangleCollider(w.x, w.y + offset,
+        w.width, w.height - offset)
+
+      if w.type == "top" then
+        -- Collider for the top of the body of water
+        newWater.ripplePhysics = world:newRectangleCollider(w.x, w.y + 8,
+          w.width, 56)
+        newWater.ripplePhysics:setCollisionClass('Ripple')
+        newWater.ripplePhysics:setType('static')
+
+        -- Spawn ripple animations (one at every 64px interval on the water)
+        for itr=0, (w.width/64)-1 do
+          spawnRipple(w.x + (itr * 64), w.y)
+        end
+      end
 
       newWater.x = w.x
-      newWater.y = w.y + 64
+      newWater.y = w.y + offset
       newWater.width = w.width
-      newWater.height = w.height - 64
+      newWater.height = w.height - offset
       newWater:setCollisionClass('Water')
       newWater:setType('static')
       table.insert(mapdata.water, newWater)
-
-      -- Spawn ripple animations (one at every 64px interval on the water)
-      for itr=0, (w.width/64)-1 do
-        spawnRipple(w.x + (itr * 64), w.y)
-      end
 
     end
   end

@@ -82,7 +82,7 @@
   <object id="135" x="1152" y="1152" width="256" height="256"/>
  </objectgroup>
  <objectgroup name="Water">
-  <object id="136" x="2304" y="1024" width="1536" height="384"/>
+  <object id="136" type="top" x="2304" y="1024" width="1536" height="384"/>
  </objectgroup>
  <objectgroup name="Vines">
   <object id="139" x="640" y="768" width="128" height="640"/>

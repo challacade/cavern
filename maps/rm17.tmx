@@ -63,7 +63,7 @@
  <objectgroup name="Pickups"/>
  <objectgroup name="Breakables"/>
  <objectgroup name="Water">
-  <object id="143" x="512" y="896" width="1536" height="640"/>
+  <object id="143" type="top" x="512" y="896" width="1536" height="640"/>
  </objectgroup>
  <objectgroup name="Vines"/>
  <objectgroup name="Enemies">

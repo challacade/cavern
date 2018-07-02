@@ -23,7 +23,9 @@ local function destroyAll()
 
   -- Destroy all walls that were spawned for the previous map
   for i, w in ipairs(mapdata.water) do
-    w.ripplePhysics:destroy()
+    if w.ripplePhysics ~= nil then
+      w.ripplePhysics:destroy()
+    end
     w:destroy()
     mapdata.water[i] = nil
   end

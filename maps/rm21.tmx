@@ -46,7 +46,7 @@
  <objectgroup name="Enemies"/>
  <objectgroup name="Breakables"/>
  <objectgroup name="Water">
-  <object id="149" x="640" y="768" width="1280" height="2944"/>
+  <object id="149" type="top" x="640" y="768" width="1280" height="2944"/>
   <object id="150" x="1920" y="2944" width="640" height="768"/>
  </objectgroup>
  <objectgroup name="Vines"/>
