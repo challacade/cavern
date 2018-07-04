@@ -3,10 +3,6 @@ local function drawGameplay()
 
   player:draw()
 
-  -- Draw water and ripples after everything else to give underwater objects
-  -- a blue tint (since the drawing is translucent)
-  ripples:draw()
-
   -- Draw spike projectiles
   spikes:draw()
 
@@ -15,6 +11,10 @@ local function drawGameplay()
 
   -- Draw trails
   trails:draw()
+
+  -- Draw water and ripples after everything else to give underwater objects
+  -- a blue tint (since the drawing is translucent)
+  ripples:draw()
 
   -- Draw the ground
   love.graphics.setColor(63, 45, 29, 255)
