@@ -31,7 +31,7 @@ local function fishInit(enemy, x, y, arg)
     self.stateTimer = updateTimer(self.stateTimer, dt)
 
     -- State 0: idle
-    if self.state == 0 and player.submerged then
+    if self.state == 0 and self:inSight() then
       self.state = 1
       self.stateTimer = self.timeBetweenShots
       self.timeBetweenShots = 1.5
