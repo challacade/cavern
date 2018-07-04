@@ -157,6 +157,14 @@ function player:draw()
     end
   end
 
+  -- Jetpack data
+  local jetSprite = sprites.player.jetpack
+  if gameState.pickups.aquaPack then
+    jetSprite = sprites.player.aquaPack
+  end
+
+  -- draw jetpack first
+  love.graphics.draw(jetSprite, px + (player.facing * -22), py + 18, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)
   love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
