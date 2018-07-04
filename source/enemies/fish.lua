@@ -15,6 +15,8 @@ local function fishInit(enemy, x, y, arg)
   enemy.maxSpeed = 500
   enemy.barY = 80
 
+  enemy.sprite = sprites.enemies.starfish
+
   function enemy:update(dt)
     if player.submerged then -- only chase the player if he is underwater
       local speed = speedFromVelocity( self.physics:getLinearVelocity() )
@@ -28,7 +30,24 @@ local function fishInit(enemy, x, y, arg)
   end
 
   function enemy:draw()
+    local sprX, sprY = self.physics.body:getPosition()
+    -- Draw the body
 
+    sprW = self.sprite:getWidth()
+    sprH = self.sprite:getHeight()
+
+    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.draw(self.sprite, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
+
+    -- Get info to determine rotation value for the eye
+    local dir = toPlayerVector(sprX, sprY)
+    local vx, vy = dir:normalized():unpack()
+    rotate = math.atan2(vy, vx)
+
+    -- Draw the eye
+    sprW = sprites.enemies.flyerEye:getWidth()
+    sprH = sprites.enemies.flyerEye:getHeight()
+    love.graphics.draw(sprites.enemies.flyerEye, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
   end
 
   return enemy
