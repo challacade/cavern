@@ -1,7 +1,12 @@
 local function spikeInit(enemy, x, y, arg)
 
   -- Initialize physics
-  enemy.physics = world:newBSGRectangleCollider(x, y + 12, 114, 114, 34)
+  -- Spike enemies on the ground (down) need a slight offset
+  local offY = 0
+  if arg == "down" then
+    offY = 12
+  end
+  enemy.physics = world:newBSGRectangleCollider(x + 8, y + 8 + offY, 102, 102, 34)
   enemy.physics:setCollisionClass('Enemy')
   enemy.physics:setType('static')
   enemy.physics:setFixedRotation(true)
@@ -107,21 +112,41 @@ local function spikeInit(enemy, x, y, arg)
   function enemy:draw()
     local sprX, sprY = self.physics.body:getPosition()
 
+    local rotate = 0
+    local rotVec = vector(0, 1)
+    if self.groundDir == "left" then
+      rotate = math.pi/2
+      rotVec = vector(-1, 0)
+    elseif self.groundDir == "up" then
+      rotate = math.pi
+      rotVec = vector(0, -1)
+    elseif self.groundDir == "right" then
+      rotate = math.pi/-2
+      rotVec = vector(1, 0)
+    end
+
+
     -- Draw the body
+
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
+
+    -- Info for the origin location
+    local vx, vy = rotVec:unpack()
+
     love.graphics.setColor(255, 255, 255, 255)
-    love.graphics.draw(self.sprite, sprX, sprY+sprH/2, nil, self.scaleX, self.scaleY, sprW/2, sprH)
+    love.graphics.draw(self.sprite, sprX+(vx*sprW/2), sprY+(vy*sprH/2), rotate, self.scaleX, self.scaleY, sprW/2, sprH)
 
     -- Get info to determine rotation value for the eye
     local dir = toPlayerVector(sprX, sprY)
-    local vx, vy = dir:normalized():unpack()
-    local rotate = math.atan2(vy, vx)
+    vx, vy = dir:normalized():unpack()
+    rotate = math.atan2(vy, vx)
 
     -- Draw the eye
     sprW = sprites.enemies.flyerEye:getWidth()
     sprH = sprites.enemies.flyerEye:getHeight()
-    love.graphics.draw(sprites.enemies.flyerEye, sprX, sprY - 7 + ((1 - self.scaleY) * sprH * 2), rotate, 1.15, 1.15, sprW/2, sprH/2)
+    vx, vy = rotVec:unpack()
+    love.graphics.draw(sprites.enemies.flyerEye, sprX + (vx * (-2 + ((1 - self.scaleY) * sprH * 2))), sprY + (vy * (-7 + ((1 - self.scaleY) * sprH * 2))), rotate, 1.15, 1.15, sprW/2, sprH/2)
 
   end
 
