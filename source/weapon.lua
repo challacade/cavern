@@ -10,6 +10,7 @@ function spawnWeapon(x, y)
   weapon.type = player.weapon
   weapon.dead = false
   weapon.onDestroy = nil
+  weapon.draw = nil
 
   weapon.dir = toPlayerVector()
 
@@ -45,12 +46,20 @@ function spawnWeapon(x, y)
 
     local width = 80
     local height = 40
+    local angle = math.atan2(wy, wx)
 
     weapon.physics = world:newRectangleCollider(x + wx - width/2,
       y + wy - height/2, width, height)
-    weapon.physics:setAngle(math.atan2(wy, wx))
+    weapon.physics:setAngle(angle)
     weapon.power = 14
     weapon.speed = 12000
+
+    weapon.draw = function(wep)
+      local wx, wy = wep.physics:getPosition()
+      love.graphics.setColor(255, 255, 255, 255)
+      local toDraw = sprites.player.spear
+      love.graphics.draw(toDraw, wx, wy, angle, 1, 1, toDraw:getWidth()-40, toDraw:getHeight()/2)
+    end
   end
 
   -- Set the weapon's collision class
@@ -132,4 +141,12 @@ function weapons:update(dt)
     end
   end
 
+end
+
+function weapons:draw()
+  for _,w in ipairs(self) do
+    if w.draw ~= nil then
+      w.draw(w)
+    end
+  end
 end

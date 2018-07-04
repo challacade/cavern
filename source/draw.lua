@@ -9,6 +9,9 @@ local function drawGameplay()
   -- draw all enemies
   enemies:draw()
 
+  -- draw all weapons
+  weapons:draw()
+
   -- Draw trails
   trails:draw()
 

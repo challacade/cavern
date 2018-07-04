@@ -7,6 +7,8 @@ sprites.player.body = love.graphics.newImage('sprites/player/body.png')
 sprites.player.armEmpty = love.graphics.newImage('sprites/player/arm_empty.png')
 sprites.player.armBlaster = love.graphics.newImage('sprites/player/arm_blaster2.png')
 sprites.player.rocketLauncher = love.graphics.newImage('sprites/player/rocketLauncher.png')
+sprites.player.spear = love.graphics.newImage('sprites/player/spear.png')
+sprites.player.armSpear = love.graphics.newImage('sprites/player/armSpear.png')
 sprites.player.jetpack = love.graphics.newImage('sprites/player/jetpack.png')
 sprites.player.aquaPack = love.graphics.newImage('sprites/player/aquapack.png')
 

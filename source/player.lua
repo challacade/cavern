@@ -129,7 +129,10 @@ function player:draw()
     ox = sprites.player.rocketLauncher:getWidth()/2 - 20
     oy = sprites.player.rocketLauncher:getHeight()/2
   elseif player.weapon == 3 then
-
+    armSprite = sprites.player.armSpear
+    ox = sprites.player.rocketLauncher:getWidth()/2
+    oy = sprites.player.rocketLauncher:getHeight()/2
+    moveDown = 23
   end
 
   -- flip is used to decide if the sprite needs to flip vertically
@@ -200,7 +203,7 @@ function player:shoot()
   elseif self.weapon == 2 then -- Rocket
     self.shotCooldown = 3
   elseif self.weapon == 3 then -- Harpoon
-    self.shotCooldown = 0.25
+    self.shotCooldown = 1
   end
 
   local px, py = self.physics:getPosition()
