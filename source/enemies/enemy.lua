@@ -20,6 +20,9 @@ function spawnEnemy(x, y, type, arg)
   enemy.barWidth = 100
   enemy.barHeight = 16
 
+  -- Set a new seed for each enemy spawned in the room
+  math.randomseed(#enemies)
+
   -- Function that sets the properties of the new enemy
   local init
   if type == "bat" then

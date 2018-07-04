@@ -26,7 +26,7 @@ local function spikeInit(enemy, x, y, arg)
   enemy.speed = 148
 
   enemy.state = -1
-  enemy.stateTimer = math.random(0.5, 2.5)
+  enemy.stateTimer = math.random()
 
   enemy.sprite = sprites.enemies.spikeBody
   enemy.scaleX = 1
