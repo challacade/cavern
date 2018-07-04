@@ -178,7 +178,9 @@ function player:draw()
   if player.weapon == 0 then
     --love.graphics.draw(armSprite, px, py + moveDown, nil, player.facing, 1, ox, oy)
   else
-    love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
+    if player.weapon ~= 3 or (self.shotCooldown <= 0) then
+      love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
+    end
   end
 
 end

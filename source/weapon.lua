@@ -41,7 +41,7 @@ function spawnWeapon(x, y)
 
   elseif weapon.type == 3 then
 
-    local offsetVec = weapon.dir * 140
+    local offsetVec = weapon.dir * 100
     local wx, wy = offsetVec:unpack()
 
     local width = 80
