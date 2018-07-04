@@ -469,7 +469,7 @@ return {
           name = "",
           type = "spike",
           shape = "rectangle",
-          x = 1920,
+          x = 2048,
           y = 896,
           width = 128,
           height = 128,
@@ -491,51 +491,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
-        },
-        {
-          id = 143,
-          name = "",
-          type = "spike",
-          shape = "rectangle",
-          x = 256,
-          y = 768,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["arg"] = "left"
-          }
-        },
-        {
-          id = 144,
-          name = "",
-          type = "spike",
-          shape = "rectangle",
-          x = 1024,
-          y = 384,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["arg"] = "up"
-          }
-        },
-        {
-          id = 145,
-          name = "",
-          type = "spike",
-          shape = "rectangle",
-          x = 1536,
-          y = 1152,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["arg"] = "right"
-          }
         }
       }
     }

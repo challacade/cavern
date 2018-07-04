@@ -46,8 +46,12 @@ local function spikeInit(enemy, x, y, arg)
 
     if self.moveTimer == 0 and self.state < 1 then
       self.moveDir = self.moveDir * -1
-      self.stateTimer = 1
+      self.stateTimer = 0.3
       self.state = 1 -- prepping for spikes
+
+      self.scaleTween = nil
+      self.scaleX = 1
+      self.scaleY = 1
     end
 
     -- State 0 and 0.5: Moving slowly, not really doing anything
@@ -83,13 +87,24 @@ local function spikeInit(enemy, x, y, arg)
 
     end
 
-    -- State 1: Freezing after moving, spawn spikes after timer
+
+    -- Start inflating
+
+    local inflateScale = 1.4
+
     if self.state == 1 and self.stateTimer == 0 then
+      self.scaleTween = flux.to(self, 0.8, {scaleX = inflateScale, scaleY = inflateScale}):ease("cubicinout")
+      self.state = 1.1
+    end
 
-      self.scaleTween = nil
-      self.scaleX = 1
-      self.scaleY = 1
+    -- Wait until finished inflating
+    if self.state == 1.1 and self.scaleX == inflateScale then
+      self.scaleTween = flux.to(self, 0.6, {scaleX = 1, scaleY = 1}):ease("backout")
+      self.state = 1.2
+      self.stateTimer = 0.1
+    end
 
+    if self.state == 1.2 and self.stateTimer == 0 then
       local ex, ey = self.physics:getPosition()
       spawnSpike(ex, ey, 1, self.id, self.groundDir)
       spawnSpike(ex, ey, 2, self.id, self.groundDir)
@@ -97,6 +112,7 @@ local function spikeInit(enemy, x, y, arg)
       spawnSpike(ex, ey, 4, self.id, self.groundDir)
       spawnSpike(ex, ey, 5, self.id, self.groundDir)
 
+      self.scaleTween = nil
       self.stateTimer = 1
       self.state = 2
     end

@@ -7,11 +7,11 @@ local function drawGameplay()
   -- a blue tint (since the drawing is translucent)
   ripples:draw()
 
-  -- draw all enemies
-  enemies:draw()
-
   -- Draw spike projectiles
   spikes:draw()
+
+  -- draw all enemies
+  enemies:draw()
 
   -- Draw trails
   trails:draw()

@@ -5,11 +5,15 @@ function spawnSpike(x, y, num, id, groundDir)
 
   local spike = {}
   spike.dir = vector.new(-1, 0)
-  spike.launchTimer = 0.5
   spike.dead = false
   spike.power = 6
   spike.id = id
   spike.sprite = sprites.enemies.spikeProj
+
+  -- Originally planned to have spikes pause before launching
+  -- Since this is no longer needed, just keep this timer at -1
+  -- so they immediately launch
+  spike.launchTimer = -1
 
   -- Assign dir (vector)
   if num == 1 then -- left
@@ -46,9 +50,10 @@ function spawnSpike(x, y, num, id, groundDir)
 
   function spike:update(dt)
 
-    self.launchTimer = updateTimer(self.launchTimer, dt)
+    --self.launchTimer = updateTimer(self.launchTimer, dt)
     if self.launchTimer < 0 then
-      self.physics:applyLinearImpulse((self.dir * 1000):unpack())
+      self.physics:applyLinearImpulse((self.dir * 1500):unpack())
+      self.launchTimer = 0
 
       -- self.id is used to destroy spikes that haven't launched yet
       -- since this spike has launched, make the id invalid
@@ -89,6 +94,8 @@ function spikes:update(dt)
 end
 
 function spikes:draw()
+
+  love.graphics.setColor(255, 255, 255, 255)
 
   for i,s in ipairs(self) do
     local sprX, sprY = s.physics:getPosition()
