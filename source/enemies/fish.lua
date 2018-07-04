@@ -63,6 +63,10 @@ local function fishInit(enemy, x, y, arg)
       self.state = 2
       local tweenTo = self.slowRotSpeed
       self.rotTween = flux.to(self, 0.5, {rotSpeed = tweenTo}):ease("cubicout")
+
+      -- Shoot bullet
+      local ex, ey = self.physics:getPosition()
+      spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "fish")
     end
 
     -- State 2: After shooting, slowing down

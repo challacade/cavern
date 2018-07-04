@@ -6,6 +6,9 @@ local function drawGameplay()
   -- Draw spike projectiles
   spikes:draw()
 
+  -- Draw enemy projectiles
+  enemyProjectiles:draw()
+
   -- draw all enemies
   enemies:draw()
 

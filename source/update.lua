@@ -42,6 +42,9 @@ local function updateGameplay(dt)
   -- Update projectiles shot by spike enemies
   spikes:update(dt)
 
+  -- Update enemy projectiles
+  enemyProjectiles:update(dt)
+
   -- Update the vines that come up from the ground
   vines:update(dt)
 
