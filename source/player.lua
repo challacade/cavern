@@ -97,7 +97,7 @@ function player:update(dt)
   -- Update jetpack timer (for spawning fire particles)
   self.jetpackTimer = updateTimer(self.jetpackTimer, dt)
 
-  if self.jetpackTimer <= 0 then
+  if self.jetpackTimer <= 0 and player.submerged == false then
     fires:spawnFire(px + (self.facing * -44), py + 50, 0.2, vector(0, 1))
   end
 

@@ -11,6 +11,7 @@ function spawnWeapon(x, y)
   weapon.dead = false
   weapon.onDestroy = nil
   weapon.draw = nil
+  weapon.sprite = nil
 
   weapon.dir = toPlayerVector()
 
@@ -48,6 +49,10 @@ function spawnWeapon(x, y)
     local height = 40
     local angle = math.atan2(wy, wx)
 
+    -- Leave the player's hand on the spear before going to bare spear sprite
+    weapon.handTimer = 0 -- set to >0 to re-enable this feature
+    weapon.sprite = sprites.player.armSpear
+
     weapon.physics = world:newRectangleCollider(x + wx - width/2,
       y + wy - height/2, width, height)
     weapon.physics:setAngle(angle)
@@ -57,8 +62,7 @@ function spawnWeapon(x, y)
     weapon.draw = function(wep)
       local wx, wy = wep.physics:getPosition()
       love.graphics.setColor(255, 255, 255, 255)
-      local toDraw = sprites.player.spear
-      love.graphics.draw(toDraw, wx, wy, angle, 1, 1, toDraw:getWidth()-40, toDraw:getHeight()/2)
+      love.graphics.draw(wep.sprite, wx, wy, angle, 1, 1, wep.sprite:getWidth()-40, wep.sprite:getHeight()/2)
     end
   end
 
@@ -88,6 +92,14 @@ function weapons:update(dt)
 
     -- Update table x and y for onDestroy functions
     w.x, w.y = w.physics:getPosition()
+
+    -- Update the hand timer (for spears)
+    if w.type == 3 then
+      w.handTimer = updateTimer(w.handTimer, dt)
+      if w.handTimer <= 0 then
+        w.sprite = sprites.player.spear
+      end
+    end
 
     -- When the weapon collides with a wall
     if w.physics:enter('Wall') or w.physics:enter('Transition') then
