@@ -98,7 +98,7 @@ function player:update(dt)
   self.jetpackTimer = updateTimer(self.jetpackTimer, dt)
 
   if self.jetpackTimer <= 0 then
-    --fires:spawnFire(px + (self.facing * -50), py + 30, 0.4, vector(0, 1))
+    fires:spawnFire(px + (self.facing * -44), py + 50, 0.2, vector(0, 1))
   end
 
 end
