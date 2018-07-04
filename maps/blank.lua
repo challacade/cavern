@@ -482,14 +482,14 @@ return {
           name = "",
           type = "spike",
           shape = "rectangle",
-          x = 1664,
-          y = 384,
+          x = 2048,
+          y = 896,
           width = 128,
           height = 128,
           rotation = 0,
           visible = true,
           properties = {
-            ["arg"] = "up"
+            ["arg"] = "down"
           }
         },
         {

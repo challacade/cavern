@@ -93,8 +93,13 @@ local function spikeInit(enemy, x, y, arg)
     local inflateScale = 1.4
 
     if self.state == 1 and self.stateTimer == 0 then
-      self.scaleTween = flux.to(self, 0.8, {scaleX = inflateScale, scaleY = inflateScale}):ease("cubicinout")
-      self.state = 1.1
+      if self:inSight() then
+        self.scaleTween = flux.to(self, 0.8, {scaleX = inflateScale, scaleY = inflateScale}):ease("cubicinout")
+        self.state = 1.1
+      else
+        self.state = 2
+        self.stateTimer = 0.8
+      end
     end
 
     -- Wait until finished inflating

@@ -90,9 +90,9 @@
  </objectgroup>
  <objectgroup name="Enemies">
   <object id="133" type="bat" x="384" y="1152" width="128" height="128"/>
-  <object id="138" type="spike" x="1664" y="384" width="128" height="128">
+  <object id="138" type="spike" x="2048" y="896" width="128" height="128">
    <properties>
-    <property name="arg" value="up"/>
+    <property name="arg" value="down"/>
    </properties>
   </object>
   <object id="141" type="fish" x="2944" y="1152" width="128" height="128"/>
