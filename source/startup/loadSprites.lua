@@ -18,6 +18,7 @@ sprites.enemies.flyerBody = love.graphics.newImage('sprites/enemies/flyerBody.pn
 sprites.enemies.flyerEye = love.graphics.newImage('sprites/enemies/flyerEye.png')
 sprites.enemies.flyerWing1 = love.graphics.newImage('sprites/enemies/flyerWing1.png')
 sprites.enemies.flyerWing2 = love.graphics.newImage('sprites/enemies/flyerWing2.png')
+sprites.enemies.spikeBody = love.graphics.newImage('sprites/enemies/spikeBody.png')
 sprites.enemies.spikeProj = love.graphics.newImage('sprites/enemies/spikeProj.png')
 
 -- Individual blob shapes for drawing fire

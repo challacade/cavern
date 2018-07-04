@@ -1,7 +1,7 @@
 local function spikeInit(enemy, x, y, arg)
 
   -- Initialize physics
-  enemy.physics = world:newBSGRectangleCollider(x, y, 128, 128, 30)
+  enemy.physics = world:newBSGRectangleCollider(x, y + 12, 114, 114, 34)
   enemy.physics:setCollisionClass('Enemy')
   enemy.physics:setType('static')
   enemy.physics:setFixedRotation(true)
@@ -11,7 +11,7 @@ local function spikeInit(enemy, x, y, arg)
   -- Properties
   enemy.health = 10
   enemy.hitPower = 2
-  enemy.barY = 62
+  enemy.barY = 90
   enemy.groundDir = arg
   enemy.id = math.random()
 
@@ -21,6 +21,8 @@ local function spikeInit(enemy, x, y, arg)
 
   enemy.state = 0
   enemy.stateTimer = 0
+
+  enemy.sprite = sprites.enemies.spikeBody
 
   function enemy:update(dt)
 
@@ -65,6 +67,13 @@ local function spikeInit(enemy, x, y, arg)
   end
 
   function enemy:draw()
+    local sprX, sprY = self.physics.body:getPosition()
+
+    -- Draw the body of the flyer (rotates towards player)
+    sprW = self.sprite:getWidth()
+    sprH = self.sprite:getHeight()
+    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.draw(self.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
 
   end
 
