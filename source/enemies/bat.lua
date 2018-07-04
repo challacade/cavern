@@ -22,12 +22,15 @@ local function batInit(enemy, x, y, arg)
   enemy.spriteTimer = enemy.spriteTimerBase
 
   function enemy:update(dt)
-    local speed = speedFromVelocity( self.physics:getLinearVelocity() )
-    if speed < self.maxSpeed then
-      local ex, ey = self.physics:getPosition()
-      local dir = toPlayerVector(ex, ey)
-      dir = dir * self.moveForce
-      self.physics:applyForce(dir:unpack())
+
+    if self:inSight() then
+      local speed = speedFromVelocity( self.physics:getLinearVelocity() )
+      if speed < self.maxSpeed then
+        local ex, ey = self.physics:getPosition()
+        local dir = toPlayerVector(ex, ey)
+        dir = dir * self.moveForce
+        self.physics:applyForce(dir:unpack())
+      end
     end
 
     -- Update the animation; alternate between the two frames
