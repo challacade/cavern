@@ -15,13 +15,13 @@ local function spikeInit(enemy, x, y, arg)
   enemy.groundDir = arg
   enemy.id = math.random()
 
-  enemy.moveTimer = math.random(0.5, 3)
+  enemy.moveTotalTime = 2
+  enemy.moveTimer = 1
   enemy.moveDir = -1
-  enemy.moveTotalTime = 0.8
-  enemy.speed = 100
+  enemy.speed = 148
 
-  enemy.state = 0
-  enemy.stateTimer = 0
+  enemy.state = -1
+  enemy.stateTimer = math.random(0.5, 2.5)
 
   enemy.sprite = sprites.enemies.spikeBody
   enemy.scaleX = 1
@@ -33,9 +33,15 @@ local function spikeInit(enemy, x, y, arg)
     self.moveTimer = updateTimer(self.moveTimer, dt)
     self.stateTimer = updateTimer(self.stateTimer, dt)
 
+    -- State -1: right after spawning, random pause before moving
+    if self.state == -1 and self.stateTimer == 0 then
+      self.state = 0
+      self.moveTimer = self.moveTotalTime
+    end
+
     if self.moveTimer == 0 and self.state < 1 then
       self.moveDir = self.moveDir * -1
-      self.stateTimer = self.moveTotalTime
+      self.stateTimer = 1
       self.state = 1 -- prepping for spikes
     end
 
@@ -52,7 +58,7 @@ local function spikeInit(enemy, x, y, arg)
 
       if self.state == 0 then
         if self.scaleTween == nil then
-    			self.scaleTween = flux.to(self, 0.4, {scaleX = 1.5, scaleY = 0.5})
+    			self.scaleTween = flux.to(self, self.moveTotalTime/6, {scaleX = 1.3, scaleY = 0.7})
     		end
         self.state = 0.5
     		--if self.jump_tween_y == nil then
@@ -61,8 +67,12 @@ local function spikeInit(enemy, x, y, arg)
       end
 
       if self.state == 0.5 then
-        if self.scaleX == 1.5 then
-          self.scaleTween = flux.to(self, 0.4, {scaleX = 1, scaleY = 1})
+        if self.scaleX == 1.3 then
+          self.scaleTween = flux.to(self, self.moveTotalTime/6, {scaleX = 1, scaleY = 1})
+        end
+        if self.scaleX == 1 then
+          self.state = 0
+          self.scaleTween = nil
         end
       end
 
@@ -72,6 +82,8 @@ local function spikeInit(enemy, x, y, arg)
     if self.state == 1 and self.stateTimer == 0 then
 
       self.scaleTween = nil
+      self.scaleX = 1
+      self.scaleY = 1
 
       local ex, ey = self.physics:getPosition()
       spawnSpike(ex, ey, 1, self.id, self.groundDir)
@@ -95,11 +107,21 @@ local function spikeInit(enemy, x, y, arg)
   function enemy:draw()
     local sprX, sprY = self.physics.body:getPosition()
 
-    -- Draw the body of the flyer (rotates towards player)
+    -- Draw the body
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
     love.graphics.setColor(255, 255, 255, 255)
     love.graphics.draw(self.sprite, sprX, sprY+sprH/2, nil, self.scaleX, self.scaleY, sprW/2, sprH)
+
+    -- Get info to determine rotation value for the eye
+    local dir = toPlayerVector(sprX, sprY)
+    local vx, vy = dir:normalized():unpack()
+    local rotate = math.atan2(vy, vx)
+
+    -- Draw the eye
+    sprW = sprites.enemies.flyerEye:getWidth()
+    sprH = sprites.enemies.flyerEye:getHeight()
+    love.graphics.draw(sprites.enemies.flyerEye, sprX, sprY - 7 + ((1 - self.scaleY) * sprH * 2), rotate, 1.15, 1.15, sprW/2, sprH/2)
 
   end
 

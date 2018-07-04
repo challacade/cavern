@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 143,
+  nextobjectid = 144,
   properties = {},
   tilesets = {
     {
@@ -457,7 +457,7 @@ return {
           type = "bat",
           shape = "rectangle",
           x = 384,
-          y = 512,
+          y = 1152,
           width = 128,
           height = 128,
           rotation = 0,
@@ -491,6 +491,21 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 143,
+          name = "",
+          type = "spike",
+          shape = "rectangle",
+          x = 256,
+          y = 768,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["arg"] = "left"
+          }
         }
       }
     }
