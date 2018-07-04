@@ -29,8 +29,6 @@ local function fishInit(enemy, x, y, arg)
   function enemy:update(dt)
 
     self.stateTimer = updateTimer(self.stateTimer, dt)
-    debug = self.state
-    debug2 = self.rotSpeed
 
     -- State 0: idle
     if self.state == 0 and player.submerged then

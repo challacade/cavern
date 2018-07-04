@@ -44,16 +44,6 @@ function spawnEnemy(x, y, type, arg)
     if self.health <= 0 then
       self.physics:destroy()
       self.dead = true
-
-      -- Destroy loaded spike projectiles that haven't launched yet
-      if self.type == "spike" then
-        for _,s in ipairs(spikes) do
-          if s.id == self.id then
-            s.dead = true
-          end
-        end
-      end
-
     end
 
     -- Hurt player on contact
@@ -97,6 +87,48 @@ function spawnEnemy(x, y, type, arg)
     self.health = self.health - d
     local ex, ey = self.physics:getPosition()
     damages:spawnDamage(ex, ey, d)
+  end
+
+  -- Checks if the player can be seen by the enemy
+  function enemy:inSight()
+
+    local ex, ey = self.physics:getPosition()
+    if distToPlayer(ex, ey) > 2300 then
+      return false
+    end
+
+    -- This part checks to see if there are obstacles between the enemy and the
+    -- player. This is accomplished by querying a rectangle that stretches
+    -- between the enemy and the player, and if any walls or objects lie inside
+    -- that rectangle, then it is assumed the enemy couldn't see the player.
+
+    -- Vertices on the player's end of the rectangle
+    local px, py = player.physics:getPosition()
+    local pVertX1 = px-2
+    local pVertY1 = py
+    local pVertX2 = px+2
+    local pVertY2 = py
+
+    -- Vertices on the enemy's end
+    if py == ey then
+      ey = ey + 1
+      -- This is just a precaution; if the rectangle ended up being completely
+      -- flat (where py == ey), it may cause an error.
+    end
+    local eVertX1 = ex-2
+    local eVertY1 = ey
+    local eVertX2 = ex+2
+    local eVertY2 = ey
+
+    local queryResults = world:queryPolygonArea({pVertX1, pVertY1, pVertX2, pVertY2,
+      eVertX1, eVertY1, eVertX2, eVertY2}, {'Wall', 'Breakable'})
+
+    if table.getn(queryResults) > 0 then
+      return false -- something is between the player and the enemy
+    end
+
+    return true
+
   end
 
   table.insert(enemies, enemy)

@@ -37,3 +37,9 @@ function updateTimer(v, dt)
 
   return v
 end
+
+-- Distance between object and player
+function distToPlayer(mx, my)
+  local px, py = player.physics:getPosition()
+  return distance(px, py, mx, my)
+end
