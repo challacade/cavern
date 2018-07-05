@@ -26,7 +26,7 @@ local function drawGameplay()
   local drawWalls = require("source/levels/drawWalls")
   drawWalls()
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
   --mapdata.map:drawLayer(mapdata.map.layers["Main_Tiles"])
 
   particles:draw()

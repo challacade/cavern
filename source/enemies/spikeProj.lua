@@ -95,7 +95,7 @@ end
 
 function spikes:draw()
 
-  love.graphics.setColor(255, 255, 255, 255)
+  love.graphics.setColor(1, 1, 1, 1)
 
   for i,s in ipairs(self) do
     local sprX, sprY = s.physics:getPosition()

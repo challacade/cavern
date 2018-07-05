@@ -34,7 +34,7 @@ end
 -- Draws the anim8 animation for all ripple objects
 function ripples:draw()
 
-  love.graphics.setColor(99, 128, 138, 120)
+  love.graphics.setColor(0.388, 0.502, 0.541, 0.471)
 
   for i,r in ipairs(self) do
     r.animation:draw(self.spr, r.x, r.y)

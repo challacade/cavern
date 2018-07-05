@@ -29,10 +29,10 @@ function spawnWeapon(x, y)
     weapon.speed = 4000
 
     spawnBlast(weapon.physics.body:getX(), weapon.physics.body:getY(), 50,
-      {255, 0, 0}, 0.2)
+      {1, 0, 0}, 0.2)
 
     -- This weapon has a trail, which is spawned here
-    spawnTrail(weapon.id, 3, 8, {255, 0, 0, 180})
+    spawnTrail(weapon.id, 3, 8, {1, 0, 0, 0.706})
 
   elseif weapon.type == 2 then
 
@@ -46,7 +46,7 @@ function spawnWeapon(x, y)
 
     weapon.draw = function(wep)
       local wx, wy = wep.physics:getPosition()
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(wep.sprite, wx, wy, nil, 1, 1, wep.sprite:getWidth()/2, wep.sprite:getHeight()/2)
     end
 
@@ -71,7 +71,7 @@ function spawnWeapon(x, y)
 
     weapon.draw = function(wep)
       local wx, wy = wep.physics:getPosition()
-      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(wep.sprite, wx, wy, angle, 1, 1, wep.sprite:getWidth()-40, wep.sprite:getHeight()/2)
     end
   end

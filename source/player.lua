@@ -107,9 +107,9 @@ end
 function player:draw()
 
   if player.faded == -1 then
-    love.graphics.setColor(255, 255, 255, 200) -- damage flash
+    love.graphics.setColor(1, 1, 1, 0.784) -- damage flash
   else
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
   end
 
   local px, py = self.physics:getPosition()

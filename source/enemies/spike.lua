@@ -155,7 +155,7 @@ local function spikeInit(enemy, x, y, arg)
     -- Info for the origin location
     local vx, vy = rotVec:unpack()
 
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX+(vx*sprW/2), sprY+(vy*sprH/2), rotate, self.scaleX, self.scaleY, sprW/2, sprH)
 
     -- Get info to determine rotation value for the eye

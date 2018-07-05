@@ -71,12 +71,12 @@ function spawnEnemy(x, y, type, arg)
       local ex, ey = self.physics:getPosition()
 
       -- back part of the bar
-      love.graphics.setColor(255, 0, 0, 255)
+      love.graphics.setColor(1, 0, 0, 1)
       love.graphics.rectangle("fill", ex-self.barWidth/2, ey-self.barY,
         self.barWidth, self.barHeight)
 
       -- front part, that shows the amount of health left
-      love.graphics.setColor(0, 255, 0, 255)
+      love.graphics.setColor(0, 1, 0, 1)
       love.graphics.rectangle("fill", ex-self.barWidth/2, ey-self.barY,
         self.barWidth * (self.health / self.maxHealth), self.barHeight)
 

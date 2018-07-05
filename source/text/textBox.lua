@@ -48,15 +48,15 @@ function textBox:draw()
 
   if self.active then
     -- Draw box
-    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.rectangle("fill", self.x * scale, self.y * scale,
       self.width * scale, self.height * scale)
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setLineWidth(12 * scale)
     love.graphics.rectangle("line", self.x * scale, self.y * scale,
       self.width * scale, self.height * scale)
     -- Draw text
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setFont(self.font)
     love.graphics.print(scroll.text, self.textX * scale, self.textY * scale)
   end

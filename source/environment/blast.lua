@@ -10,7 +10,7 @@ function spawnBlast(x, y, size, color, time)
 	blast.time = time
 	blast.timer = time + 1
 	blast.dead = false
-	blast.alpha = 180
+	blast.alpha = 0.706
 	blast.state = 0
 
 	function blast:update(dt, i)

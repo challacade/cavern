@@ -65,53 +65,53 @@ function fires:spawnFire(x, y, life, dir, scale, off, speed, smoke, start_alpha)
 	p.direction:rotateInplace(multi * math.random()/4)
 	p.direction = p.direction * 3
 
-	p.start_alpha = start_alpha or 48
-	p.alpha = start_alpha or 48
+	p.start_alpha = start_alpha or 0.188
+	p.alpha = start_alpha or 0.188
 	--p.scale = 2
-	p.color = {255, 255, 255}
+	p.color = {1, 1, 1}
 	if p.smoke == true then
-		p.color = {120, 120, 120}
+		p.color = {0.471, 0.471, 0.471}
 	end
 
 	function p:update(dt)
 		self.life = updateTimer(self.life, dt)
 		--if self.life > (self.max_life/6)*5 then
-			--p.color = {255, 255, 255}
+			--p.color = {1, 1, 1}
 		if self.life > (self.max_life/6)*5 then
-			self.color = {255, 252, 193}
+			self.color = {1, 0.988, 0.757}
 		elseif self.life > (self.max_life/6)*4 then
-			self.color = {255, 201, 77}
+			self.color = {1, 0.788, 0.302}
 		elseif self.life > (self.max_life/6)*2 then
-			self.color = {255, 162, 45}
+			self.color = {1, 0.635, 0.176}
 		elseif self.life > (self.max_life/6) then
-			self.color = {255, 145, 28}
+			self.color = {1, 0.569, 0.098}
 		else
-			self.color = {255, 255, 255}
+			self.color = {1, 1, 1}
 		end
 
     -- tints the fire to be smoke
 		if self.smoke == true then
-			self.color = {120, 120, 120}
+			self.color = {0.471, 0.471, 0.471}
     end
 
-		if p.start_alpha == 48 then
+		if p.start_alpha == 0.188 then
 			if self.life > 0.75 then
 				self.alpha = p.start_alpha
 			else
-				self.alpha = self.life/4 * 255
+				self.alpha = self.life/4
 			end
 		else
 			if self.life > 0.75 then
 				self.alpha = p.start_alpha
 			else
-				self.alpha = self.life/9.75 * 255
+				self.alpha = self.life/9.75
 			end
 		end
 
 		local dx, dy = self.direction:unpack()
 		self.x = self.x + (dx * self.speed * dt)
 		self.y = self.y + (dy * self.speed * dt)
-		if self.alpha < 1 then
+		if self.alpha < 0.001 then
 			self.dead = true
 		end
 	end

@@ -82,7 +82,7 @@ local function fishInit(enemy, x, y, arg)
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
 
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX, sprY, self.rotate, 1, 1, sprW/2, sprH/2+6)
 
     -- Get info to determine rotation value for the eye

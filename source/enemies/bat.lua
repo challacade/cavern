@@ -56,7 +56,7 @@ local function batInit(enemy, x, y, arg)
     end
 
     -- Draw the wings first
-    love.graphics.setColor(255, 255, 255, 80)
+    love.graphics.setColor(1, 1, 1, 0.314)
     love.graphics.draw(self.wingSprite, sprX, sprY + wingOffset, nil, 1, 1, sprW/2, sprH/2)
 
     -- Get info to determine rotation value
@@ -68,7 +68,7 @@ local function batInit(enemy, x, y, arg)
     -- Draw the body of the flyer (rotates towards player)
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
 
     -- Draw the eye of the flyer

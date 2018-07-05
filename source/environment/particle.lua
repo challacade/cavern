@@ -31,7 +31,7 @@ function spawnParticle(x, y, type, dir)
     particle.timer = 1.5
     particle.scale = math.random() * 0.5 + 0.5
     particle.rotate = math.random() * 3.14
-    particle.alpha = 255
+    particle.alpha = 1
   end
 
   if type == "laserDebris" then
@@ -39,7 +39,7 @@ function spawnParticle(x, y, type, dir)
     particle.height = 8
     particle.corner = 1
     particle.timer = 0.5
-    particle.alpha = 80
+    particle.alpha = 0.314
   end
 
   particle.physics = gravWorld:newBSGRectangleCollider(x, y, particle.width,
@@ -93,12 +93,12 @@ function particles:draw()
     local px, py = p.physics:getPosition()
 
     if p.type == "break" then
-      love.graphics.setColor(63, 45, 29, p.alpha)
+      love.graphics.setColor(0.247, 0.176, 0.114, p.alpha)
       love.graphics.draw(sprites.environment.breakParticle, px, py, nil, 0.5, 0.5, 35, 35)
     end
 
     if p.type == "laserDebris" then
-      love.graphics.setColor(255, 0, 0, p.alpha)
+      love.graphics.setColor(1, 0, 0, p.alpha)
       love.graphics.rectangle("fill", px-4, py-4, 8, 8)
     end
 
