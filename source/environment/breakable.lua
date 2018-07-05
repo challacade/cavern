@@ -23,6 +23,9 @@ function spawnBreakable(x, y)
   newBreak.left = true
   newBreak.right = true
 
+  math.randomseed(table.getn(breakables))
+  newBreak.crackRot = math.random() * 3.14
+
   table.insert(breakables, newBreak)
 
 end

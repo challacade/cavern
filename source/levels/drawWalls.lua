@@ -57,7 +57,11 @@ local function drawWalls()
   for i,b in ipairs(breakables) do
 
     -- Draw the full rectangle for each breakable (same as walls)
+    love.graphics.setColor(63, 45, 29, 255)
     love.graphics.rectangle("fill", b.x, b.y, b.width, b.height)
+
+    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.draw(sprites.environment.crack, b.x + 128, b.y + 128, b.crackRot, 1, 1, 90, 90)
 
   end
 end
