@@ -15,7 +15,6 @@ function spawnParticle(x, y, type, dir)
   particle.sprite = nil
   particle.type = type
   particle.fade = true
-  particle.alpha = 255
 
   -- dir is a vector value used for applying an impulse upon creation
   particle.dir = dir
@@ -32,13 +31,15 @@ function spawnParticle(x, y, type, dir)
     particle.timer = 1.5
     particle.scale = math.random() * 0.5 + 0.5
     particle.rotate = math.random() * 3.14
+    particle.alpha = 255
   end
 
   if type == "laserDebris" then
     particle.width = 8
     particle.height = 8
     particle.corner = 1
-    particle.timer = 0.75
+    particle.timer = 0.5
+    particle.alpha = 80
   end
 
   particle.physics = gravWorld:newBSGRectangleCollider(x, y, particle.width,
@@ -89,13 +90,17 @@ function particles:draw()
 
   for i,p in ipairs(self) do
 
+    local px, py = p.physics:getPosition()
+
     if p.type == "break" then
-      local px, py = p.physics:getPosition()
       love.graphics.setColor(63, 45, 29, p.alpha)
       love.graphics.draw(sprites.environment.breakParticle, px, py, nil, 0.5, 0.5, 35, 35)
     end
 
-
+    if p.type == "laserDebris" then
+      love.graphics.setColor(255, 0, 0, p.alpha)
+      love.graphics.rectangle("fill", px-4, py-4, 8, 8)
+    end
 
   end
 
