@@ -12,6 +12,10 @@ function spawnParticle(x, y, type, dir)
   particle.width = 50
   particle.height = 50
   particle.corner = 10
+  particle.sprite = nil
+  particle.type = type
+  particle.fade = true
+  particle.alpha = 255
 
   -- dir is a vector value used for applying an impulse upon creation
   particle.dir = dir
@@ -19,11 +23,15 @@ function spawnParticle(x, y, type, dir)
   -- When timer reaches zero, particle is destroyed
   particle.timer = 1
 
+  math.randomseed(table.getn(particles))
+
   if type == "break" then
-    particle.width = 64
-    particle.height = 64
+    particle.width = 71
+    particle.height = 71
     particle.corner = 2
     particle.timer = 1.5
+    particle.scale = math.random() * 0.5 + 0.5
+    particle.rotate = math.random() * 3.14
   end
 
   if type == "laserDebris" then
@@ -40,6 +48,10 @@ function spawnParticle(x, y, type, dir)
 
   if particle.dir ~= nil then
     particle.physics:applyLinearImpulse(particle.dir:unpack())
+  end
+
+  if particle.fade then
+    particle.fadeTween = flux.to(particle, particle.timer, {alpha = 0}):ease("cubicin")
   end
 
   function particle:update(dt)
@@ -66,8 +78,25 @@ function particles:update(dt)
   for i=#particles,1,-1 do
     if particles[i].dead then
       particles[i].physics:destroy()
+      particles[i].fadeTween = nil
       table.remove(particles, i)
     end
+  end
+
+end
+
+function particles:draw()
+
+  for i,p in ipairs(self) do
+
+    if p.type == "break" then
+      local px, py = p.physics:getPosition()
+      love.graphics.setColor(63, 45, 29, p.alpha)
+      love.graphics.draw(sprites.environment.breakParticle, px, py, nil, 0.5, 0.5, 35, 35)
+    end
+
+
+
   end
 
 end

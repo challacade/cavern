@@ -29,6 +29,7 @@ local function drawGameplay()
   love.graphics.setColor(255, 255, 255, 255)
   --mapdata.map:drawLayer(mapdata.map.layers["Main_Tiles"])
 
+  particles:draw()
   fires:draw()
   blasts:draw()
   damages:draw()
