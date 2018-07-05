@@ -122,6 +122,12 @@ function weapons:update(dt)
       w.dead = true
     end
 
+    -- When a rocket collides with the surface of water
+    if w.type == 2 and w.physics:enter('Water') then
+      w.physics:destroy()
+      w.dead = true
+    end
+
     -- When the weapon collides with an enemy
     if w.physics:enter('Enemy') then
       local e = w.physics:getEnterCollisionData('Enemy')
