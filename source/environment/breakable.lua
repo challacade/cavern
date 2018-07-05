@@ -7,10 +7,21 @@ function spawnBreakable(x, y)
   newBreak.breakable = true
   newBreak.dead = false
 
-  newBreak.physics = world:newRectangleCollider(x, y, 256, 256)
+  newBreak.x = x
+  newBreak.y = y
+  newBreak.width = 256
+  newBreak.height = 256
+
+  newBreak.physics = world:newRectangleCollider(x, y, newBreak.width, newBreak.height)
   newBreak.physics.parent = newBreak
   newBreak.physics:setCollisionClass('Wall')
   newBreak.physics:setType('static')
+
+  -- These variables are needed for drawing the rocky surface
+  newBreak.up = true
+  newBreak.down = true
+  newBreak.left = true
+  newBreak.right = true
 
   table.insert(breakables, newBreak)
 
