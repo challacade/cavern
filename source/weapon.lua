@@ -24,7 +24,7 @@ function spawnWeapon(x, y)
     -- offset (in pixels) outside the center of the player
     local offdir = weapon.dir * 86
     local ox, oy = offdir:unpack()
-    weapon.physics = world:newCircleCollider(x + ox, y + oy, 16)
+    weapon.physics = world:newCircleCollider(x + ox, y + oy, 12)
     weapon.power = 4
     weapon.speed = 4000
 
@@ -32,7 +32,7 @@ function spawnWeapon(x, y)
       {255, 0, 0}, 0.2)
 
     -- This weapon has a trail, which is spawned here
-    spawnTrail(weapon.id, 5, 15, {255, 0, 0, 180})
+    spawnTrail(weapon.id, 3, 8, {255, 0, 0, 180})
 
   elseif weapon.type == 2 then
 
