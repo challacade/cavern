@@ -36,9 +36,19 @@ function spawnWeapon(x, y)
 
   elseif weapon.type == 2 then
 
-    weapon.physics = world:newCircleCollider(x, y, 30)
+    local offsetVec = weapon.dir * 100
+    local wx, wy = offsetVec:unpack()
+
+    weapon.physics = world:newCircleCollider(x + wx, y + wy, 30)
     weapon.power = 22
     weapon.speed = 8000
+    weapon.sprite = sprites.player.bomb
+
+    weapon.draw = function(wep)
+      local wx, wy = wep.physics:getPosition()
+      love.graphics.setColor(255, 255, 255, 255)
+      love.graphics.draw(wep.sprite, wx, wy, nil, 1, 1, wep.sprite:getWidth()/2, wep.sprite:getHeight()/2)
+    end
 
   elseif weapon.type == 3 then
 
@@ -92,6 +102,11 @@ function weapons:update(dt)
 
     -- Update table x and y for onDestroy functions
     w.x, w.y = w.physics:getPosition()
+
+    -- Spawn the smoke (for Rocket Launcher)
+    if w.type == 2 then
+      fires:spawnFire(w.x, w.y, 0.5, vector(0, 0), 4, nil, nil, true)
+    end
 
     -- Update the hand timer (for spears)
     if w.type == 3 then

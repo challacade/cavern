@@ -14,7 +14,7 @@ function fires:spawnFire(x, y, life, dir, scale, off, speed, smoke, start_alpha)
 	p.y = y - p.height/2
 
 	p.speed = speed or 60
-	p.black = smoke or false
+	p.smoke = smoke or false
 	p.spr_rot = math.random(-3, 2) + math.random() -- 0 to pi radians
 
   -- sets a random blob sprite for the fire particle
@@ -69,8 +69,8 @@ function fires:spawnFire(x, y, life, dir, scale, off, speed, smoke, start_alpha)
 	p.alpha = start_alpha or 48
 	--p.scale = 2
 	p.color = {255, 255, 255}
-	if p.black == true then
-		p.color = {0, 0, 0}
+	if p.smoke == true then
+		p.color = {120, 120, 120}
 	end
 
 	function p:update(dt)
@@ -89,9 +89,9 @@ function fires:spawnFire(x, y, life, dir, scale, off, speed, smoke, start_alpha)
 			self.color = {255, 255, 255}
 		end
 
-    -- tints the fire to be all black
-		if self.black == true then
-			self.color = {0, 0, 0}
+    -- tints the fire to be smoke
+		if self.smoke == true then
+			self.color = {120, 120, 120}
     end
 
 		if p.start_alpha == 48 then
