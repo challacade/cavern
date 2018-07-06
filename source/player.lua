@@ -22,10 +22,12 @@ player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
 
 player.submerged = false -- true if the player is underwater
+player.drowning = false -- true if the player is drowning
 player.facing = 1 -- 1 = right, -1 = left
 
 player.jetpackTimer = 0
 player.stateTimer = 0
+player.drownTimer = 3
 
 function player:update(dt)
 
@@ -56,6 +58,16 @@ function player:update(dt)
   -- State timer
   self.stateTimer = updateTimer(self.stateTimer, dt)
 
+  -- Drowning timer
+  if self.drowning then
+    self.drownTimer = updateTimer(self.drownTimer, dt)
+  end
+  if self.drownTimer <= 0 then
+    self.drowning = false
+    self.drownTimer = 3
+    self.health = 0
+  end
+
   -- Handle damage flash timers
   self.damaged = updateTimer(self.damaged, dt)
   self.fadedTimer = updateTimer(self.fadedTimer, dt)
@@ -75,15 +87,26 @@ function player:update(dt)
   local waters = world:queryCircleArea(px, py, 40, {'Water'})
   local ripples = world:queryCircleArea(px, py, 40, {'Ripple'})
   if #ripples > 0 and #waters == 0 then
+
     player.submerged = false
-    if blackScreen.alpha == blackScreen.fullRedAlpha then
+
+    -- Stop drowning (if they were)
+    if gameState.pickups.aquaPack == false and blackScreen.alpha == blackScreen.fullRedAlpha then
       blackScreen:removeRed()
+      self.drowning = false
     end
+
   elseif #ripples > 0 and #waters > 0 then
+
     player.submerged = true
-    if blackScreen.red == false then
+
+    -- Drown if the player does not have the aquaPack
+    if gameState.pickups.aquaPack == false and blackScreen.red == false then
       blackScreen:setRed()
+      self.drowning = true
+      self.drownTimer = 3 -- 3 seconds until death!
     end
+
   end
 
   -- "facing" is used for drawing the player sprites
