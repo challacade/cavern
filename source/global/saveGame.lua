@@ -6,9 +6,12 @@ function saveGame()
 end
 
 function loadGame()
-  if love.filesystem.exists("savefile.txt") then
+  if love.filesystem.getInfo("savefile.txt") ~= nil then
     local temp = love.filesystem.read("savefile.txt")
     gameState = Tserial.unpack(temp, true)
   end
+
   player.physics:setPosition(gameState.player.x, gameState.player.y)
+
+  blackScreen:fadeIn(1)
 end

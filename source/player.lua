@@ -25,6 +25,7 @@ player.submerged = false -- true if the player is underwater
 player.facing = 1 -- 1 = right, -1 = left
 
 player.jetpackTimer = 0
+player.stateTimer = 0
 
 function player:update(dt)
 
@@ -35,7 +36,7 @@ function player:update(dt)
   local speed = speedFromVelocity( self.physics:getLinearVelocity() )
 
   -- only apply force to the player if he is moving slower than the max speed
-  if speed < self.maxSpeed then
+  if speed < self.maxSpeed and self.state == 1 then
 
     if love.keyboard.isDown("down") or love.keyboard.isDown("s") then
       self.physics:applyForce(0, self.moveForce)
@@ -52,6 +53,9 @@ function player:update(dt)
 
   end
 
+  -- State timer
+  self.stateTimer = updateTimer(self.stateTimer, dt)
+
   -- Handle damage flash timers
   self.damaged = updateTimer(self.damaged, dt)
   self.fadedTimer = updateTimer(self.fadedTimer, dt)
@@ -59,7 +63,7 @@ function player:update(dt)
   -- Update shot cooldown timer
   self.shotCooldown = updateTimer(self.shotCooldown, dt)
 
-  if love.mouse.isDown(1) and self.shotCooldown <= 0 then
+  if love.mouse.isDown(1) and self.shotCooldown <= 0 and self.state == 1 then
     player:shoot()
   end
 
@@ -99,6 +103,35 @@ function player:update(dt)
 
   if self.jetpackTimer <= 0 and player.submerged == false then
     fires:spawnFire(px + (self.facing * -44), py + 50, 0.2, vector(0, 1))
+  end
+
+  -- Player death
+  if player.health <= 0 and player.state > 0 then
+
+    local px, py = player.physics:getPosition()
+
+    player.state = -1 -- freeze the player
+    spawnBlast(px, py, 600, {0.5, 0.5, 0.5}, 1)
+
+    -- When the player dies, he doesn't get destroyed, he is just moved outside
+    -- the room where he can't be seen.
+    player.physics:setPosition(px, -300)
+
+    -- When this timer hits zero, start the fadeout
+    player.stateTimer = 2
+
+  end
+
+  -- Player has died, need to fadeout the screen
+  if self.stateTimer < 0 and self.state == -1 then
+    blackScreen:fadeOut(1)
+    self.stateTimer = 1.5
+    self.state = -2
+  end
+
+  -- Fadeout completed, load the save file
+  if self.stateTimer < 0 and self.state == -2 then
+    loadGame()
   end
 
 end
