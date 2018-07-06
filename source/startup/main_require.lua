@@ -31,7 +31,6 @@ function getGlobals()
   require("source/environment/trail")
   require("source/environment/blast")
 
-  require("source/global/cam")
   require("source/global/shake")
 
   require("source/text/messages")
@@ -39,6 +38,7 @@ function getGlobals()
   require("source/text/textBox")
   require("source/text/damage")
 
+  require("source/ui/cam")
   require("source/ui/blackScreen")
 
   sti = require("source/libraries/sti")
