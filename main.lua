@@ -28,8 +28,6 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  blackScreen.alpha = blackScreen.alpha + 0.01
-
   --debug = player.physics:getX()
   --debug2 = player.physics:getY()
 
@@ -105,5 +103,11 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "2" then
     player.weapon = 2
+  end
+  if key == "b" then
+    blackScreen:fadeOut(0.5)
+  end
+  if key == "n" then
+    blackScreen:fadeIn(0.5)
   end
 end

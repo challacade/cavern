@@ -57,6 +57,9 @@ local function updateGameplay(dt)
   -- Update to remove dead breakable walls
   breakables:update(dt)
 
+  -- Update the blackScreen
+  blackScreen:update(dt)
+
   -- Handle trail fade-away (when its weapon is destroyed)
   trails:fadeOut(dt)
 
