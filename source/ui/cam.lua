@@ -4,6 +4,12 @@ cam.x = 0
 cam.y = 0
 
 function cam:update(dt)
+
+  -- player has died, don't update the camera
+  if player.state < 0 then
+    return
+  end
+  
   local lookX = player.physics:getX()
   local lookY = player.physics:getY()
 
