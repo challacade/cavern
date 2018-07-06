@@ -7,6 +7,7 @@ blackScreen.time = 1 -- time in seconds for the blackScreen fade/unfade
 
 -- blackScreen is also used for making the screen turn red when drowning
 blackScreen.red = false
+blackScreen.fullRedAlpha = 0.25
 
 function blackScreen:update(dt)
 
@@ -25,8 +26,8 @@ function blackScreen:update(dt)
     self.state = 0
   end
 
-  if self.red and self.alpha > 0.25 then
-    self.alpha = 0.25
+  if self.red and self.alpha > self.fullRedAlpha then
+    self.alpha = self.fullRedAlpha
     self.state = 0
   end
 

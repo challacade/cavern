@@ -76,8 +76,14 @@ function player:update(dt)
   local ripples = world:queryCircleArea(px, py, 40, {'Ripple'})
   if #ripples > 0 and #waters == 0 then
     player.submerged = false
+    if blackScreen.alpha == blackScreen.fullRedAlpha then
+      blackScreen:removeRed()
+    end
   elseif #ripples > 0 and #waters > 0 then
     player.submerged = true
+    if blackScreen.red == false then
+      blackScreen:setRed()
+    end
   end
 
   -- "facing" is used for drawing the player sprites
