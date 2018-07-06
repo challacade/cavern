@@ -42,6 +42,8 @@ function spawnEnemy(x, y, type, arg)
 
     -- Destroy if no health left
     if self.health <= 0 then
+      local ex, ey = self.physics:getPosition()
+      spawnBlast(ex, ey, 300, {0.486, 0.675, 0.561}, 0.5)
       self.physics:destroy()
       self.dead = true
     end
