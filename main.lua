@@ -105,9 +105,6 @@ function love.keypressed(key, scancode, isrepeat)
     player.weapon = 2
   end
   if key == "b" then
-    blackScreen:fadeOut(0.5)
-  end
-  if key == "n" then
-    blackScreen:fadeIn(0.5)
+    player.health = 0
   end
 end

@@ -6,6 +6,9 @@ gameState.pickups = {}
 -- State stores if update functions should occur
 gameState.state = 1
 
+-- Stores the current room
+gameState.room = "rm1"
+
 -- Player information
 gameState.player.x = 0
 gameState.player.y = 0

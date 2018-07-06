@@ -12,6 +12,9 @@ function loadGame()
   end
 
   player.physics:setPosition(gameState.player.x, gameState.player.y)
+  player.health = gameState.player.maxHealth
+  player.state = 1
+  changeToMap(gameState.room)
 
   blackScreen:fadeIn(1)
 end

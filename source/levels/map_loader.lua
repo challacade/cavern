@@ -212,4 +212,7 @@ function changeToMap(newMap, transition)
 
   -- Used by the camera
   mapdata.room = mapdata.map.layers["Room"].objects[1]
+
+  -- Update the gameState with this room name
+  gameState.room = newMap
 end
