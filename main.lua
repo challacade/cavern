@@ -105,6 +105,9 @@ function love.keypressed(key, scancode, isrepeat)
     player.weapon = 2
   end
   if key == "b" then
-    player.health = 0
+    blackScreen:setRed()
+  end
+  if key == "n" then
+    blackScreen:removeRed()
   end
 end

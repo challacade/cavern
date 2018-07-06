@@ -120,6 +120,11 @@ function player:update(dt)
     -- When this timer hits zero, start the fadeout
     player.stateTimer = 2
 
+    -- Remove red if the player just drowned
+    if blackScreen.red then
+      blackScreen:removeRed()
+    end
+
   end
 
   -- Player has died, need to fadeout the screen
