@@ -28,6 +28,8 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
+  blackScreen.alpha = blackScreen.alpha + 0.01
+
   --debug = player.physics:getX()
   --debug2 = player.physics:getY()
 
@@ -55,6 +57,8 @@ function love.draw()
 
   love.graphics.print(debug)
   love.graphics.print(debug2, 0, 20)
+
+  blackScreen:draw()
 
 end
 

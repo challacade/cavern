@@ -39,6 +39,8 @@ function getGlobals()
   require("source/text/textBox")
   require("source/text/damage")
 
+  require("source/ui/blackScreen")
+
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")
   loadMaps()
