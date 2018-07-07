@@ -233,7 +233,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["dontDraw"] = true
+            ["dontDraw"] = true,
+            ["spawnX"] = 51
           }
         },
         {

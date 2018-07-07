@@ -25,7 +25,8 @@ local function bossInit(enemy, x, y, arg)
 
     local ex, ey = enemy.physics:getPosition()
     self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
-    
+
+    blackScreen.alpha = 0
   end
 
   function enemy:draw()

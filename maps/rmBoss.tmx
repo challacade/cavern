@@ -47,6 +47,7 @@
   <object id="150" x="1408" y="0" width="384" height="478">
    <properties>
     <property name="dontDraw" type="bool" value="true"/>
+    <property name="spawnX" type="int" value="51"/>
    </properties>
   </object>
   <object id="151" x="1792" y="0" width="384" height="384">

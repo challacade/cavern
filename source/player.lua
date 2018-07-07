@@ -5,7 +5,7 @@ player.state = 1  -- 0 (cutscene), 1 (free to move)
 player.width = 96
 player.height = 192
 
-player.physics = world:newBSGRectangleCollider(1200, 1000, player.width,
+player.physics = world:newBSGRectangleCollider(8300, 512, player.width,
   player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
@@ -166,6 +166,18 @@ function player:update(dt)
   -- Fadeout completed, load the save file
   if self.stateTimer < 0 and self.state == -2 then
     loadGame()
+  end
+
+  -- At the end of the game, there is a section where the player is going down
+  -- to the final boss, and the room gets darker. This code sets the darkness
+  -- based on the player's position in the room.
+  if gameState.room == "rm28" then
+    local px, py = player.physics:getPosition()
+    if py < 1400 then
+      blackScreen.alpha = 0
+    else
+      blackScreen.alpha = (py - 1400) / 2300
+    end
   end
 
 end

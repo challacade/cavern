@@ -8,7 +8,7 @@ return {
   height = 80,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 146,
+  nextobjectid = 147,
   properties = {},
   tilesets = {
     {
@@ -220,6 +220,24 @@ return {
             ["relativeY"] = 0,
             ["spawnX"] = -200,
             ["spawnY"] = 0
+          }
+        },
+        {
+          id = 146,
+          name = "rmBoss",
+          type = "",
+          shape = "rectangle",
+          x = 384,
+          y = 3840,
+          width = 1792,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["relativeX"] = 0,
+            ["relativeY"] = 0,
+            ["spawnX"] = 1280,
+            ["spawnY"] = 1024
           }
         }
       }
