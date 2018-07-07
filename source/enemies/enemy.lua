@@ -31,6 +31,8 @@ function spawnEnemy(x, y, type, arg)
     init = require("source/enemies/spike")
   elseif type == "fish" then
     init = require("source/enemies/fish")
+  elseif type == "boss" then
+    init = require("source/enemies/boss")
   end
 
   enemy = init(enemy, x, y, arg)

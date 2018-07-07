@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 147,
+  nextobjectid = 148,
   properties = {},
   tilesets = {
     {
@@ -190,21 +190,6 @@ return {
           properties = {
             ["up"] = true
           }
-        },
-        {
-          id = 146,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 384,
-          y = 0,
-          width = 1792,
-          height = 256,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["dontDraw"] = true
-          }
         }
       }
     },
@@ -239,7 +224,21 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 147,
+          name = "boss",
+          type = "boss",
+          shape = "rectangle",
+          x = 1152,
+          y = 256,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",
