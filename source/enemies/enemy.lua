@@ -160,5 +160,9 @@ function enemies:draw()
   for i,e in ipairs(self) do
     e:draw()
     e:drawHealthBar()
+
+    if e.eye ~= nil then
+      e.eye:draw()
+    end
   end
 end

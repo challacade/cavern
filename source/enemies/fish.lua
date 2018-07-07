@@ -26,6 +26,8 @@ local function fishInit(enemy, x, y, arg)
   enemy.stateTimer = 0
   enemy.state = 0
 
+  enemy.eye = spawnEye(x, y, 0, 1, sprites.enemies.flyerEye)
+
   function enemy:update(dt)
 
     self.stateTimer = updateTimer(self.stateTimer, dt)
@@ -57,13 +59,13 @@ local function fishInit(enemy, x, y, arg)
     end
 
     -- State 1.5: After first tween is done, shoot and slow down rotSpeed
+    local ex, ey = self.physics:getPosition()
     if self.state == 1.5 and self.rotSpeed == self.fastRotSpeed then
       self.state = 2
       local tweenTo = self.slowRotSpeed
       self.rotTween = flux.to(self, 0.5, {rotSpeed = tweenTo}):ease("cubicout")
 
       -- Shoot bullet
-      local ex, ey = self.physics:getPosition()
       spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "fish")
     end
 
@@ -72,7 +74,10 @@ local function fishInit(enemy, x, y, arg)
       self.state = 0
     end
 
-    enemy.rotate = enemy.rotate + self.rotSpeed
+    self.rotate = self.rotate + self.rotSpeed
+
+    self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
+
   end
 
   function enemy:draw()
@@ -86,14 +91,18 @@ local function fishInit(enemy, x, y, arg)
     love.graphics.draw(self.sprite, sprX, sprY, self.rotate, 1, 1, sprW/2, sprH/2+6)
 
     -- Get info to determine rotation value for the eye
+    --[[
     local dir = toPlayerVector(sprX, sprY)
     local vx, vy = dir:normalized():unpack()
     rotate = math.atan2(vy, vx)
+    ]]
 
     -- Draw the eye
+    --[[
     sprW = sprites.enemies.flyerEye:getWidth()
     sprH = sprites.enemies.flyerEye:getHeight()
     love.graphics.draw(sprites.enemies.flyerEye, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
+    ]]
   end
 
   return enemy

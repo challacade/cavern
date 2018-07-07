@@ -1,11 +1,12 @@
 eyes = {}
 
-function spawnEye(x, y, rot, spr, id)
+function spawnEye(x, y, rot, scale, spr)
 
   local eye = {}
   eye.x = x
   eye.y = y
   eye.rot = rot
+  eye.scale = scale
   eye.spr = spr
   eye.id = id
 
@@ -19,32 +20,14 @@ function spawnEye(x, y, rot, spr, id)
 
   end
 
-  table.insert(eyes, eye)
+  function eye:draw()
 
-end
-
--- Update an eye given the ID
-function eyes:updateByID(dt, id, x, y, rot)
-
-  for _,e in ipairs(eyes) do
-
-    if e.id == id then
-      e:update(dt, x, y, rot)
-    end
-
-    return -- no need to continue the loop
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.draw(self.spr, self.x, self.y, self.rot, self.scale, self.scale, self.spr:getWidth()/2, self.spr:getHeight()/2)
 
   end
 
-end
-
-function eyes:update(dt)
-
-  -- Iterate through all eyes in reverse to remove dead ones
-  for i=#eyes,1,-1 do
-    if eyes[i].dead then
-      table.remove(eyes, i)
-    end
-  end
+  return eye
+  --table.insert(eyes, eye)
 
 end

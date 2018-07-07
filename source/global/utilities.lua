@@ -27,6 +27,13 @@ function toPlayerVector(mx, my)
   end
 end
 
+-- Gets radians needed to rotate towards the player
+function toPlayerRotate(mx, my)
+  local dir = toPlayerVector(mx, my)
+  local vx, vy = dir:normalized():unpack()
+  return math.atan2(vy, vx)
+end
+
 -- Update timer variables
 function updateTimer(v, dt)
   if v > 0 then
