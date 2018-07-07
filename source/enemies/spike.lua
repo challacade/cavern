@@ -33,6 +33,27 @@ local function spikeInit(enemy, x, y, arg)
   enemy.scaleY = 1
   enemy.scaleTween = nil
 
+  enemy.eye = spawnEye(x, y, 0, 1.15, sprites.enemies.flyerEye)
+
+  function enemy:getRotationInfo()
+
+    local rotate = 0
+    local rotVec = vector(0, 1)
+    if self.groundDir == "left" then
+      rotate = math.pi/2
+      rotVec = vector(-1, 0)
+    elseif self.groundDir == "up" then
+      rotate = math.pi
+      rotVec = vector(0, -1)
+    elseif self.groundDir == "right" then
+      rotate = math.pi/-2
+      rotVec = vector(1, 0)
+    end
+
+    return rotate, rotVec
+
+  end
+
   function enemy:update(dt)
 
     self.moveTimer = updateTimer(self.moveTimer, dt)
@@ -128,27 +149,26 @@ local function spikeInit(enemy, x, y, arg)
       self.moveTimer = self.moveTotalTime
     end
 
+
+    -- Update the Eye
+    -- Get info to determine rotation value for the eye
+    local ex, ey = self.physics:getPosition()
+
+    -- Draw the eye
+    local sprW = self.eye.spr:getWidth()
+    local sprH = self.eye.spr:getHeight()
+    local rotate, rotVec = self:getRotationInfo()
+    local vx, vy = rotVec:unpack()
+    self.eye:update(dt, ex + (vx * (-2 + ((1 - self.scaleY) * sprH * 2))), ey + (vy * (-7 + ((1 - self.scaleY) * sprH * 2))), toPlayerRotate(ex, ey))
+
   end
 
   function enemy:draw()
+
     local sprX, sprY = self.physics.body:getPosition()
-
-    local rotate = 0
-    local rotVec = vector(0, 1)
-    if self.groundDir == "left" then
-      rotate = math.pi/2
-      rotVec = vector(-1, 0)
-    elseif self.groundDir == "up" then
-      rotate = math.pi
-      rotVec = vector(0, -1)
-    elseif self.groundDir == "right" then
-      rotate = math.pi/-2
-      rotVec = vector(1, 0)
-    end
-
+    local rotate, rotVec = self:getRotationInfo()
 
     -- Draw the body
-
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
 
@@ -157,17 +177,6 @@ local function spikeInit(enemy, x, y, arg)
 
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX+(vx*sprW/2), sprY+(vy*sprH/2), rotate, self.scaleX, self.scaleY, sprW/2, sprH)
-
-    -- Get info to determine rotation value for the eye
-    local dir = toPlayerVector(sprX, sprY)
-    vx, vy = dir:normalized():unpack()
-    rotate = math.atan2(vy, vx)
-
-    -- Draw the eye
-    sprW = sprites.enemies.flyerEye:getWidth()
-    sprH = sprites.enemies.flyerEye:getHeight()
-    vx, vy = rotVec:unpack()
-    love.graphics.draw(sprites.enemies.flyerEye, sprX + (vx * (-2 + ((1 - self.scaleY) * sprH * 2))), sprY + (vy * (-7 + ((1 - self.scaleY) * sprH * 2))), rotate, 1.15, 1.15, sprW/2, sprH/2)
 
   end
 
