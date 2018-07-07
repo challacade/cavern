@@ -64,6 +64,7 @@ function pickups:update(dt)
 
       if p.name == "blaster" then
         player.weapon = 1
+        textBox:start("blaster")
       elseif p.name == "rocket" then
         player.weapon = 2
       elseif p.name == "harpoon" then

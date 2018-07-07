@@ -52,7 +52,7 @@ function textBox:draw()
     love.graphics.rectangle("fill", self.x * scale, self.y * scale,
       self.width * scale, self.height * scale)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.setLineWidth(12 * scale)
+    love.graphics.setLineWidth(22 * scale)
     love.graphics.rectangle("line", self.x * scale, self.y * scale,
       self.width * scale, self.height * scale)
     -- Draw text
@@ -68,11 +68,11 @@ function textBox:init(type)
 
   if type == "pickup" then
     textBox.x = 180
-    textBox.y = 224
+    textBox.y = 180
     textBox.width = gameWidth - 360
-    textBox.height = 320
+    textBox.height = 410
     textBox.textX = textBox.x + 40
-    textBox.textY = textBox.y + 140
+    textBox.textY = textBox.y + 226
     textBox.font = fonts.pickup
   end
 
