@@ -30,6 +30,7 @@ sprites.enemies.spikeBody = love.graphics.newImage('sprites/enemies/spikeBody.pn
 sprites.enemies.spikeProj = love.graphics.newImage('sprites/enemies/spikeProj.png')
 sprites.enemies.starfish = love.graphics.newImage('sprites/enemies/starfish.png')
 sprites.enemies.bossBody = love.graphics.newImage('sprites/enemies/bossBody.png')
+sprites.enemies.bigBossEye = love.graphics.newImage('sprites/enemies/bigBossEye.png')
 
 -- Individual blob shapes for drawing fire
 sprites.fire = {}

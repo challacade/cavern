@@ -214,7 +214,7 @@ return {
           x = 768,
           y = 0,
           width = 384,
-          height = 512,
+          height = 478,
           rotation = 0,
           visible = true,
           properties = {
@@ -229,7 +229,7 @@ return {
           x = 1408,
           y = 0,
           width = 384,
-          height = 512,
+          height = 478,
           rotation = 0,
           visible = true,
           properties = {
@@ -336,7 +336,7 @@ return {
           type = "boss",
           shape = "rectangle",
           x = 1152,
-          y = 256,
+          y = 272,
           width = 128,
           height = 128,
           rotation = 0,

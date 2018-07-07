@@ -18,10 +18,14 @@ local function bossInit(enemy, x, y, arg)
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
 
-  --enemy.eye = spawnEye(x, y, 0, 1, sprites.enemies.flyerEye)
+  local ex, ey = enemy.physics:getPosition()
+  enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
 
   function enemy:update(dt)
 
+    local ex, ey = enemy.physics:getPosition()
+    self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
+    
   end
 
   function enemy:draw()
@@ -31,7 +35,7 @@ local function bossInit(enemy, x, y, arg)
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.draw(self.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/1.5)
+    love.graphics.draw(self.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/1.4)
   end
 
   return enemy

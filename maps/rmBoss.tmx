@@ -39,12 +39,12 @@
     <property name="dontDraw" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="149" x="768" y="0" width="384" height="512">
+  <object id="149" x="768" y="0" width="384" height="478">
    <properties>
     <property name="dontDraw" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="150" x="1408" y="0" width="384" height="512">
+  <object id="150" x="1408" y="0" width="384" height="478">
    <properties>
     <property name="dontDraw" type="bool" value="true"/>
    </properties>
@@ -73,7 +73,7 @@
  <objectgroup name="Transitions"/>
  <objectgroup name="Pickups"/>
  <objectgroup name="Enemies">
-  <object id="147" name="boss" type="boss" x="1152" y="256" width="128" height="128"/>
+  <object id="147" name="boss" type="boss" x="1152" y="272" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Breakables"/>
  <objectgroup name="Water"/>
