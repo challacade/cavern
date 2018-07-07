@@ -3,6 +3,10 @@ local function drawWalls()
   -- This function, given a wall object, will draw the rocks for it
   local function singleWallRocks(wall)
 
+    if wall.dontDraw then
+      return
+    end
+
     -- Draw rocks on the surface of all walls
     -- Make every wall have direction values to tell which sides need rocks
     local surface = sprites.environment.rockySurface
@@ -43,14 +47,18 @@ local function drawWalls()
 
   for i,w in ipairs(mapdata.walls) do
 
-    -- Draw the full rectangle for each wall
-    love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
+    if w.dontDraw == false then
 
-    -- Note: this is done in a different for loop than the one above because
-    -- the ground color needs to be drawn after all the surface rocks have been
-    -- drawn. This is because some walls extend into the ground, so some walls
-    -- are drawing rocky surfaces underground. These underground surfaces
-    -- should not be seen, so these rectangle will cover those surfaces.
+      -- Draw the full rectangle for each wall
+      love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
+
+      -- Note: this is done in a different for loop than the one above because
+      -- the ground color needs to be drawn after all the surface rocks have been
+      -- drawn. This is because some walls extend into the ground, so some walls
+      -- are drawing rocky surfaces underground. These underground surfaces
+      -- should not be seen, so these rectangle will cover those surfaces.
+
+    end
 
   end
 

@@ -38,6 +38,7 @@ function loadMaps()
   maps.rm26 = sti("maps/rm26.lua")
   maps.rm27 = sti("maps/rm27.lua")
   maps.rm28 = sti("maps/rm28.lua")
+  maps.rmBoss = sti("maps/rmBoss.lua")
 
   -- utilize maps["blank"] syntax to read map data
 end
@@ -103,6 +104,7 @@ function changeToMap(newMap, transition)
     newWall.right = false
     newWall.up = false
     newWall.down = false
+    newWall.dontDraw = false
     if w.properties["left"] then
       newWall.left = true
     end
@@ -114,6 +116,9 @@ function changeToMap(newMap, transition)
     end
     if w.properties["down"] then
       newWall.down = true
+    end
+    if w.properties["dontDraw"] then
+      newWall.dontDraw = true
     end
 
     table.insert(mapdata.walls, newWall)
