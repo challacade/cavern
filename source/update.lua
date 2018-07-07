@@ -63,6 +63,9 @@ local function updateGameplay(dt)
   -- Handle trail fade-away (when its weapon is destroyed)
   trails:fadeOut(dt)
 
+  -- Update enemy eyes (remove the dead ones)
+  eyes:update(dt)
+
 end
 
 return updateGameplay
