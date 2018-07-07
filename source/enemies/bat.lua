@@ -21,6 +21,8 @@ local function batInit(enemy, x, y, arg)
   enemy.spriteTimerBase = 0.001
   enemy.spriteTimer = enemy.spriteTimerBase
 
+  enemy.eye = spawnEye(x, y, 0, 1, sprites.enemies.flyerEye)
+
   function enemy:update(dt)
 
     if self:inSight() then
@@ -43,6 +45,13 @@ local function batInit(enemy, x, y, arg)
       end
       self.spriteTimer = self.spriteTimerBase
     end
+
+    -- Update the eye of the flyer
+    -- Not to be confused with the Eye of the Tiger
+    local ex, ey = self.physics:getPosition()
+    local dir = toPlayerVector(ex, ey)
+    local offX, offY = (dir * 16):unpack()
+    self.eye:update(dt, ex + offX, ey + offY, toPlayerRotate(ex, ey))
   end
 
   function enemy:draw()
@@ -59,23 +68,11 @@ local function batInit(enemy, x, y, arg)
     love.graphics.setColor(1, 1, 1, 0.314)
     love.graphics.draw(self.wingSprite, sprX, sprY + wingOffset, nil, 1, 1, sprW/2, sprH/2)
 
-    -- Get info to determine rotation value
-    local dir = toPlayerVector(sprX, sprY)
-    local eyeX, eyeY = (dir * 16):unpack()
-    local vx, vy = dir:normalized():unpack()
-    local rotate = math.atan2(vy, vx)
-
     -- Draw the body of the flyer (rotates towards player)
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.draw(self.sprite, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
-
-    -- Draw the eye of the flyer
-    -- Not to be confused with the Eye of the Tiger
-    sprW = sprites.enemies.flyerEye:getWidth()
-    sprH = sprites.enemies.flyerEye:getHeight()
-    love.graphics.draw(sprites.enemies.flyerEye, sprX + eyeX, sprY + eyeY, rotate, 1, 1, sprW/2, sprH/2)
+    love.graphics.draw(self.sprite, sprX, sprY, toPlayerRotate(sprX, sprY), 1, 1, sprW/2, sprH/2)
   end
 
   return enemy

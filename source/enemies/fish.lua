@@ -82,27 +82,12 @@ local function fishInit(enemy, x, y, arg)
 
   function enemy:draw()
     local sprX, sprY = self.physics.body:getPosition()
-    -- Draw the body
 
+    -- Draw the body
     sprW = self.sprite:getWidth()
     sprH = self.sprite:getHeight()
-
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX, sprY, self.rotate, 1, 1, sprW/2, sprH/2+6)
-
-    -- Get info to determine rotation value for the eye
-    --[[
-    local dir = toPlayerVector(sprX, sprY)
-    local vx, vy = dir:normalized():unpack()
-    rotate = math.atan2(vy, vx)
-    ]]
-
-    -- Draw the eye
-    --[[
-    sprW = sprites.enemies.flyerEye:getWidth()
-    sprH = sprites.enemies.flyerEye:getHeight()
-    love.graphics.draw(sprites.enemies.flyerEye, sprX, sprY, rotate, 1, 1, sprW/2, sprH/2)
-    ]]
   end
 
   return enemy
