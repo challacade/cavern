@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 148,
+  nextobjectid = 155,
   properties = {},
   tilesets = {
     {
@@ -189,6 +189,111 @@ return {
           visible = true,
           properties = {
             ["up"] = true
+          }
+        },
+        {
+          id = 148,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 384,
+          y = 0,
+          width = 384,
+          height = 384,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 149,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 768,
+          y = 0,
+          width = 384,
+          height = 512,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 150,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1408,
+          y = 0,
+          width = 384,
+          height = 512,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 151,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1792,
+          y = 0,
+          width = 384,
+          height = 384,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 152,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1152,
+          y = 0,
+          width = 256,
+          height = 256,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 153,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 640,
+          y = 384,
+          width = 128,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
+          }
+        },
+        {
+          id = 154,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1792,
+          y = 384,
+          width = 128,
+          height = 64,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["dontDraw"] = true
           }
         }
       }
