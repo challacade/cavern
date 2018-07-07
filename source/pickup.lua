@@ -67,11 +67,16 @@ function pickups:update(dt)
         textBox:start("blaster")
       elseif p.name == "rocket" then
         player.weapon = 2
+        textBox:start("rocket")
       elseif p.name == "harpoon" then
         player.weapon = 3
+        textBox:start("harpoon")
+      elseif p.name == "aquaPack" then
+        textBox:start("aquaPack")
       elseif p.name == "health1" or p.name == "health2" then
         gameState.player.maxHealth = gameState.player.maxHealth + 5
         player.health = gameState.player.maxHealth
+        textBox:start("health")
       end
     end
 

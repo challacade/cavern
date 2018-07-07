@@ -4,5 +4,26 @@ messages = {}
 
 messages.blaster = {
   "You got the blaster!",
-  "Use the mouse to aim, then <LEFT CLICK>\nto shoot!\nOh heck yeah bruh"
+  "Use the mouse to aim, and\n<LEFT CLICK> to shoot!"
+}
+
+messages.rocket = {
+  "You got the Rocket Launcher!",
+  "<LEFT CLICK> to launch a missile\nthat explodes upon impact,\ndealing massive damage."
+}
+
+messages.harpoon = {
+  "You got the Spear!",
+  "<LEFT CLICK> to throw a spear\nthat slices through enemies.",
+  "The spear can be used to\nfight enemies while underwater."
+}
+
+messages.aquaPack = {
+  "You got the Aqua Pack!",
+  "Your suit is now capable of\ngoing underwater.",
+}
+
+messages.health = {
+  "You got a Health Upgrade!",
+  "Your health has been restored,\nand your maximum health has\nincreased by 5.",
 }
