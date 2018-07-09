@@ -42,7 +42,7 @@ function scroll:update(dt)
           self.charTimer = self.textSpeed
         end
       else
-        if love.keyboard.isDown("space","return") or love.mouse.isDown(1,2) then
+        if love.keyboard.isDown("space","return", 'w', 'a', 's', 'd') or love.mouse.isDown(1,2) then
           self.text = ""
           self.fullMessage = ""
           self.charNum = 0
