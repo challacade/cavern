@@ -8,6 +8,9 @@ local function drawGameplay()
 
   -- Draw enemy projectiles
   enemyProjectiles:draw()
+  
+  -- Draw eggs from the final boss
+  eggs:draw()
 
   -- draw all enemies
   enemies:draw()

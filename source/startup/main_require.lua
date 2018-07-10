@@ -22,6 +22,7 @@ function getGlobals()
   require("source/enemies/spikeProj")
   require("source/enemies/enemyProj")
   require("source/enemies/eye")
+  require("source/enemies/egg")
 
   require("source/environment/particle")
   require("source/environment/explosion")

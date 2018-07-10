@@ -105,7 +105,7 @@ function love.keypressed(key, scancode, isrepeat)
     player.weapon = 2
   end
   if key == "b" then
-    blackScreen:setRed()
+    eggs:spawn(math.random(500, 2000))
   end
   if key == "n" then
     blackScreen:removeRed()

@@ -44,6 +44,9 @@ local function updateGameplay(dt)
 
   -- Update enemy projectiles
   enemyProjectiles:update(dt)
+  
+  -- Update eggs from the final boss
+  eggs:update(dt)
 
   -- Update the vines that come up from the ground
   vines:update(dt)
