@@ -43,10 +43,24 @@ local function bossInit(enemy, x, y, arg)
     -- State 1: Lasers
     if self.state == 1 then
       
+      -- When the timer is up
       if self.stateTimer <= 0 then
-        spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
-        spawnBlast(ex, ey, 700, {1, 0, 0}, 0.5)
-        self.stateTimer = 1
+        
+        -- ...and the counter is even, spawn a reverse blast
+        -- indicating that a laser is about to be shot
+        if self.stateCounter % 2 == 0 then
+          spawnBlast(ex, ey, 700, {1, 0, 0}, 1, true)
+          self.stateTimer = 1
+        else
+          -- ...otherwise, shoot a laser
+          spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
+          spawnBlast(ex, ey, 1400, {1, 0, 0}, 0.5)
+          self.stateTimer = 2
+        end
+        
+        -- increase the counter
+        self.stateCounter = self.stateCounter + 1
+        
       end
       
     end

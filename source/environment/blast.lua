@@ -19,6 +19,7 @@ function spawnBlast(x, y, size, color, time, rev)
   if rev then
     blast.radius = size
     blast.max_radius = 1
+    blast.maxAlpha = 0.3
     blast.alpha = 0
     blast.revTimer = size/2
   end
@@ -42,7 +43,7 @@ function spawnBlast(x, y, size, color, time, rev)
         flux.to(self, self.time, { alpha = 0 })
       else
         -- Reverse blast, fade in, then out
-        flux.to(self, self.time/2, { alpha = maxAlph })
+        flux.to(self, self.time/4, { alpha = maxAlph })
       end
 			
       self.state = 1
@@ -52,9 +53,10 @@ function spawnBlast(x, y, size, color, time, rev)
       flux.to(self, self.time/2, { alpha = 0 })
     end
     
-    debug = self.alpha
 	end
-	table.insert(blasts, blast)
+	
+  table.insert(blasts, blast)
+
 end
 
 function blasts:update(dt)
