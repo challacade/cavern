@@ -34,42 +34,6 @@
     <property name="up" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="148" x="384" y="0" width="384" height="384">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="149" x="768" y="0" width="384" height="478">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="150" x="1408" y="0" width="384" height="478">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-    <property name="spawnX" type="int" value="51"/>
-   </properties>
-  </object>
-  <object id="151" x="1792" y="0" width="384" height="384">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="152" x="1152" y="0" width="256" height="256">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="153" x="640" y="384" width="128" height="64">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="154" x="1792" y="384" width="128" height="64">
-   <properties>
-    <property name="dontDraw" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="Transitions"/>
  <objectgroup name="Pickups"/>
