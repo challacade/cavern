@@ -108,6 +108,7 @@ function love.keypressed(key, scancode, isrepeat)
     eggs:spawn(math.random(500, 2000))
   end
   if key == "n" then
-    blackScreen:removeRed()
+    local px, py = player.physics:getPosition()
+    spawnBlast(px, py, 500, {1, 0, 0}, 1, true)
   end
 end
