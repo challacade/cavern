@@ -20,12 +20,12 @@ function spawnEnemyProj(x, y, dir, type)
   end
   
   if type == "bossLaser" then
-    enProj.rad = 20
+    enProj.rad = 10
     enProj.power = 5
     enProj.sprite = nil
-    enProj.impulse = 4500
+    enProj.impulse = 3000
     -- This projectil has a trail, which is spawned here
-    spawnTrail(enProj.id, 12, 30, {1, 0, 0, 0.706})
+    spawnTrail(enProj.id, 12, 16, {1, 0, 0, 0.706})
   end
 
   enProj.physics = world:newCircleCollider(x, y, enProj.rad)
