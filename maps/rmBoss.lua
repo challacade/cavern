@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 155,
+  nextobjectid = 156,
   properties = {},
   tilesets = {
     {
@@ -190,6 +190,19 @@ return {
           properties = {
             ["up"] = true
           }
+        },
+        {
+          id = 155,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 384,
+          y = 0,
+          width = 1792,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
