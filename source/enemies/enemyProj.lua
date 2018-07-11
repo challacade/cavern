@@ -7,7 +7,7 @@ function spawnEnemyProj(x, y, dir, type)
   enProj.dir = dir
   enProj.dead = false
   enProj.power = 6
-  enProj.id = id
+  enProj.id = math.random()
   enProj.rad = 10
   enProj.sprite = nil
   enProj.impulse = 2000
@@ -17,6 +17,15 @@ function spawnEnemyProj(x, y, dir, type)
     enProj.power = 8
     enProj.sprite = sprites.player.armEmpty
     enProj.impulse = 2500
+  end
+  
+  if type == "bossLaser" then
+    enProj.rad = 20
+    enProj.power = 5
+    enProj.sprite = nil
+    enProj.impulse = 2500
+    -- This projectil has a trail, which is spawned here
+    spawnTrail(enProj.id, 5, 20, {1, 0, 0, 0.706})
   end
 
   enProj.physics = world:newCircleCollider(x, y, enProj.rad)
@@ -51,11 +60,25 @@ function enemyProjectiles:update(dt)
   end
 
   -- Iterate through all enemyProjectiles in reverse to remove dead ones
+  -- Update trails before removal
   for i=#enemyProjectiles,1,-1 do
-    if enemyProjectiles[i].dead then
-      enemyProjectiles[i].physics:destroy()
+    
+    local proj = enemyProjectiles[i]
+    
+    -- Updates the projectile's trail (if it has one)
+    if proj.dead ~= true then
+      for _,t in ipairs(trails) do
+        if t.id == proj.id then
+          t:update(dt, proj)
+        end
+      end
+    end
+    
+    if proj.dead then
+      proj.physics:destroy()
       table.remove(enemyProjectiles, i)
     end
+  
   end
 
 end
@@ -65,11 +88,14 @@ function enemyProjectiles:draw()
   love.graphics.setColor(1, 1, 1, 1)
 
   for i,p in ipairs(self) do
-    local sprX, sprY = p.physics:getPosition()
-    local sprW = p.sprite:getWidth()
-    local sprH = p.sprite:getHeight()
-
-    love.graphics.draw(p.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
+    
+    if p.sprite ~= nil then
+      local sprX, sprY = p.physics:getPosition()
+      local sprW = p.sprite:getWidth()
+      local sprH = p.sprite:getHeight()
+      love.graphics.draw(p.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
+    end
+  
   end
 
 end

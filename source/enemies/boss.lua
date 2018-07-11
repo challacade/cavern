@@ -18,14 +18,32 @@ local function bossInit(enemy, x, y, arg)
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
 
+  -- Eyes
   local ex, ey = enemy.physics:getPosition()
   enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
+  
+  -- State
+  enemy.state = 0
+  enemy.stateTimer = 1
+  enemy.stateCounter = 0
 
   function enemy:update(dt)
+    
+    self.stateTimer = updateTimer(self.stateTimer, dt)
 
     local ex, ey = enemy.physics:getPosition()
     self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
 
+    if self.state == 0 then
+      
+      if self.stateTimer <= 0 then
+        spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
+        self.stateTimer = 1
+      end
+      
+    end
+
+    -- REMOVE THIS AFTER BOSS IS DONE!!!
     blackScreen.alpha = 0
   end
 
