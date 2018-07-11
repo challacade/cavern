@@ -26,6 +26,13 @@ function spawnEnemyProj(x, y, dir, type)
     enProj.impulse = 3000
     -- This projectil has a trail, which is spawned here
     spawnTrail(enProj.id, 12, 16, {1, 0, 0, 0.706})
+    
+    -- Offset the starting location of the laser
+    -- so it appears in the eye's pupil
+    local offsetVec = enProj.dir * 100
+    local wx, wy = offsetVec:unpack()
+    x = x + wx
+    y = y + wy
   end
 
   enProj.physics = world:newCircleCollider(x, y, enProj.rad)
