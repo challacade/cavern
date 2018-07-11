@@ -179,6 +179,14 @@ function player:update(dt)
       blackScreen.alpha = (py - 1400) / 2300
     end
   end
+  
+  -- Prevent the player from flying up past the final boss
+  if gameState.room == "rmBoss" and player.health > 0 then
+    local px, py = player.physics:getPosition()
+    if py < 600 then
+      player.physics:setY(600)
+    end
+  end
 
 end
 
