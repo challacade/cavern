@@ -14,13 +14,17 @@ local function bossInit(enemy, x, y, arg)
   enemy.moveForce = 11000
   enemy.maxSpeed = 400
   enemy.barY = 1000 -- Putting the health bar above the screen
-  enemy.baseY = y -- Default Y position (since the boss will move)
+  
+  -- Shake logic
+  local ex, ey = enemy.physics:getPosition()
+  enemy.baseY = ey -- Default Y position (since the boss will move)
+  enemy.distY = 10 -- How far the boss deviates from the Y position
+  enemy.shakeDir = 1 -- 1 for down, -1 for up
 
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
 
   -- Eyes
-  local ex, ey = enemy.physics:getPosition()
   enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
   
   -- State
@@ -32,8 +36,19 @@ local function bossInit(enemy, x, y, arg)
     
     self.stateTimer = updateTimer(self.stateTimer, dt)
 
-    local ex, ey = enemy.physics:getPosition()
+    local ex, ey = self.physics:getPosition()
     self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
+    
+    -- Breathing/Shaking
+    -- The boss bobs up and down either slowly or quickly
+    local bobSpeed = 8
+    self.physics:setY(ey + (self.shakeDir * bobSpeed * dt))
+    
+    -- If the boss moves too far past its base position,
+    -- change the direction
+    if math.abs(self.baseY - self.physics:getY()) > self.distY then
+      self.shakeDir = self.shakeDir * -1
+    end
 
     -- State 0: Boss Intro (eyes opening)
     if self.state == 0 then
