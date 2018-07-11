@@ -10,8 +10,8 @@ player.physics = world:newBSGRectangleCollider(1000, 2512, player.width,
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
 player.physics:setFixedRotation(true)
-player.moveForce = 40000
-player.maxSpeed = 400
+player.moveForce = 50000
+player.maxSpeed = 550
 
 player.health = gameState.player.maxHealth
 player.damaged = 0 -- timer for the damage flash
