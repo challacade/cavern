@@ -19,7 +19,7 @@ function spawnBlast(x, y, size, color, time, rev)
   if rev then
     blast.radius = size
     blast.max_radius = 1
-    blast.maxAlpha = 0.3
+    blast.maxAlpha = 0.2
     blast.alpha = 0
     blast.revTimer = size/2
   end
