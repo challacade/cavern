@@ -23,9 +23,9 @@ function spawnEnemyProj(x, y, dir, type)
     enProj.rad = 20
     enProj.power = 5
     enProj.sprite = nil
-    enProj.impulse = 2500
+    enProj.impulse = 4500
     -- This projectil has a trail, which is spawned here
-    spawnTrail(enProj.id, 5, 20, {1, 0, 0, 0.706})
+    spawnTrail(enProj.id, 12, 30, {1, 0, 0, 0.706})
   end
 
   enProj.physics = world:newCircleCollider(x, y, enProj.rad)

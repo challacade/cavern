@@ -14,6 +14,7 @@ local function bossInit(enemy, x, y, arg)
   enemy.moveForce = 11000
   enemy.maxSpeed = 400
   enemy.barY = 1000 -- Putting the health bar above the screen
+  enemy.baseY = y -- Default Y position (since the boss will move)
 
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
@@ -23,7 +24,7 @@ local function bossInit(enemy, x, y, arg)
   enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
   
   -- State
-  enemy.state = 0
+  enemy.state = 1
   enemy.stateTimer = 1
   enemy.stateCounter = 0
 
@@ -34,10 +35,17 @@ local function bossInit(enemy, x, y, arg)
     local ex, ey = enemy.physics:getPosition()
     self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
 
+    -- State 0: Boss Intro (eyes opening)
     if self.state == 0 then
+      
+    end
+    
+    -- State 1: Lasers
+    if self.state == 1 then
       
       if self.stateTimer <= 0 then
         spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
+        spawnBlast(ex, ey, 700, {1, 0, 0}, 0.5)
         self.stateTimer = 1
       end
       
