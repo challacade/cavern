@@ -20,6 +20,7 @@ local function bossInit(enemy, x, y, arg)
   enemy.baseY = ey -- Default Y position (since the boss will move)
   enemy.distY = 10 -- How far the boss deviates from the Y position
   enemy.shakeDir = 1 -- 1 for down, -1 for up
+  enemy.shakeSpeed = 8
 
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
@@ -41,8 +42,7 @@ local function bossInit(enemy, x, y, arg)
     
     -- Breathing/Shaking
     -- The boss bobs up and down either slowly or quickly
-    local bobSpeed = 8
-    self.physics:setY(ey + (self.shakeDir * bobSpeed * dt))
+    self.physics:setY(ey + (self.shakeDir * self.shakeSpeed * dt))
     
     -- If the boss moves too far past its base position,
     -- change the direction
@@ -74,6 +74,37 @@ local function bossInit(enemy, x, y, arg)
         end
         
         -- increase the counter
+        self.stateCounter = self.stateCounter + 1
+        
+        -- After shooting 3 lasers, move to a different state
+        if self.stateCounter == 6 then
+          self.state = self.state + 1
+          self.stateCounter = 0
+          self.stateTimer = 2
+        end
+        
+      end
+      
+    end
+    
+    -- State 2: Shake to spawn flyers
+    if self.state == 2 then
+      
+      -- Start shaking
+      if self.stateTimer == 0 and self.stateCounter == 0 then
+        
+        self.shakeSpeed = 180
+        self.distY = 16
+        self.stateTimer = 0.5
+        self.stateCounter = self.stateCounter + 1
+        
+      end
+      
+      -- Spawn a flyer
+      if self.stateTimer == 0 and self.stateCounter > 0 then
+        
+        self.stateTimer = 0.5
+        spawnEnemy(math.random(512,2048), 264, "bat")
         self.stateCounter = self.stateCounter + 1
         
       end
