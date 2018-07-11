@@ -77,7 +77,7 @@ local function bossInit(enemy, x, y, arg)
         self.stateCounter = self.stateCounter + 1
         
         -- After shooting 3 lasers, move to a different state
-        if self.stateCounter == 6 then
+        if self.stateCounter == 2 then -- CHANGE TO 6
           self.state = self.state + 1
           self.stateCounter = 0
           self.stateTimer = 2
@@ -104,7 +104,7 @@ local function bossInit(enemy, x, y, arg)
       if self.stateTimer == 0 and self.stateCounter > 0 then
         
         self.stateTimer = 0.5
-        spawnEnemy(math.random(512,2048), 264, "bat")
+        spawnEnemy(math.random(576, 2048), 290, "bat", true)
         self.stateCounter = self.stateCounter + 1
         
       end

@@ -22,6 +22,12 @@ local function batInit(enemy, x, y, arg)
   enemy.spriteTimer = enemy.spriteTimerBase
 
   enemy.eye = spawnEye(x, y, 0, 1, sprites.enemies.flyerEye)
+  
+  -- Final boss can spawn these, and they shoot down
+  -- if arg is true
+  if arg then
+    enemy.physics:applyLinearImpulse(0, 20000)
+  end
 
   function enemy:update(dt)
 

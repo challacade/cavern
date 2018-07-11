@@ -157,14 +157,18 @@ function enemies:update(dt)
 
 end
 
--- Draw enemies
-function enemies:draw()
+-- Draw all enemies
+function enemies:draw(drawBoss)
   for i,e in ipairs(self) do
-    e:draw()
-    e:drawHealthBar()
+    if (e.type == "boss" and drawBoss) or (e.type ~= "boss" and drawBoss == false) then
+      
+      e:draw()
+      e:drawHealthBar()
+      
+      if e.eye ~= nil then
+        e.eye:draw()
+      end
 
-    if e.eye ~= nil then
-      e.eye:draw()
     end
   end
 end

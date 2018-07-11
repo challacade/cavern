@@ -12,8 +12,11 @@ local function drawGameplay()
   -- Draw eggs from the final boss
   eggs:draw()
 
-  -- draw all enemies
-  enemies:draw()
+  -- draw all enemies (except final boss)
+  enemies:draw(false)
+  
+  -- draw final boss (boss must appear over other enemies)
+  enemies:draw(true)
 
   -- draw all weapons
   weapons:draw()
