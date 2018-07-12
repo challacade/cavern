@@ -66,7 +66,7 @@ local function bossInit(enemy, x, y, arg)
     -- State 1: Lasers
     if self.state == 1 then
       
-      enemy:laserState(3)
+      self:laserState(1)
       
     end
     
@@ -101,6 +101,7 @@ local function bossInit(enemy, x, y, arg)
       
       if self.stateCounter > 4 then
         self.state = 3
+        self.stateCounter = 0
       end
       
     end
@@ -109,6 +110,11 @@ local function bossInit(enemy, x, y, arg)
     if self.state == 3 then
       self.shakeSpeed = self.slowShake
       self.distY = self.shortDist
+      self:laserState(2)
+    end
+    
+    if self.state == 4 then
+      self.state = 2
     end
 
     -- REMOVE THIS AFTER BOSS IS DONE!!!
