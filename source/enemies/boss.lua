@@ -18,9 +18,17 @@ local function bossInit(enemy, x, y, arg)
   -- Shake logic
   local ex, ey = enemy.physics:getPosition()
   enemy.baseY = ey -- Default Y position (since the boss will move)
-  enemy.distY = 10 -- How far the boss deviates from the Y position
+  
+  -- How far the boss deviates from the Y position
+  enemy.shortDist = 10
+  enemy.longDist = 16
+  enemy.distY = enemy.shortDist
+  
+  -- Shake direction and speed
   enemy.shakeDir = 1 -- 1 for down, -1 for up
-  enemy.shakeSpeed = 8
+  enemy.fastShake = 180
+  enemy.slowShake = 8
+  enemy.shakeSpeed = enemy.slowShake
 
   -- Sprite info
   enemy.sprite = sprites.enemies.bossBody
@@ -93,8 +101,8 @@ local function bossInit(enemy, x, y, arg)
       -- Start shaking
       if self.stateTimer == 0 and self.stateCounter == 0 then
         
-        self.shakeSpeed = 180
-        self.distY = 16
+        self.shakeSpeed = self.fastShake
+        self.distY = self.shortDist
         self.stateTimer = 0.5
         self.stateCounter = self.stateCounter + 1
         
@@ -103,7 +111,7 @@ local function bossInit(enemy, x, y, arg)
       -- Spawn a flyer
       if self.stateTimer == 0 and self.stateCounter > 0 then
         
-        self.stateTimer = 0.5
+        self.stateTimer = 0.75
         self.stateCounter = self.stateCounter + 1
         
         -- Spawn flyers, randomly on each side of the boss
@@ -116,6 +124,16 @@ local function bossInit(enemy, x, y, arg)
         
       end
       
+      if self.stateCounter > 4 then
+        self.state = 3
+      end
+      
+    end
+    
+    
+    if self.state == 3 then
+      self.shakeSpeed = self.slowShake
+      self.distY = self.shortDist
     end
 
     -- REMOVE THIS AFTER BOSS IS DONE!!!
