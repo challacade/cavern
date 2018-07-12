@@ -66,32 +66,7 @@ local function bossInit(enemy, x, y, arg)
     -- State 1: Lasers
     if self.state == 1 then
       
-      -- When the timer is up
-      if self.stateTimer <= 0 then
-        
-        -- ...and the counter is even, spawn a reverse blast
-        -- indicating that a laser is about to be shot
-        if self.stateCounter % 2 == 0 then
-          spawnBlast(ex, ey, 1400, {1, 0, 0}, 1.5, true)
-          self.stateTimer = 1.5
-        else
-          -- ...otherwise, shoot a laser
-          spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
-          spawnBlast(ex, ey, 2200, {1, 0, 0}, 0.75)
-          self.stateTimer = 3
-        end
-        
-        -- increase the counter
-        self.stateCounter = self.stateCounter + 1
-        
-        -- After shooting 3 lasers, move to a different state
-        if self.stateCounter == 2 then -- CHANGE TO 6
-          self.state = self.state + 1
-          self.stateCounter = 0
-          self.stateTimer = 2
-        end
-        
-      end
+      enemy:laserState(3)
       
     end
     
@@ -138,6 +113,37 @@ local function bossInit(enemy, x, y, arg)
 
     -- REMOVE THIS AFTER BOSS IS DONE!!!
     blackScreen.alpha = 0
+  end
+  
+  function enemy:laserState(totalShots)
+    
+    -- When the timer is up
+    if self.stateTimer <= 0 then
+      
+      -- ...and the counter is even, spawn a reverse blast
+      -- indicating that a laser is about to be shot
+      if self.stateCounter % 2 == 0 then
+        spawnBlast(ex, ey, 1400, {1, 0, 0}, 1.5, true)
+        self.stateTimer = 1.5
+      else
+        -- ...otherwise, shoot a laser
+        spawnEnemyProj(ex, ey, toPlayerVector(ex, ey), "bossLaser")
+        spawnBlast(ex, ey, 2200, {1, 0, 0}, 0.75)
+        self.stateTimer = 3
+      end
+      
+      -- increase the counter
+      self.stateCounter = self.stateCounter + 1
+      
+      -- After shooting 3 lasers, move to a different state
+      if self.stateCounter == totalShots * 2 then -- CHANGE TO 6
+        self.state = self.state + 1
+        self.stateCounter = 0
+        self.stateTimer = 2
+      end
+      
+    end
+    
   end
 
   function enemy:draw()
