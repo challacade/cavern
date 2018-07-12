@@ -104,8 +104,15 @@ local function bossInit(enemy, x, y, arg)
       if self.stateTimer == 0 and self.stateCounter > 0 then
         
         self.stateTimer = 0.5
-        spawnEnemy(math.random(576, 2048), 290, "bat", true)
         self.stateCounter = self.stateCounter + 1
+        
+        -- Spawn flyers, randomly on each side of the boss
+        local x = 448 + math.random(0, 640) -- left side
+        if math.random() > 0.5 then
+          x = x + 1024 -- move to the right side
+        end
+        
+        spawnEnemy(x, 290, "bat", true)
         
       end
       
