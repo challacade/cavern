@@ -34,7 +34,36 @@ local function bossInit(enemy, x, y, arg)
   enemy.sprite = sprites.enemies.bossBody
 
   -- Eyes
-  enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
+  enemy.eyes = {}
+  --enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
+  
+  for i=1, 3 do -- spawn 10 eyes
+    
+    local eye = {}
+    
+    eye.spr = sprites.enemies.bigBossEye
+    
+    -- These are the eye's position relative to the boss's physics
+    eye.relX = 0
+    eye.relY = 0
+    
+    if i == 1 then
+      eye.relX = -200
+      eye.relY = -200
+    elseif i == 2 then
+      eye.relX = 200
+      eye.relY = -200
+    elseif i == 3 then
+      eye.relX = 500
+      eye.rely = -200
+    end
+    
+    local eyeX = ex + eye.relX
+    local eyeY = ey + eye.relY
+    
+    table.insert(enemy.eyes, spawnEye(eyeX, eyeY, 0, 1, eye.spr, eye))
+    
+  end
   
   -- State
   enemy.state = 1
@@ -46,7 +75,13 @@ local function bossInit(enemy, x, y, arg)
     self.stateTimer = updateTimer(self.stateTimer, dt)
 
     local ex, ey = self.physics:getPosition()
-    self.eye:update(dt, ex, ey, toPlayerRotate(ex, ey))
+    
+    -- Update eyes
+    for _,e in ipairs(self.eyes) do
+      local eyeX = ex + e.args.relX
+      local eyeY = ey + e.args.relY
+      e:update(dt, eyeX, eyeY, toPlayerRotate(eyeX, eyeY))
+    end
     
     -- Breathing/Shaking
     -- The boss bobs up and down either slowly or quickly

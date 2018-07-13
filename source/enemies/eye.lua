@@ -1,6 +1,6 @@
 eyes = {}
 
-function spawnEye(x, y, rot, scale, spr)
+function spawnEye(x, y, rot, scale, spr, args)
 
   local eye = {}
   eye.x = x
@@ -9,6 +9,7 @@ function spawnEye(x, y, rot, scale, spr)
   eye.scale = scale
   eye.spr = spr
   eye.id = id
+  eye.args = args
 
   eye.dead = false
 
