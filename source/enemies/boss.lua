@@ -37,31 +37,60 @@ local function bossInit(enemy, x, y, arg)
   enemy.eyes = {}
   --enemy.eye = spawnEye(ex, ey, 0, 1, sprites.enemies.bigBossEye)
   
-  for i=1, 3 do -- spawn 10 eyes
+  for i=1, 12 do -- spawn 10 eyes
     
     local eye = {}
     
     eye.spr = sprites.enemies.bigBossEye
+    eye.scale = 0.40
     
     -- These are the eye's position relative to the boss's physics
     eye.relX = 0
     eye.relY = 0
     
     if i == 1 then
-      eye.relX = -200
-      eye.relY = -200
+      eye.relX = 0
+      eye.relY = 0
+      eye.scale = 1
     elseif i == 2 then
       eye.relX = 200
-      eye.relY = -200
+      eye.relY = -100
     elseif i == 3 then
+      eye.relX = -200
+      eye.rely = -100
+    elseif i == 4 then
+      eye.relX = 320
+      eye.relY = -200
+    elseif i == 5 then
+      eye.relX = -320
+      eye.relY = -200
+    elseif i == 6 then
       eye.relX = 500
-      eye.rely = -200
+      eye.relY = -160
+    elseif i == 7 then
+      eye.relX = -500
+      eye.relY = -160
+    elseif i == 8 then
+      eye.relX = 680
+      eye.relY = -60
+    elseif i == 9 then
+      eye.relX = -680
+      eye.relY = -60
+    elseif i == 10 then
+      eye.relX = 740
+      eye.relY = -220
+    elseif i == 11 then
+      eye.relX = -740
+      eye.relY = -220
+    elseif i == 12 then
+      eye.relX = -40
+      eye.relY = -220
     end
     
     local eyeX = ex + eye.relX
     local eyeY = ey + eye.relY
     
-    table.insert(enemy.eyes, spawnEye(eyeX, eyeY, 0, 1, eye.spr, eye))
+    table.insert(enemy.eyes, spawnEye(eyeX, eyeY, 0, eye.scale, eye.spr, eye))
     
   end
   
