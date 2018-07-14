@@ -307,6 +307,10 @@ local function bossInit(enemy, x, y, arg)
     love.graphics.setColor(1, 1, 1, self.barAlpha)
     love.graphics.rectangle("line", 256, 1544, 2048, 64)
     
+    -- Draw "BOSS"
+    love.graphics.setFont(fonts.boss)
+    love.graphics.printf("BOSS", 128, 1444, 2304, "center")
+    
   end
 
   return enemy
