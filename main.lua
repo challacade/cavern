@@ -57,6 +57,7 @@ function love.draw()
   love.graphics.print(debug2, 0, 20)
 
   blackScreen:draw()
+  flash:draw()
 
 end
 
@@ -105,10 +106,9 @@ function love.keypressed(key, scancode, isrepeat)
     player.weapon = 2
   end
   if key == "b" then
-    eggs:spawn(math.random(500, 2000))
+    flash:fadeIn(1)
   end
   if key == "n" then
-    local px, py = player.physics:getPosition()
-    spawnBlast(px, py, 500, {1, 0, 0}, 1, true)
+    flash:fadeOut(1)
   end
 end

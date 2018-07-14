@@ -62,6 +62,9 @@ local function updateGameplay(dt)
 
   -- Update the blackScreen
   blackScreen:update(dt)
+  
+  -- Update the flash
+  flash:update(dt)
 
   -- Handle trail fade-away (when its weapon is destroyed)
   trails:fadeOut(dt)
