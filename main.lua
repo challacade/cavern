@@ -109,6 +109,6 @@ function love.keypressed(key, scancode, isrepeat)
     flash:fadeIn(1)
   end
   if key == "n" then
-    flash:fadeOut(1)
+    flash:flash(2)
   end
 end
