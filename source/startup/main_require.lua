@@ -39,6 +39,7 @@ function getGlobals()
   require("source/text/scrollText")
   require("source/text/textBox")
   require("source/text/damage")
+  require("source/text/credits")
 
   require("source/ui/cam")
   require("source/ui/blackScreen")

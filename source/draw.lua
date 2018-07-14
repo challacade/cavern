@@ -1,6 +1,10 @@
 local function drawGameplay()
   love.graphics.setLineWidth(2)
+  
+  -- Draw the credits (only in rmCredits)
+  credits:draw()
 
+  -- Draw the player
   player:draw()
 
   -- Draw spike projectiles
