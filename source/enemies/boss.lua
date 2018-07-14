@@ -9,7 +9,8 @@ local function bossInit(enemy, x, y, arg)
   enemy.physics.parent = enemy
 
   -- Properties
-  enemy.health = 300
+  enemy.maxHealth = 300
+  enemy.health = enemy.maxHealth
   enemy.hitPower = 12
   enemy.moveForce = 11000
   enemy.maxSpeed = 400
@@ -53,57 +54,57 @@ local function bossInit(enemy, x, y, arg)
       eye.relY = 0
       eye.scale = 1
     elseif i == 2 then
-      eye.relX = 240
+      eye.relX = 250
       eye.relY = -30
-      eye.scale = 0.4
+      eye.scale = 0.37
     elseif i == 3 then
-      eye.relX = -240
+      eye.relX = -250
       eye.relY = -30
-      eye.scale = 0.4
+      eye.scale = 0.37
     elseif i == 4 then
       eye.relX = 320
       eye.relY = -200
-      eye.scale = 0.3
+      eye.scale = 0.27
     elseif i == 5 then
       eye.relX = -320
       eye.relY = -200
-      eye.scale = 0.3
+      eye.scale = 0.27
     elseif i == 6 then
       eye.relX = 500
       eye.relY = -160
-      eye.scale = 0.42
+      eye.scale = 0.39
     elseif i == 7 then
       eye.relX = -500
       eye.relY = -160
-      eye.scale = 0.42
+      eye.scale = 0.39
     elseif i == 8 then
       eye.relX = 680
       eye.relY = -60
-      eye.scale = 0.26
+      eye.scale = 0.23
     elseif i == 9 then
       eye.relX = -680
       eye.relY = -60
-      eye.scale = 0.26
+      eye.scale = 0.23
     elseif i == 10 then
       eye.relX = 740
       eye.relY = -220
-      eye.scale = 0.34
+      eye.scale = 0.31
     elseif i == 11 then
       eye.relX = -740
       eye.relY = -220
-      eye.scale = 0.34
+      eye.scale = 0.31
     elseif i == 12 then
       eye.relX = 450
       eye.relY = 20
-      eye.scale = 0.34
+      eye.scale = 0.31
     elseif i == 13 then
       eye.relX = -450
       eye.relY = 20
-      eye.scale = 0.34
+      eye.scale = 0.31
     elseif i == 14 then
       eye.relX = -40
-      eye.relY = -220
-      eye.scale = 0.29
+      eye.relY = -210
+      eye.scale = 0.26
     end
     
     local eyeX = ex + eye.relX
@@ -114,7 +115,7 @@ local function bossInit(enemy, x, y, arg)
   end
   
   -- State
-  enemy.state = 1
+  enemy.state = 0
   enemy.stateTimer = 1
   enemy.stateCounter = 0
 
@@ -144,10 +145,31 @@ local function bossInit(enemy, x, y, arg)
     -- State 0: Boss Intro (eyes opening)
     if self.state == 0 then
       
+      player.state = 0
+      
+      if self.stateTimer <= 0 then
+        blackScreen:fadeIn(5)
+        self.stateTimer = 5
+        self.state = 0.1
+      end
+      
+    end
+    
+    if self.state == 0.1 then
+      
+      if self.stateTimer <= 0 then
+        self.state = 1
+        self.stateTimer = 1
+      end
+      
     end
     
     -- State 1: Lasers
     if self.state == 1 then
+      
+      if player.state == 0 then
+        player.state = 1
+      end
       
       self:laserState(1)
       
@@ -182,7 +204,17 @@ local function bossInit(enemy, x, y, arg)
         
       end
       
-      if self.stateCounter > 4 then
+      local toSpawn = 2
+      
+      if self.health < self.maxHealth / 2 then
+        toSpawn = toSpawn + 1
+      end
+      
+      if self.health < self.maxHealth / 4 then
+        toSpawn = toSpawn + 1
+      end
+      
+      if self.stateCounter > toSpawn then
         self.state = 3
         self.stateCounter = 0
       end
@@ -199,9 +231,7 @@ local function bossInit(enemy, x, y, arg)
     if self.state == 4 then
       self.state = 2
     end
-
-    -- REMOVE THIS AFTER BOSS IS DONE!!!
-    blackScreen.alpha = 0
+    
   end
   
   function enemy:laserState(totalShots)
