@@ -135,7 +135,9 @@ local function bossInit(enemy, x, y, arg)
     
     -- Breathing/Shaking
     -- The boss bobs up and down either slowly or quickly
-    self.physics:setY(ey + (self.shakeDir * self.shakeSpeed * dt))
+    if self.dead == false then
+      self.physics:setY(ey + (self.shakeDir * self.shakeSpeed * dt))
+    end
     
     -- If the boss moves too far past its base position,
     -- change the direction
@@ -230,15 +232,95 @@ local function bossInit(enemy, x, y, arg)
       
     end
     
-    
+    -- State 3: Lasers
     if self.state == 3 then
       self.shakeSpeed = self.slowShake
       self.distY = self.shortDist
       self:laserState(2)
     end
     
+    -- State 4: Return to state 2
     if self.state == 4 then
       self.state = 2
+    end
+    
+    -- Test if boss is dead
+    if self.dead and self.state < 10 then
+      
+      self.state = 10
+      self.stateTimer = 3
+      flash:fadeIn(1)
+      self.physics:setY(self.baseY)
+      self.stateCounter = 0
+      
+      -- Kill all other enemies besides the boss
+      for _,e in ipairs(enemies) do
+        if e.type ~= "boss" then
+          e.health = 0
+        end
+      end
+      
+    end
+    
+    -- State 10: Boss has just died, flash
+    if self.state == 10 then
+      
+      if self.barAlpha > 0 then
+        self.barAlpha = self.barAlpha - dt
+      end
+      
+      if self.barAlpha < 0 then
+        self.barAlpha = 0
+      end
+      
+      if self.stateTimer == 0 then
+        shake:start(30, 10, 0.01, false, nil)
+        self.state = 10.5
+        self.stateTimer = 3
+      end
+      
+    end
+    
+    local explodeTime = 0.5
+    
+    if self.state == 10.5 and self.stateTimer == 0 then
+      self.stateTimer = 0.05
+      self.state = 11
+    end
+    
+    -- State 11: Boss moves offscreen while exploding
+    if self.state == 11 then
+      
+      -- Move upwards
+      local ex, ey = self.physics:getPosition()
+      self.physics:setY(ey - (25 * dt))
+      
+      if self.stateTimer == 0 then
+        local blastX = ex + math.random(-772, 772)
+        local blastY = ey + math.random(-120, 120)
+        spawnBlast(blastX, blastY, 500, {1, 0, 0}, 0.4)
+        
+        self.stateTimer = explodeTime
+      end
+      
+      if ey < 242 then
+        if flash.alpha == 0 then
+          flash:fadeOut(3)
+        end
+      end
+      
+      if flash.alpha == 1 then
+        self.state = 11.5
+        self.stateTimer = 2
+      end
+      
+    end
+    
+    if self.state == 11.5 and self.stateTimer == 0 then
+      flash:fadeIn(3)
+      self.state = 12
+      shake:start(2, 10, 0.01, true, nil)
+      changeToMap("rmBossAfter")
     end
     
   end

@@ -44,10 +44,12 @@ function spawnEnemy(x, y, type, arg)
 
     -- Destroy if no health left
     if self.health <= 0 then
-      local ex, ey = self.physics:getPosition()
-      spawnBlast(ex, ey, 300, {0.486, 0.675, 0.561}, 0.5)
-      self.physics:destroy()
       self.dead = true
+      if self.type ~= "boss" then
+        local ex, ey = self.physics:getPosition()
+        spawnBlast(ex, ey, 300, {0.486, 0.675, 0.561}, 0.5)
+        self.physics:destroy()
+      end
     end
 
     -- Hurt player on contact
@@ -150,7 +152,7 @@ function enemies:update(dt)
 
   -- Iterate through all enemies in reverse to remove the dead ones
   for i=#enemies,1,-1 do
-    if enemies[i].dead then
+    if enemies[i].dead and enemies[i].type ~= "boss" then
       table.remove(enemies, i)
     end
   end
