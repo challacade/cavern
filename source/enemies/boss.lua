@@ -292,18 +292,18 @@ local function bossInit(enemy, x, y, arg)
     
     -- Draw the back of the healthbar (red)
     love.graphics.setColor(1, 0, 0, self.barAlpha)
-    love.graphics.rectangle("fill", 256, 1544, 2048, 64)
+    love.graphics.rectangle("fill", 262, 1550, 2036, 52)
     
     -- Draw the green part of the health bar
-    local greenWidth = 2048 * (self.health / self.maxHealth)
+    local greenWidth = 2036 * (self.health / self.maxHealth)
     if greenWidth < 0 then
       greenWidth = 0
     end
     love.graphics.setColor(0, 1, 0, self.barAlpha)
-    love.graphics.rectangle("fill", 256, 1544, greenWidth, 64)
+    love.graphics.rectangle("fill", 262, 1550, greenWidth, 52)
     
     -- Draw the white outline
-    love.graphics.setLineWidth(10)
+    love.graphics.setLineWidth(12)
     love.graphics.setColor(1, 1, 1, self.barAlpha)
     love.graphics.rectangle("line", 256, 1544, 2048, 64)
     
