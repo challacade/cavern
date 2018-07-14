@@ -28,7 +28,7 @@ local function drawGameplay()
   -- a blue tint (since the drawing is translucent)
   ripples:draw()
 
-  -- Destroys all walls (including breakable ones)
+  -- Draws all walls (including breakable ones)
   local drawWalls = require("source/levels/drawWalls")
   drawWalls()
 
@@ -39,6 +39,18 @@ local function drawGameplay()
   fires:draw()
   blasts:draw()
   damages:draw()
+  
+  if gameState.room == "rmBoss" then
+    
+    -- find the boss object
+    for _,e in ipairs(enemies) do
+      if e.type == "boss" then
+        e:bossBar()
+      end
+    end
+    
+  end
+  
 end
 
 return drawGameplay

@@ -15,6 +15,7 @@ local function bossInit(enemy, x, y, arg)
   enemy.moveForce = 11000
   enemy.maxSpeed = 400
   enemy.barY = 1000 -- Putting the health bar above the screen
+  enemy.barAlpha = 0 -- Initially invisible, health bar fades in
   
   -- Shake logic
   local ex, ey = enemy.physics:getPosition()
@@ -171,6 +172,14 @@ local function bossInit(enemy, x, y, arg)
         player.state = 1
       end
       
+      if self.barAlpha < 1 then
+        self.barAlpha = self.barAlpha + dt
+      end
+      
+      if self.barAlpha > 1 then
+        self.barAlpha = 1
+      end
+      
       self:laserState(1)
       
     end
@@ -263,9 +272,12 @@ local function bossInit(enemy, x, y, arg)
       
     end
     
+    debug = self.barAlpha
+    
   end
 
   function enemy:draw()
+    
     local sprX, sprY = self.physics.body:getPosition()
 
     -- Draw the body of the boss
@@ -273,6 +285,28 @@ local function bossInit(enemy, x, y, arg)
     sprH = self.sprite:getHeight()
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.draw(self.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/1.4)
+    
+  end
+  
+  function enemy:bossBar()
+    
+    -- Draw the back of the healthbar (red)
+    love.graphics.setColor(1, 0, 0, self.barAlpha)
+    love.graphics.rectangle("fill", 256, 1544, 2048, 64)
+    
+    -- Draw the green part of the health bar
+    local greenWidth = 2048 * (self.health / self.maxHealth)
+    if greenWidth < 0 then
+      greenWidth = 0
+    end
+    love.graphics.setColor(0, 1, 0, self.barAlpha)
+    love.graphics.rectangle("fill", 256, 1544, greenWidth, 64)
+    
+    -- Draw the white outline
+    love.graphics.setLineWidth(10)
+    love.graphics.setColor(1, 1, 1, self.barAlpha)
+    love.graphics.rectangle("line", 256, 1544, 2048, 64)
+    
   end
 
   return enemy
