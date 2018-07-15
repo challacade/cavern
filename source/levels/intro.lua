@@ -12,6 +12,13 @@ function intro:update(dt)
   
   self.timer = updateTimer(self.timer, dt)
   
+  if self.state == 1 and self.timer == 0 then
+    
+    textBox:start("intro")
+    self.state = 2
+    
+  end
+  
   -- Load the saved game (if it exists
   if self.state == 100 and self.timer == 0 then
     

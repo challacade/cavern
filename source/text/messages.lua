@@ -31,3 +31,7 @@ messages.health = {
 messages.failedLoad = {
   "No save file found.",
 }
+
+messages.intro = {
+  "Placeholder story text",
+}
