@@ -58,6 +58,8 @@ function love.draw()
 
   blackScreen:draw()
   flash:draw()
+  
+  menuDraw()
 
 end
 

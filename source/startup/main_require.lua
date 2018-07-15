@@ -44,6 +44,7 @@ function getGlobals()
   require("source/ui/cam")
   require("source/ui/blackScreen")
   require("source/ui/flash")
+  require("source/ui/mainMenu")
 
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")
