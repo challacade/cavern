@@ -33,6 +33,11 @@ sprites.enemies.bossBody = love.graphics.newImage('sprites/enemies/bossBody.png'
 sprites.enemies.bigBossEye = love.graphics.newImage('sprites/enemies/bigBossEye.png')
 sprites.enemies.egg = love.graphics.newImage('sprites/enemies/egg.png')
 
+-- Images for items
+sprites.pickups = {}
+sprites.pickups.health = love.graphics.newImage('sprites/items/healthPickup.png')
+sprites.pickups.item = love.graphics.newImage('sprites/items/itemPickup.png')
+
 -- Individual blob shapes for drawing fire
 sprites.fire = {}
 sprites.fire.f1 = love.graphics.newImage('sprites/fire/fire_1.png')

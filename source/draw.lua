@@ -43,6 +43,7 @@ local function drawGameplay()
   fires:draw()
   blasts:draw()
   damages:draw()
+  pickups:draw()
   
   if gameState.room == "rmBoss" then
     
