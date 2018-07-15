@@ -27,3 +27,7 @@ messages.health = {
   "You got a Health Upgrade!",
   "Your health has been restored,\nand your maximum health has\nincreased by 5.",
 }
+
+messages.failedLoad = {
+  "No save file found.",
+}

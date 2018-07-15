@@ -25,8 +25,13 @@ function textBox:start(m)
   -- Freezes everything (mostly)
   gameState.state = 0
 
-  if m == "blaster" or m == "rocket" or m == "harpoon" then
+  if m == "blaster" or m == "rocket" or m == "harpoon"
+    or m == "aquaPack" or m == "health" then
     textBox:init("pickup")
+  end
+  
+  if m == "failedLoad" then
+    textBox:init("failedLoad")
   end
 
   scroll:showMessage(m)
@@ -73,6 +78,16 @@ function textBox:init(type)
     textBox.height = 410
     textBox.textX = textBox.x + 40
     textBox.textY = textBox.y + 226
+    textBox.font = fonts.pickup
+  end
+  
+  if type == "failedLoad" then
+    textBox.x = 180
+    textBox.y = 265
+    textBox.width = gameWidth - 360
+    textBox.height = 170
+    textBox.textX = textBox.x + 40
+    textBox.textY = textBox.y + 60
     textBox.font = fonts.pickup
   end
 

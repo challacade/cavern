@@ -22,6 +22,7 @@ function intro:update(dt)
     
       -- No save file exists, return to the main menu
       changeToMap("rmMainMenu")
+      textBox:start("failedLoad")
     
     else
     

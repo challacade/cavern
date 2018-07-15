@@ -6,7 +6,7 @@ scroll.text = ""         -- Text currently on screen
 scroll.fullMessage = ""  -- Full message that will be displayed
 scroll.messageObj = nil  -- Message object pulled from messages.lua
 scroll.charTimer = 0     -- Timer until next letter is displayed
-scroll.textSpeed = 0.025   -- Display a new character every 0.2 seconds
+scroll.textSpeed = 0.025 -- Display a new character every ____ seconds
 scroll.messageNum = 1    -- Which string from the message object
 scroll.charNum = 0       -- Which character of the full message we're on
 

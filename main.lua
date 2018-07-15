@@ -51,6 +51,8 @@ function love.draw()
 
   cam:detach()
 
+  menuDraw()
+
   textBox:draw()
 
   love.graphics.print(debug)
@@ -58,8 +60,6 @@ function love.draw()
 
   blackScreen:draw()
   flash:draw()
-  
-  menuDraw()
 
 end
 
