@@ -187,6 +187,12 @@ function player:update(dt)
       player.physics:setY(600)
     end
   end
+  
+  -- Freeze the player offscreen if at the main menu
+  if gameState.room == "rmMainMenu" then
+    player.state = 0
+    player.physics:setPosition(-500, -500)
+  end
 
 end
 
