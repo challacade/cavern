@@ -41,6 +41,7 @@ function loadMaps()
   maps.rmBoss = sti("maps/rmBoss.lua")
   maps.rmBossAfter = sti("maps/rmBossAfter.lua")
   maps.rmCredits = sti("maps/rmCredits.lua")
+  maps.rmIntro = sti("maps/rmIntro.lua")
   maps.rmMainMenu = sti("maps/rmMainMenu.lua")
 
   -- utilize maps["blank"] syntax to read map data
@@ -226,4 +227,9 @@ function changeToMap(newMap, transition)
   
   -- Update Background Color
   love.graphics.setBackgroundColor( 0.055, 0.039, 0.027 )
+  
+  if gameState.room == "rmIntro" then
+    love.graphics.setBackgroundColor(0, 0, 0, 1)
+  end
+  
 end

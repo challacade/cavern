@@ -71,11 +71,18 @@ function buttons:click()
       -- The button has been clicked
       
       if i == 1 then -- New Game button
-        changeToMap("rm1")
+      
         player.physics:setPosition(512, 392)
         player.state = 1
+        changeToMap("rm1")
+      
       elseif i == 2 then -- Continue button
-        loadGame()
+        
+        -- This is the state for intro's load sequence
+        intro.state = 100
+        intro.timer = 1
+        changeToMap("rmIntro")
+      
       end
       
     end
