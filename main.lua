@@ -64,7 +64,9 @@ function love.draw()
 end
 
 function love.mousepressed( x, y, button, istouch )
-
+  if button == 1 and gameState.room == "rmMainMenu" then
+    buttons:click()
+  end
 end
 
 function love.keypressed(key, scancode, isrepeat)

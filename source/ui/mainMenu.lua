@@ -1,7 +1,7 @@
 -- Stores all clickable buttons on the main menu
 buttons = {}
-buttons[1] = {376, 360, 400, 72, "New Game"}
-buttons[2] = {376, 456, 400, 72, "Continue"}
+buttons[1] = {376, 380, 400, 72, "New Game"}
+buttons[2] = {376, 476, 400, 72, "Continue"}
 
 -- This function draws everything on the Main Menu
 function menuDraw()
@@ -10,7 +10,7 @@ function menuDraw()
     
     love.graphics.setFont(fonts.menu.title)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.printf("CAVERN", 0, 100 * scale, gameWidth * scale, "center")
+    love.graphics.printf("CAVERN", 0, 140 * scale, gameWidth * scale, "center")
     
     for _,b in ipairs(buttons) do
       
@@ -55,6 +55,32 @@ function buttons:mouseCheck(b)
   end
   
   return false
+  
+end
+
+-- Called whenever the left mouse button is clicked
+-- Checks if it clicked on a button, and does what that
+-- button needs to do
+function buttons:click()
+  
+  for i,b in ipairs(self) do
+    
+    -- If the mouse is on the current button...
+    if buttons:mouseCheck(b) then
+      
+      -- The button has been clicked
+      
+      if i == 1 then -- New Game button
+        changeToMap("rm1")
+        player.physics:setPosition(512, 392)
+        player.state = 1
+      elseif i == 2 then -- Continue button
+        loadGame()
+      end
+      
+    end
+    
+  end
   
 end
   
