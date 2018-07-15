@@ -22,6 +22,9 @@ function menuDraw()
       local bText = b[5];
       
       love.graphics.setColor(1, 0, 1, 1)
+      if buttons:mouseCheck(b) then
+        love.graphics.setColor(1, 0, 0, 1)
+      end
       love.graphics.rectangle("fill", bX, bY, bW, bH)
       
       love.graphics.setColor(1, 1, 1, 1)
@@ -31,6 +34,27 @@ function menuDraw()
     end
     
   end
+  
+end
+
+-- Check if the mouse is inside the passed button
+function buttons:mouseCheck(b)
+  
+  -- Get mouse coordinates
+  local mx, my = love.mouse.getPosition()
+  
+  -- Get attributes stored for the passed button
+  local bX = b[1] * scale;
+  local bY = b[2] * scale;
+  local bW = b[3] * scale;
+  local bH = b[4] * scale;
+  
+  -- Compare coordinates to see if mouse is inside button
+  if mx > bX and mx < bX+bW and my > bY and my < bY+bH then
+    return true
+  end
+  
+  return false
   
 end
   
