@@ -33,5 +33,8 @@ messages.failedLoad = {
 }
 
 messages.intro = {
-  "Placeholder story text",
+  "8-19-2049              \n"
+  .. "St. Louis, Missouri, United States of America              \n\n"
+  .. "Meteor has touched down with Earth's surface.      \n"
+  .. "Impact has uncovered unexplored underground caverns."
 }

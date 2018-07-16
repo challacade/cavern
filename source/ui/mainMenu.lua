@@ -71,10 +71,6 @@ function buttons:click()
       -- The button has been clicked
       
       if i == 1 then -- New Game button
-      
-        --player.physics:setPosition(512, 392)
-        --player.state = 1
-        --changeToMap("rm1")
         
         -- This is the state for new game sequence
         intro.state = 1

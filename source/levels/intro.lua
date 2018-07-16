@@ -16,6 +16,26 @@ function intro:update(dt)
     
     textBox:start("intro")
     self.state = 2
+    self.timer = 1
+    
+  end
+  
+  if self.state == 2 and self.timer == 0 then
+    
+    if scroll.text == "" then
+      self.state = 3
+      self.timer = 2
+    end
+    
+  end
+  
+  if self.state == 3 and self.timer == 0 then
+    
+    self.state = 4
+    blackScreen:fadeIn(3)
+    player.physics:setPosition(512, 392)
+    player.state = 1
+    changeToMap("rm1")
     
   end
   
