@@ -35,6 +35,9 @@ messages.failedLoad = {
 messages.intro = {
   "8-19-2049              \n"
   .. "St. Louis, Missouri, United States of America              \n\n"
-  .. "Meteor has touched down with Earth's surface.      \n"
-  .. "Impact has uncovered unexplored underground caverns."
+  .. "Meteor has touched down with Earth's surface."
+}
+
+messages.tutorial = {
+  "Use <W><A><S><D> to move.\nUse the mouse to look around.",
 }

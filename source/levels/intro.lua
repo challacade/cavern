@@ -32,9 +32,9 @@ function intro:update(dt)
   if self.state == 3 and self.timer == 0 then
     
     self.state = 4
-    blackScreen:fadeIn(3)
-    player.physics:setPosition(512, 392)
-    player.state = 1
+    blackScreen:fadeIn(8)
+    player.physics:setPosition(512, 260)
+    player.state = -10
     changeToMap("rm1")
     
   end

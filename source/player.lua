@@ -193,6 +193,26 @@ function player:update(dt)
     player.state = 0
     player.physics:setPosition(-500, -500)
   end
+  
+  -- Perform the slow fly-down after the intro
+  if self.state == -10 then
+    
+    local px, py = player.physics:getPosition()
+    player.physics:setY(py + (128 * dt))
+    
+    if py > 1080 then
+      self.state = -11
+      self.stateTimer = 3
+      self.physics:applyLinearImpulse(0, 5000)
+    end
+    
+  end
+  
+  -- Pause, then show the tutorial message
+  if self.state == -11 and self.stateTimer == 0 then
+    textBox:start("tutorial")
+    self.state = 1
+  end
 
 end
 

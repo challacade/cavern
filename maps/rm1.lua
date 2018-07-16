@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 150,
+  nextobjectid = 151,
   properties = {},
   tilesets = {
     {
@@ -255,6 +255,19 @@ return {
             ["down"] = true,
             ["left"] = true
           }
+        },
+        {
+          id = 150,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 256,
+          y = 0,
+          width = 512,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

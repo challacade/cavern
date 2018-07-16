@@ -31,8 +31,12 @@ function textBox:start(m)
     textBox:init("pickup")
   end
   
-  if m == "failedLoad" then
+  if m == "failedLoad" or m == "tutorial" then
     textBox:init("failedLoad")
+  end
+  
+  if m == "tutorial" then
+    textBox:init("tutorial")
   end
   
   if m == "intro" then
@@ -100,6 +104,17 @@ function textBox:init(type)
     textBox.height = 170
     textBox.textX = textBox.x + 40
     textBox.textY = textBox.y + 60
+    textBox.font = fonts.pickup
+    textBox.visible = true
+  end
+  
+  if type == "tutorial" then
+    textBox.x = 180
+    textBox.y = 60
+    textBox.width = gameWidth - 360
+    textBox.height = 189
+    textBox.textX = textBox.x + 40
+    textBox.textY = textBox.y + 44
     textBox.font = fonts.pickup
     textBox.visible = true
   end
