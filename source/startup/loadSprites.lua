@@ -15,6 +15,7 @@ sprites.player.aquaPack = love.graphics.newImage('sprites/player/aquapack.png')
 
 -- Images for everything relating to the environment and levels
 sprites.environment = {}
+sprites.environment.bg = love.graphics.newImage('sprites/environment/bg.png')
 sprites.environment.waterSheet = love.graphics.newImage('sprites/environment/waterSheet.png')
 sprites.environment.rockySurface = love.graphics.newImage('sprites/environment/rockySurface.png')
 sprites.environment.crack = love.graphics.newImage('sprites/environment/crack.png')

@@ -1,6 +1,9 @@
 local function drawGameplay()
   love.graphics.setLineWidth(2)
   
+  -- Draw the background (drawn before anything else)
+  background:draw()
+  
   -- Draw the credits (only in rmCredits)
   credits:draw()
 

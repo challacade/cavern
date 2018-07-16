@@ -47,6 +47,7 @@ function getGlobals()
   require("source/ui/mainMenu")
   
   require("source/levels/intro")
+  require("source/levels/background")
 
   sti = require("source/libraries/sti")
   require("source/levels/map_loader")
