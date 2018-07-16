@@ -19,6 +19,11 @@ local function spikeInit(enemy, x, y, arg)
   enemy.barY = 90
   enemy.groundDir = arg
   enemy.id = math.random()
+  
+  -- Bar should be below the enemy if upside-down
+  if arg == "up" then
+    enemy.barY = -80
+  end
 
   enemy.moveTotalTime = 2
   enemy.moveTimer = 1

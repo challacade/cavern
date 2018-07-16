@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 152,
+  nextobjectid = 155,
   properties = {},
   tilesets = {
     {
@@ -311,73 +311,7 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {
-        {
-          id = 132,
-          name = "blaster",
-          type = "",
-          shape = "rectangle",
-          x = 2048,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 134,
-          name = "rocket",
-          type = "",
-          shape = "rectangle",
-          x = 1792,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 140,
-          name = "aquaPack",
-          type = "",
-          shape = "rectangle",
-          x = 1024,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 142,
-          name = "harpoon",
-          type = "",
-          shape = "rectangle",
-          x = 1536,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 146,
-          name = "health1",
-          type = "",
-          shape = "rectangle",
-          x = 1280,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -491,19 +425,6 @@ return {
       properties = {},
       objects = {
         {
-          id = 133,
-          name = "",
-          type = "bat",
-          shape = "rectangle",
-          x = 384,
-          y = 1152,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 138,
           name = "",
           type = "spike",
@@ -530,6 +451,51 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 152,
+          name = "",
+          type = "spike",
+          shape = "rectangle",
+          x = 256,
+          y = 768,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["arg"] = "left"
+          }
+        },
+        {
+          id = 153,
+          name = "",
+          type = "spike",
+          shape = "rectangle",
+          x = 2432,
+          y = 512,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["arg"] = "right"
+          }
+        },
+        {
+          id = 154,
+          name = "",
+          type = "spike",
+          shape = "rectangle",
+          x = 1408,
+          y = 384,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["arg"] = "up"
+          }
         }
       }
     }
