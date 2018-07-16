@@ -9,8 +9,8 @@ function background:draw()
   local imgW = self.img:getWidth()
   local imgH = self.img:getHeight()
   
-  for i=0,10 do
-    for j=0,5 do
+  for i = 0, (mapdata.map.width * 128 / imgW) do
+    for j = 0, (mapdata.map.height * 128 / imgH) do
       love.graphics.draw(self.img, i * imgW, j * imgH)
     end
   end

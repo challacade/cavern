@@ -28,7 +28,6 @@ function startup()
     vsync = true})
 
 
-
   -- GAME SETUP
 
   -- Physics setup
@@ -43,5 +42,5 @@ function startup()
   getGlobals()
 
   -- Sets first map of the game
-  changeToMap("blank")
+  changeToMap("rm28")
 end
