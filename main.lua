@@ -57,11 +57,12 @@ function love.draw()
   
   saveUtil:drawMessage()
 
-  love.graphics.print(debug, 0, 100)
-  love.graphics.print(debug2, 0, 120)
-
   blackScreen:draw()
   flash:draw()
+  
+  love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.print(debug, 0, 100)
+  love.graphics.print(debug2, 0, 120)
 
 end
 

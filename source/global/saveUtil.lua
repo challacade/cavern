@@ -24,7 +24,7 @@ function saveUtil:update(dt)
   -- State 1: Message fades in
   if saveUtil.message.state == 1 then
     
-    saveUtil.message.alpha = saveUtil.message.alpha + (dt/2)
+    saveUtil.message.alpha = saveUtil.message.alpha + (dt*1.5)
     
     if saveUtil.message.alpha >= 1 then
       
@@ -58,7 +58,8 @@ end
 function saveUtil:drawMessage()
   
   -- The message is only visible at states 1 and 2
-  if saveUtil.message.state > 0 then
+  -- Also, only show the message if no message box is visible
+  if saveUtil.message.state > 0 and textBox.active == false then
     
     love.graphics.setColor(1, 1, 1, saveUtil.message.alpha)
     love.graphics.setFont(fonts.menu.button)
