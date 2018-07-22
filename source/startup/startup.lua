@@ -42,5 +42,5 @@ function startup()
   getGlobals()
 
   -- Sets first map of the game
-  changeToMap("rm28")
+  changeToMap("rmMainMenu")
 end

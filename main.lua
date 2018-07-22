@@ -54,9 +54,11 @@ function love.draw()
   menuDraw()
 
   textBox:draw()
+  
+  saveUtil:drawMessage()
 
-  love.graphics.print(debug)
-  love.graphics.print(debug2, 0, 20)
+  love.graphics.print(debug, 0, 100)
+  love.graphics.print(debug2, 0, 120)
 
   blackScreen:draw()
   flash:draw()

@@ -50,8 +50,9 @@ local function drawWalls()
     if w.dontDraw == false then
 
       -- Draw the full rectangle for each wall
-      --love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
+      love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
       
+      --[[
       love.graphics.setColor(1, 1, 1, 1)
       
       local spr = sprites.environment.wall
@@ -61,6 +62,8 @@ local function drawWalls()
           love.graphics.draw(spr, w.x + (itrX * 128), w.y + (itrY * 128))
         end
       end
+      
+      ]]
 
       -- Note: this is done in a different for loop than the one above because
       -- the ground color needs to be drawn after all the surface rocks have been

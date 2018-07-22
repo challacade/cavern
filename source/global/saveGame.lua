@@ -1,8 +1,10 @@
 function saveGame()
+  gameState.saveCount = gameState.saveCount + 1
   gameState.player.x = player.physics:getX()
   gameState.player.y = player.physics:getY()
   local temp = Tserial.pack(gameState)
   love.filesystem.write("savefile.txt", temp)
+  saveUtil:startMessage()
 end
 
 function loadGame()

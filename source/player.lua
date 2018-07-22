@@ -212,6 +212,7 @@ function player:update(dt)
   if self.state == -11 and self.stateTimer == 0 then
     textBox:start("tutorial")
     self.state = 1
+    saveGame()
   end
 
 end

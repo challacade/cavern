@@ -3,6 +3,10 @@ gameState = {}
 gameState.player = {}
 gameState.pickups = {}
 
+-- Number of times the game has been saved.
+-- Used to prevent certain save blocks from spawning
+gameState.saveCount = 0
+
 -- State stores if update functions should occur
 gameState.state = 1
 

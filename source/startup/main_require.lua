@@ -8,6 +8,7 @@ function getGlobals()
   require("source/global/collision_classes")
   require("source/global/gameState")
   require("source/global/saveGame")
+  require("source/global/saveUtil")
   getCollisionClasses()
 
   Camera = require("source/libraries/hump/camera")

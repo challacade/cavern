@@ -20,6 +20,9 @@ local function updateGameplay(dt)
 
   -- Update all pickup objects in the current map
   pickups:update(dt)
+  
+  -- Update the saveUtil (for the saveMessage)
+  saveUtil:update(dt)
 
   -- Update camera
   cam:update(dt)
