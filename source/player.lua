@@ -204,6 +204,7 @@ function player:update(dt)
       self.state = -11
       self.stateTimer = 3
       self.physics:applyLinearImpulse(0, 5000)
+      saveGame()
     end
     
   end
@@ -212,7 +213,6 @@ function player:update(dt)
   if self.state == -11 and self.stateTimer == 0 then
     textBox:start("tutorial")
     self.state = 1
-    saveGame()
   end
 
 end

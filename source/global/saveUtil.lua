@@ -58,8 +58,8 @@ end
 function saveUtil:drawMessage()
   
   -- The message is only visible at states 1 and 2
-  -- Also, only show the message if no message box is visible
-  if saveUtil.message.state > 0 and textBox.active == false then
+  -- Also, only show the message if the player is in control
+  if saveUtil.message.state > 0 and player.state == 1 then
     
     love.graphics.setColor(1, 1, 1, saveUtil.message.alpha)
     love.graphics.setFont(fonts.menu.button)
