@@ -2,7 +2,10 @@
 -- When the player hits one of these, the game saves.
 -- saveUtil stores these blocks and handles the save message.
 saveUtil = {}
-saveUtil.saveBlocks = {}
+
+-- Block starts offscreen so the player can't hit it.
+saveUtil.saveBlock = {}
+saveUtil.saveBlock.x = -1000
 
 -- Info for the "Saving..." message
 saveUtil.message = {}
@@ -11,13 +14,37 @@ saveUtil.message.stateTimer = 0
 saveUtil.message.text = "Saving..."
 saveUtil.message.alpha = 0
 
-function saveUtil:startMessage()
+-- Spawn a save block
+function saveUtil:spawnSave(x, num)
+
+  -- Do not spawn this block if its value is greater
+  -- than the number of saves. This prevents blocks
+  -- that have been used already from spawning again.
+  if num < gameState.saveCount then
+    return
+  end
   
-  saveUtil.message.state = 1
+  saveUtil.saveBlock.x = x
   
 end
 
+function saveUtil:destroySave()
+  -- Move the block offscreen so the player can't hit it
+  saveUtil.saveBlock.x = -1000
+end
+
+-- Start the "Saving..." message
+function saveUtil:startMessage()  
+  saveUtil.message.state = 1  
+end
+
 function saveUtil:update(dt)
+  
+  -- Collision with player
+  local px = player.physics:getX()
+  if math.abs(saveUtil.saveBlock.x - px) < 128 then
+    saveGame()
+  end
   
   saveUtil.message.stateTimer = updateTimer(saveUtil.message.stateTimer, dt)
   

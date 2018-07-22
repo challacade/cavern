@@ -205,6 +205,10 @@ function player:update(dt)
       self.stateTimer = 3
       self.physics:applyLinearImpulse(0, 5000)
       saveGame()
+      
+      -- After saving the first time, spawn a new save block
+      -- (it's the one in this same starting room)
+      saveUtil:spawnSave(2816, 1)
     end
     
   end

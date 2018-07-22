@@ -218,6 +218,13 @@ function changeToMap(newMap, transition)
       spawnVine(v.x, v.y)
     end
   end
+  
+  -- Spawns the save block in the current map
+  if mapdata.map.layers["Saves"] then
+    for i, s in ipairs(mapdata.map.layers["Saves"].objects) do
+      saveUtil:spawnSave(s.x, s.properties["num"])
+    end
+  end
 
   -- Used by the camera
   mapdata.room = mapdata.map.layers["Room"].objects[1]

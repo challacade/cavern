@@ -56,6 +56,9 @@ local function destroyAll()
     e.physics:destroy()
     enemies[i] = nil
   end
+  
+  -- Move the saveBlock offscreen so the player can't hit
+  saveUtil.saveBlock.x = -1000
 
 end
 

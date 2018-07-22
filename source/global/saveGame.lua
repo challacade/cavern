@@ -5,6 +5,7 @@ function saveGame()
   local temp = Tserial.pack(gameState)
   love.filesystem.write("savefile.txt", temp)
   saveUtil:startMessage()
+  saveUtil:destroySave()
 end
 
 function loadGame()

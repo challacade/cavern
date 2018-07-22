@@ -28,8 +28,8 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  --debug = player.physics:getX()
-  --debug2 = player.physics:getY()
+  debug = saveUtil.saveBlock.x
+  --debug2 = gameState.saveCount
 
 end
 
