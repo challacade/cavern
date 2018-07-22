@@ -8,7 +8,7 @@ return {
   height = 14,
   tilewidth = 128,
   tileheight = 128,
-  nextobjectid = 149,
+  nextobjectid = 150,
   properties = {},
   tilesets = {
     {
@@ -318,6 +318,33 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      name = "Saves",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 149,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 1152,
+          y = 1152,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["num"] = 2
+          }
         }
       }
     }

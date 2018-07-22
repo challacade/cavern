@@ -28,7 +28,7 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  debug = saveUtil.saveBlock.x
+  --debug = saveUtil.saveBlock.x
   --debug2 = gameState.saveCount
 
 end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="20" height="14" tilewidth="128" tileheight="128" nextobjectid="150">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="20" height="14" tilewidth="128" tileheight="128" nextobjectid="151">
  <tileset firstgid="1" name="main_sheet" tilewidth="128" tileheight="128" tilecount="1" columns="1">
   <image source="tilesheets/sheet1.png" width="128" height="128"/>
  </tileset>
@@ -71,4 +71,11 @@
  </objectgroup>
  <objectgroup name="Water"/>
  <objectgroup name="Vines"/>
+ <objectgroup name="Saves">
+  <object id="150" x="1792" y="1152" width="128" height="128">
+   <properties>
+    <property name="num" type="int" value="3"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
