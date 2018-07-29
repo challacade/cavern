@@ -108,6 +108,7 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "1" then
     player.weapon = 1
+    soundManager:play("blip")
   end
   if key == "2" then
     player.weapon = 2
