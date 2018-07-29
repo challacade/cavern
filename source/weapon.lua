@@ -33,6 +33,9 @@ function spawnWeapon(x, y)
 
     -- This weapon has a trail, which is spawned here
     spawnTrail(weapon.id, 3, 8, {1, 0, 0, 0.706})
+    
+    -- Player laser sound effect
+    soundManager:play("laser")
 
   elseif weapon.type == 2 then
 
