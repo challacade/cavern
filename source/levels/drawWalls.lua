@@ -35,7 +35,7 @@ local function drawWalls()
   end
 
   -- Draw the ground
-  love.graphics.setColor(0.247, 0.176, 0.114, 1)
+  love.graphics.setColor(1, 1, 1, 1)
 
   for i,w in ipairs(mapdata.walls) do
     singleWallRocks(w)
