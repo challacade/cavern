@@ -30,6 +30,9 @@ local function drawGameplay()
 
   -- Draw trails
   trails:draw()
+  
+  -- Draw vines
+  vines:draw()
 
   -- Draw water and ripples after everything else to give underwater objects
   -- a blue tint (since the drawing is translucent)

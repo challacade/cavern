@@ -15,6 +15,7 @@ function spawnParticle(x, y, type, dir)
   particle.sprite = nil
   particle.type = type
   particle.fade = true
+  particle.gravity = true
 
   -- dir is a vector value used for applying an impulse upon creation
   particle.dir = dir

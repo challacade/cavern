@@ -41,3 +41,13 @@ function vines:update(dt)
   end
 
 end
+
+function vines:draw()
+
+  for i,v in ipairs(self) do
+    love.graphics.setColor(1, 1, 1, 1)
+    local vx, vy = v:getPosition()
+    love.graphics.draw(sprites.environment.vine, vx-64, vy-320)
+  end
+
+end

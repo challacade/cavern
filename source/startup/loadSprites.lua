@@ -21,6 +21,7 @@ sprites.environment.waterSheet = love.graphics.newImage('sprites/environment/wat
 sprites.environment.rockySurface = love.graphics.newImage('sprites/environment/rockySurface.png')
 sprites.environment.crack = love.graphics.newImage('sprites/environment/crack.png')
 sprites.environment.breakParticle = love.graphics.newImage('sprites/environment/breakParticle.png')
+sprites.environment.vine = love.graphics.newImage('sprites/environment/vine.png')
 
 -- Images for enemies
 sprites.enemies = {}
