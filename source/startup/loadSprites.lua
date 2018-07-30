@@ -39,6 +39,7 @@ sprites.enemies.egg = love.graphics.newImage('sprites/enemies/egg.png')
 sprites.pickups = {}
 sprites.pickups.health = love.graphics.newImage('sprites/items/healthPickup.png')
 sprites.pickups.item = love.graphics.newImage('sprites/items/itemPickup.png')
+sprites.pickups.pickup_back = love.graphics.newImage('sprites/items/pickup_back.png')
 
 -- Individual blob shapes for drawing fire
 sprites.fire = {}

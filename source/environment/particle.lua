@@ -41,11 +41,31 @@ function spawnParticle(x, y, type, dir)
     particle.timer = 0.5
     particle.alpha = 0.314
   end
+  
+  if type == "pickupSparkle" then
+    particle.width = 4
+    particle.height = 4
+    particle.corner = 1
+    particle.timer = 0.5
+    particle.alpha = 0.314
+    particle.gravity = false
+  end
+  
+  local particleWorld = gravWorld
+  
+  if particle.gravity == false then
+    particleWorld = world
+  end
 
-  particle.physics = gravWorld:newBSGRectangleCollider(x, y, particle.width,
+  particle.physics = particleWorld:newBSGRectangleCollider(x, y, particle.width,
     particle.height, particle.corner)
   particle.physics:setFixedRotation(true)
-  particle.physics:setCollisionClass('Particle')
+  
+  if particle.gravity then
+    particle.physics:setCollisionClass('Particle')
+  else
+    particle.physics:setCollisionClass('Ignore')
+  end
 
   if particle.dir ~= nil then
     particle.physics:applyLinearImpulse(particle.dir:unpack())
@@ -100,6 +120,11 @@ function particles:draw()
     if p.type == "laserDebris" then
       love.graphics.setColor(1, 0, 0, p.alpha)
       love.graphics.rectangle("fill", px-4, py-4, 8, 8)
+    end
+    
+    if p.type == "pickupSparkle" then
+      love.graphics.setColor(1, 1, 1, p.alpha)
+      love.graphics.circle("fill", px, py, 4)
     end
 
   end

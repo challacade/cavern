@@ -14,6 +14,7 @@ function spawnPickup(name, x, y)
   pickup.dead = false
   pickup.float = true
   pickup.radius = 40
+  pickup.timer = 0.1
   
   -- used for floating
   pickup.state = 0
@@ -89,6 +90,28 @@ function pickups:update(dt)
         textBox:start("health")
       end
     end
+    
+    p.timer = updateTimer(p.timer, dt)
+    
+    --[[
+    
+    -- Spawn a sparkle
+    if p.timer == 0 then
+      
+      local px, py = p.physics:getPosition()
+      
+      -- Seed the randomness with the pickup's Y position
+      -- (since it is constantly moving)
+      math.randomseed(py)
+      
+      local moveVector = vector(10, 0)
+      moveVector:rotateInplace(math.random(0, 2 * math.pi))
+      spawnParticle(px, py, "pickupSparkle", moveVector)
+      p.timer = 0.2
+    
+    end
+    
+    ]]
 
   end
 
@@ -106,6 +129,12 @@ function pickups:draw()
   for _,p in ipairs(self) do
     local px, py = p.physics:getPosition()
     love.graphics.setColor(1, 1, 1, 1)
+    
+    -- Background sprite
+    local bg = sprites.pickups.pickup_back
+    love.graphics.draw(bg, px, py, nil, 1, 1, bg:getWidth()/2, bg:getHeight()/2)
+      
+    -- Actual pickup sprite
     love.graphics.draw(p.sprite, px, py, nil, 1, 1, p.sprite:getWidth()/2, p.sprite:getHeight()/2)
   end
 end
