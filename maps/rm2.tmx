@@ -91,7 +91,7 @@
     <property name="arg" value="down"/>
    </properties>
   </object>
-  <object id="153" name="spike" type="spike" x="6144" y="768" width="128" height="128">
+  <object id="153" name="spike" type="spike" x="6400" y="768" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>

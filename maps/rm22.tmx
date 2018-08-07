@@ -47,12 +47,13 @@
     <property name="spawnY" type="int" value="0"/>
    </properties>
   </object>
-  <object id="146" name="bat" type="bat" x="896" y="512" width="128" height="128"/>
-  <object id="147" name="bat" type="bat" x="1280" y="512" width="128" height="128"/>
-  <object id="148" name="bat" type="bat" x="1664" y="512" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Pickups"/>
- <objectgroup name="Enemies"/>
+ <objectgroup name="Enemies">
+  <object id="148" name="bat" type="bat" x="1664" y="512" width="128" height="128"/>
+  <object id="147" name="bat" type="bat" x="1280" y="512" width="128" height="128"/>
+  <object id="146" name="bat" type="bat" x="896" y="512" width="128" height="128"/>
+ </objectgroup>
  <objectgroup name="Breakables"/>
  <objectgroup name="Water"/>
  <objectgroup name="Vines"/>

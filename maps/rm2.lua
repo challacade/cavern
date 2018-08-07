@@ -363,7 +363,7 @@ return {
           name = "spike",
           type = "spike",
           shape = "rectangle",
-          x = 6144,
+          x = 6400,
           y = 768,
           width = 128,
           height = 128,

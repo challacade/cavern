@@ -92,29 +92,24 @@
  </objectgroup>
  <objectgroup name="Pickups"/>
  <objectgroup name="Enemies">
-  <object id="155" name="bat" type="bat" x="9472" y="512" width="128" height="128"/>
+  <object id="155" name="bat" type="bat" x="9472" y="384" width="128" height="128"/>
   <object id="156" name="bat" type="bat" x="6528" y="768" width="128" height="128"/>
   <object id="157" name="bat" type="bat" x="6656" y="1280" width="128" height="128"/>
   <object id="158" name="bat" type="bat" x="7296" y="1152" width="128" height="128"/>
   <object id="159" name="bat" type="bat" x="3456" y="512" width="128" height="128"/>
   <object id="160" name="bat" type="bat" x="2560" y="896" width="128" height="128"/>
   <object id="161" name="bat" type="bat" x="1664" y="512" width="128" height="128"/>
-  <object id="162" name="spike" type="spike" x="8448" y="640" width="128" height="128">
+  <object id="162" name="spike" type="spike" x="8320" y="640" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
   </object>
-  <object id="163" name="spike" type="spike" x="7808" y="640" width="128" height="128">
+  <object id="164" name="spike" type="spike" x="5632" y="1408" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
   </object>
-  <object id="164" name="spike" type="spike" x="5376" y="1408" width="128" height="128">
-   <properties>
-    <property name="arg" value="down"/>
-   </properties>
-  </object>
-  <object id="165" name="spike" type="spike" x="4352" y="1408" width="128" height="128">
+  <object id="165" name="spike" type="spike" x="4480" y="1408" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
@@ -134,12 +129,12 @@
     <property name="arg" value="up"/>
    </properties>
   </object>
-  <object id="169" name="spike" type="spike" x="4224" y="1152" width="128" height="128">
+  <object id="169" name="spike" type="spike" x="4352" y="1152" width="128" height="128">
    <properties>
     <property name="arg" value="up"/>
    </properties>
   </object>
-  <object id="170" name="spike" type="spike" x="5504" y="1152" width="128" height="128">
+  <object id="170" name="spike" type="spike" x="5760" y="1152" width="128" height="128">
    <properties>
     <property name="arg" value="up"/>
    </properties>

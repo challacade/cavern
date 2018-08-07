@@ -94,17 +94,17 @@
   <object id="151" name="bat" type="bat" x="3072" y="512" width="128" height="128"/>
   <object id="152" name="bat" type="bat" x="3712" y="1664" width="128" height="128"/>
   <object id="153" name="bat" type="bat" x="4224" y="1664" width="128" height="128"/>
-  <object id="154" name="spike" type="spike" x="2112" y="1792" width="128" height="128">
+  <object id="154" name="spike" type="spike" x="2272" y="1792" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
   </object>
-  <object id="155" name="spike" type="spike" x="2624" y="1536" width="128" height="128">
+  <object id="155" name="spike" type="spike" x="2784" y="1536" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
   </object>
-  <object id="156" name="spike" type="spike" x="3136" y="1280" width="128" height="128">
+  <object id="156" name="spike" type="spike" x="3296" y="1280" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>

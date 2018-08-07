@@ -92,7 +92,7 @@
     <property name="arg" value="right"/>
    </properties>
   </object>
-  <object id="145" name="spike" type="spike" x="1216" y="2432" width="128" height="128">
+  <object id="145" name="spike" type="spike" x="1408" y="2432" width="128" height="128">
    <properties>
     <property name="arg" value="down"/>
    </properties>
@@ -107,7 +107,7 @@
     <property name="arg" value="right"/>
    </properties>
   </object>
-  <object id="148" name="spike" type="spike" x="1216" y="3328" width="128" height="128">
+  <object id="148" name="spike" type="spike" x="1344" y="3328" width="128" height="128">
    <properties>
     <property name="arg" value="up"/>
    </properties>

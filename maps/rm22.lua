@@ -223,45 +223,6 @@ return {
             ["spawnX"] = 200,
             ["spawnY"] = 0
           }
-        },
-        {
-          id = 146,
-          name = "bat",
-          type = "bat",
-          shape = "rectangle",
-          x = 896,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 147,
-          name = "bat",
-          type = "bat",
-          shape = "rectangle",
-          x = 1280,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 148,
-          name = "bat",
-          type = "bat",
-          shape = "rectangle",
-          x = 1664,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -285,7 +246,47 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 148,
+          name = "bat",
+          type = "bat",
+          shape = "rectangle",
+          x = 1664,
+          y = 512,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 147,
+          name = "bat",
+          type = "bat",
+          shape = "rectangle",
+          x = 1280,
+          y = 512,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 146,
+          name = "bat",
+          type = "bat",
+          shape = "rectangle",
+          x = 896,
+          y = 512,
+          width = 128,
+          height = 128,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",

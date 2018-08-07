@@ -69,22 +69,10 @@
  </objectgroup>
  <objectgroup name="Pickups">
   <object id="143" name="health2" x="4480" y="768" width="128" height="128"/>
-  <object id="150" name="blaster" x="7552" y="640" width="128" height="128"/>
-  <object id="151" name="harpoon" x="7040" y="640" width="128" height="128"/>
-  <object id="152" name="aquaPack" x="6784" y="640" width="128" height="128"/>
-  <object id="153" name="rocket" x="7296" y="640" width="128" height="128"/>
-  <object id="154" name="health1" x="6528" y="640" width="128" height="128"/>
-  <object id="155" name="health2" x="6272" y="640" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Enemies"/>
  <objectgroup name="Breakables"/>
  <objectgroup name="Water"/>
  <objectgroup name="Vines"/>
- <objectgroup name="Saves">
-  <object id="156" x="6272" y="512" width="128" height="128">
-   <properties>
-    <property name="num" type="int" value="7"/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup name="Saves"/>
 </map>

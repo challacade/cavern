@@ -297,84 +297,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
-        },
-        {
-          id = 150,
-          name = "blaster",
-          type = "",
-          shape = "rectangle",
-          x = 7552,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 151,
-          name = "harpoon",
-          type = "",
-          shape = "rectangle",
-          x = 7040,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 152,
-          name = "aquaPack",
-          type = "",
-          shape = "rectangle",
-          x = 6784,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 153,
-          name = "rocket",
-          type = "",
-          shape = "rectangle",
-          x = 7296,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 154,
-          name = "health1",
-          type = "",
-          shape = "rectangle",
-          x = 6528,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 155,
-          name = "health2",
-          type = "",
-          shape = "rectangle",
-          x = 6272,
-          y = 640,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },
@@ -431,23 +353,7 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {
-        {
-          id = 156,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 6272,
-          y = 512,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["num"] = 7
-          }
-        }
-      }
+      objects = {}
     }
   }
 }
