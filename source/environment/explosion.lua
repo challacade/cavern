@@ -25,7 +25,9 @@ function explode(x, y)
   -- finds all enemies in the blast radius
   local ens = world:queryCircleArea(x, y, radius, {'Enemy'})
   for i,e in ipairs(ens) do
-    e.parent:damage(100)
+    if e.parent.type ~= "fish" then
+      e.parent:damage(100)
+    end
   end
 
   -- finds all breakable walls in the blast radius
