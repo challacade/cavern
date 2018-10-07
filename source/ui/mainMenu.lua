@@ -104,6 +104,11 @@ function buttons:click()
         -- Toggle sound to be on/off
         soundOn = not soundOn
 
+      elseif i == 4 then -- GitHub button
+
+        -- Open the GitHub page for this game!
+        love.system.openURL("https://github.com/kyleschaub/cavern")
+
       end
 
     end
