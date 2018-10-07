@@ -37,6 +37,9 @@ function startup()
   world = wf.newWorld(0, 0, true) -- No gravity, bodies can sleep
   gravWorld = wf.newWorld(0, 1000, true)
 
+  -- Global sound variable, game starts with it on
+  soundOn = true
+
   -- Requires all global source files
   require("source/startup/main_require")
   getGlobals()

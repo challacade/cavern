@@ -99,6 +99,11 @@ function buttons:click()
         intro.timer = 1.5
         changeToMap("rmIntro")
 
+      elseif i == 3 then -- Sound button
+
+        -- Toggle sound to be on/off
+        soundOn = not soundOn
+
       end
 
     end

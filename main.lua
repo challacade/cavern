@@ -28,6 +28,12 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
+  if soundOn then
+    debug = 1
+  else
+    debug = -1
+  end
+
   --debug = scale
   --debug2 = gameState.saveCount
 
