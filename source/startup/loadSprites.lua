@@ -49,3 +49,8 @@ sprites.fire.f2 = love.graphics.newImage('sprites/fire/fire_2.png')
 sprites.fire.f3 = love.graphics.newImage('sprites/fire/fire_3.png')
 sprites.fire.f4 = love.graphics.newImage('sprites/fire/fire_4.png')
 sprites.fire.f5 = love.graphics.newImage('sprites/fire/fire_5.png')
+
+-- Images for UI
+sprites.ui = {}
+sprites.ui.sound = love.graphics.newImage('sprites/ui/sound.png')
+sprites.ui.github = love.graphics.newImage('sprites/ui/github.png')
