@@ -117,6 +117,7 @@ function buttons:click()
         -- This is the state for new game sequence
         intro.state = 1
         intro.timer = 1
+        buttons.message = ""
         changeToMap("rmIntro")
 
       elseif i == 2 then -- Continue button
@@ -124,6 +125,7 @@ function buttons:click()
         -- This is the state for intro's load sequence
         intro.state = 100
         intro.timer = 1.5
+        buttons.message = ""
         changeToMap("rmIntro")
 
       elseif i == 3 then -- Sound button
