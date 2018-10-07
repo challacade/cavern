@@ -28,7 +28,7 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  --debug = saveUtil.saveBlock.x
+  --debug = scale
   --debug2 = gameState.saveCount
 
 end
@@ -54,12 +54,12 @@ function love.draw()
   menuDraw()
 
   textBox:draw()
-  
+
   saveUtil:drawMessage()
 
   blackScreen:draw()
   flash:draw()
-  
+
   love.graphics.setColor(1, 1, 1, 1)
   love.graphics.print(debug, 0, 100)
   love.graphics.print(debug2, 0, 120)
