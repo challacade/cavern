@@ -13,6 +13,7 @@ fonts.credits.word = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf"
 fonts.menu = {}
 fonts.menu.title = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 146 * scale)
 fonts.menu.button = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 48 * scale)
+fonts.menu.message = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 32 * scale)
 fonts.menu.intro = love.graphics.newFont("fonts/vt323/VT323-Regular.ttf", 48 * scale)
 
 -- Misc fonts

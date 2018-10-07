@@ -11,6 +11,9 @@ local smOffset = 14
 buttons[3] = {smOffset, gameHeight - smSize - smOffset, smSize, smSize, ".sound"}
 buttons[4] = {gameWidth - smSize - smOffset, gameHeight - smSize - smOffset, smSize, smSize, ".github"}
 
+-- This value stores the message displayed at the bottom of the menu
+buttons.message = ""
+
 -- This function draws everything on the Main Menu
 function menuDraw()
 
@@ -19,6 +22,9 @@ function menuDraw()
     love.graphics.setFont(fonts.menu.title)
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.printf("CAVERN", 0, 140 * scale, gameWidth * scale, "center")
+
+    -- Start message off as nothing, will be updated if hovering over a button
+    buttons.message = ""
 
     for _,b in ipairs(buttons) do
 
@@ -29,10 +35,27 @@ function menuDraw()
       local bH = b[4] * scale;
       local bText = b[5];
 
+      -- non-hovering color
       love.graphics.setColor(1, 0, 1, 1)
+
       if buttons:mouseCheck(b) then
+
+        -- hovering color
         love.graphics.setColor(1, 0, 0, 1)
+
+        -- Update the button message at the bottom of the screen
+        if bText == "New Game" then
+          buttons.message = "Start a new game - erases old save file"
+        elseif bText == "Continue" then
+          buttons.message = "Continue from where you left off"
+        elseif bText == ".sound" then
+          buttons.message = "Turn music and sound effects on or off"
+        elseif bText == ".github" then
+          buttons.message = "View the code on GitHub"
+        end
+
       end
+
       love.graphics.rectangle("fill", bX, bY, bW, bH)
 
       love.graphics.setColor(1, 1, 1, 1)
@@ -49,6 +72,10 @@ function menuDraw()
     end
 
   end
+
+  love.graphics.setColor(1, 1, 1, 1)
+  love.graphics.setFont(fonts.menu.message)
+  love.graphics.printf(buttons.message, 0, love.graphics.getHeight() - 80, love.graphics.getWidth(), "center")
 
 end
 
