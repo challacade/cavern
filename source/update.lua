@@ -20,12 +20,15 @@ local function updateGameplay(dt)
 
   -- Update all pickup objects in the current map
   pickups:update(dt)
-  
+
   -- Update the saveUtil (for the saveMessage)
   saveUtil:update(dt)
 
   -- Update camera
   cam:update(dt)
+
+  -- Update background (for parallax)
+  background:update(dt)
 
   -- Update the screen-shake (called right after cam:update)
   shake:update(dt)
@@ -47,7 +50,7 @@ local function updateGameplay(dt)
 
   -- Update enemy projectiles
   enemyProjectiles:update(dt)
-  
+
   -- Update eggs from the final boss
   eggs:update(dt)
 
@@ -65,13 +68,13 @@ local function updateGameplay(dt)
 
   -- Update the blackScreen
   blackScreen:update(dt)
-  
+
   -- Update the flash
   flash:update(dt)
 
   -- Handle trail fade-away (when its weapon is destroyed)
   trails:fadeOut(dt)
-  
+
   -- Update the intro sequence (if necessary)
   intro:update(dt)
 

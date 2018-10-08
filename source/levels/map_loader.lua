@@ -218,7 +218,7 @@ function changeToMap(newMap, transition)
       spawnVine(v.x, v.y)
     end
   end
-  
+
   -- Spawns the save block in the current map
   if mapdata.map.layers["Saves"] then
     for i, s in ipairs(mapdata.map.layers["Saves"].objects) do
@@ -231,12 +231,19 @@ function changeToMap(newMap, transition)
 
   -- Update the gameState with this room name
   gameState.room = newMap
-  
+
   -- Update Background Color
   love.graphics.setBackgroundColor( 0.055, 0.039, 0.027 )
-  
+
   if gameState.room == "rmIntro" then
     love.graphics.setBackgroundColor(0, 0, 0, 1)
   end
-  
+
+  -- put the camera at the correct position in this new map
+  -- (dt isn't needed for the function, so passing 0 here is fine)
+  cam:update(0)
+
+  -- Reset the background parallax
+  background:reset()
+
 end
