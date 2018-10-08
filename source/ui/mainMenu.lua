@@ -36,12 +36,12 @@ function menuDraw()
       local bText = b[5];
 
       -- non-hovering color
-      love.graphics.setColor(1, 0, 1, 1)
+      love.graphics.setColor(0.498, 0.384, 0.357, 1)
 
       if buttons:mouseCheck(b) then
 
         -- hovering color
-        love.graphics.setColor(1, 0, 0, 1)
+        love.graphics.setColor(0.412, 0.322, 0.294)
 
         -- Update the button message at the bottom of the screen
         if bText == "New Game" then
@@ -57,6 +57,11 @@ function menuDraw()
       end
 
       love.graphics.rectangle("fill", bX, bY, bW, bH)
+
+      -- Button border
+      love.graphics.setColor(0.337, 0.259, 0.239)
+      love.graphics.setLineWidth(6)
+      love.graphics.rectangle("line", bX, bY, bW, bH)
 
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.setFont(fonts.menu.button)
