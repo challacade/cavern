@@ -61,6 +61,9 @@ function menuDraw()
       love.graphics.setFont(fonts.menu.button)
 
       if bText == ".sound" then
+        if not soundOn then
+          love.graphics.setColor(0.35, 0.35, 0.35, 0.5)
+        end
         love.graphics.draw(sprites.ui.sound, bX + 15 * scale, bY + 9 * scale, 0, scale, scale)
       elseif bText == ".github" then
         love.graphics.draw(sprites.ui.github, bX + 9 * scale, bY + 8 * scale, 0, scale, scale)
