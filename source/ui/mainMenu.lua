@@ -1,8 +1,8 @@
 -- Stores all clickable buttons on the main menu
 -- By index: X, Y, Width, Height, Message
 buttons = {}
-buttons[1] = {376, 380, 400, 72, "New Game"}
-buttons[2] = {376, 476, 400, 72, "Continue"}
+buttons[1] = {376, 380, 360, 72, "New Game"}
+buttons[2] = {376, 476, 360, 72, "Continue"}
 
 -- Dimensions and offset for the small corner buttons (sound and GitHub)
 local smSize = 72
@@ -61,9 +61,9 @@ function menuDraw()
       love.graphics.setFont(fonts.menu.button)
 
       if bText == ".sound" then
-        love.graphics.draw(sprites.ui.sound, bX + 13 * scale, bY + 7 * scale, 0, scale, scale)
+        love.graphics.draw(sprites.ui.sound, bX + 15 * scale, bY + 9 * scale, 0, scale, scale)
       elseif bText == ".github" then
-        love.graphics.draw(sprites.ui.github, bX + 5 * scale, bY + 5 * scale, 0, scale, scale)
+        love.graphics.draw(sprites.ui.github, bX + 9 * scale, bY + 8 * scale, 0, scale, scale)
       else
         love.graphics.printf(bText, bX, bY + 8 * scale, bW, "center")
       end
