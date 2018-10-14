@@ -1,4 +1,5 @@
 function getGlobals()
+  require("source/libraries/slam")
   require("source/startup/loadFonts")
   require("source/startup/loadSprites")
   require("source/startup/loadSounds")
@@ -48,7 +49,7 @@ function getGlobals()
   require("source/ui/blackScreen")
   require("source/ui/flash")
   require("source/ui/mainMenu")
-  
+
   require("source/levels/intro")
   require("source/levels/background")
 

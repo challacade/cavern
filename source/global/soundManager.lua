@@ -7,7 +7,9 @@ soundManager = {}
 
 -- Use for Sound Effects
 function soundManager:play(snd)
-  
-  sounds[snd]:play()
-  
+
+  if soundOn then
+    sounds[snd]:play()
+  end
+
 end
