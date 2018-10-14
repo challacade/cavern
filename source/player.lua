@@ -386,6 +386,7 @@ function player:hurt(damage)
     self.health = self.health - damage
     damages:spawnDamage(self.physics:getX(), self.physics:getY(), damage)
     shake:start(0.05, 6, 0.01, 0.3)
+    player.barTimer = 3 -- healthbar is visibile for 3 seconds
     soundManager:play("playerHurt")
   end
 end
