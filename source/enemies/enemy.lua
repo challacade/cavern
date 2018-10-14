@@ -93,6 +93,7 @@ function spawnEnemy(x, y, type, arg)
     self.health = self.health - d
     local ex, ey = self.physics:getPosition()
     damages:spawnDamage(ex, ey, d)
+    soundManager:play("enemyHurt")
   end
 
   -- Checks if the player can be seen by the enemy
@@ -163,14 +164,14 @@ end
 function enemies:draw(drawBoss)
   for i,e in ipairs(self) do
     if (e.type == "boss" and drawBoss) or (e.type ~= "boss" and drawBoss == false) then
-      
+
       e:draw()
       e:drawHealthBar()
-      
+
       if e.eye ~= nil then
         e.eye:draw()
       end
-      
+
       -- only for the final boss
       if e.eyes ~= nil then
         for _,eye in ipairs(e.eyes) do

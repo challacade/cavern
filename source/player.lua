@@ -356,6 +356,7 @@ function player:hurt(damage)
     self.health = self.health - damage
     damages:spawnDamage(self.physics:getX(), self.physics:getY(), damage)
     shake:start(0.05, 6, 0.01, 0.3)
+    soundManager:play("playerHurt")
   end
 end
 
