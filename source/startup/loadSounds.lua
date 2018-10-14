@@ -10,6 +10,7 @@ sounds.bombShot = love.audio.newSource("sounds/player/bombShot.wav", "static")
 sounds.explosion = love.audio.newSource("sounds/player/explosion.wav", "static")
 
 sounds.enemyHurt = love.audio.newSource("sounds/enemies/enemyHurt.wav", "static")
+sounds.spikes = love.audio.newSource("sounds/enemies/spikes.wav", "static")
 
 sounds.text = love.audio.newSource("sounds/ui/text.wav", "static")
 

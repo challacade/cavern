@@ -19,7 +19,7 @@ local function spikeInit(enemy, x, y, arg)
   enemy.barY = 90
   enemy.groundDir = arg
   enemy.id = math.random()
-  
+
   -- Bar should be below the enemy if upside-down
   if arg == "up" then
     enemy.barY = -80
@@ -142,6 +142,7 @@ local function spikeInit(enemy, x, y, arg)
       spawnSpike(ex, ey, 3, self.id, self.groundDir)
       spawnSpike(ex, ey, 4, self.id, self.groundDir)
       spawnSpike(ex, ey, 5, self.id, self.groundDir)
+      soundManager:play("spike")
 
       self.scaleTween = nil
       self.stateTimer = 1
