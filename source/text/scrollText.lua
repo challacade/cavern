@@ -40,6 +40,7 @@ function scroll:update(dt)
           self.charNum = self.charNum + 1
           self.text = string.sub(self.fullMessage, 1, self.charNum)
           self.charTimer = self.textSpeed
+          soundManager:play("text")
         end
       else
         if love.keyboard.isDown("space","return", 'w', 'a', 's', 'd') or love.mouse.isDown(1,2) then

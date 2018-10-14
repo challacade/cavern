@@ -5,4 +5,6 @@ sounds = {}
 sounds.laser = love.audio.newSource("sounds/player/laser2.wav", "static")
 --sounds.laser = love.audio.newSource({"sounds/player/laser1.wav", "sounds/player/laser2.wav", "sounds/player/laser3.wav"}, "static")
 
+sounds.text = love.audio.newSource("sounds/ui/text.wav", "static")
+
 sounds.blip = love.audio.newSource("sounds/blip.wav", "static")

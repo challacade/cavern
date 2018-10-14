@@ -179,7 +179,7 @@ function player:update(dt)
       blackScreen.alpha = (py - 1400) / 2300
     end
   end
-  
+
   -- Prevent the player from flying up past the final boss
   if gameState.room == "rmBoss" and player.health > 0 then
     local px, py = player.physics:getPosition()
@@ -187,32 +187,32 @@ function player:update(dt)
       player.physics:setY(600)
     end
   end
-  
+
   -- Freeze the player offscreen if at the main menu
   if gameState.room == "rmMainMenu" then
     player.state = 0
     player.physics:setPosition(-500, -500)
   end
-  
+
   -- Perform the slow fly-down after the intro
   if self.state == -10 then
-    
+
     local px, py = player.physics:getPosition()
     player.physics:setY(py + (128 * dt))
-    
+
     if py > 1080 then
       self.state = -11
       self.stateTimer = 3
       self.physics:applyLinearImpulse(0, 5000)
       saveGame()
-      
+
       -- After saving the first time, spawn a new save block
       -- (it's the one in this same starting room)
       saveUtil:spawnSave(2816, 1)
     end
-    
+
   end
-  
+
   -- Pause, then show the tutorial message
   if self.state == -11 and self.stateTimer == 0 then
     textBox:start("tutorial")
