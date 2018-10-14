@@ -113,6 +113,7 @@ function buttons:click()
     if buttons:mouseCheck(b) then
 
       -- The button has been clicked
+      soundManager:play("click")
 
       if i == 1 then -- New Game button
 
