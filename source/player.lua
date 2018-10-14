@@ -17,6 +17,7 @@ player.health = gameState.player.maxHealth
 player.damaged = 0 -- timer for the damage flash
 player.faded = -1 -- determines if player is translucent for damage flash
 player.fadedTimer = 0 -- timer for flipping faded status
+player.barTimer = 0 -- timer for displaying the player's health bar
 
 player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = 0 -- timer for pause between weapon shots
@@ -57,6 +58,9 @@ function player:update(dt)
 
   -- State timer
   self.stateTimer = updateTimer(self.stateTimer, dt)
+
+  -- Healthbar timer
+  self.barTimer = updateTimer(self.barTimer, dt)
 
   -- Drowning timer
   if self.drowning then
@@ -300,6 +304,32 @@ function player:draw()
     if player.weapon ~= 3 or (self.shotCooldown <= 0) then
       love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
     end
+  end
+
+end
+
+function player:drawHealth()
+
+  local px, py = self.physics:getPosition()
+  local mx, my = cam:mousePosition()
+
+  -- Draw player's healthbar only if the player has been damaged recently
+  -- or if the mouse is overtop (or close to overtop) the player
+  -- Don't draw anything if the player has no health left
+  if (player.barTimer > 0 or distance(px, py, mx, my) < 100) and player.health > 0 then
+
+    local multi = 4 -- multiplier to increase the size of the healthbar
+    local barWidth = gameState.player.maxHealth * multi
+
+    -- Draw the back of the bar (the red part)
+    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.rectangle("fill", px - barWidth/2, py - 124, barWidth, 16)
+
+    -- Draw the front of the bar (the green part)
+    local greenWidth = player.health / gameState.player.maxHealth * barWidth
+    love.graphics.setColor(0, 1, 0, 1)
+    love.graphics.rectangle("fill", px - barWidth/2, py - 124, greenWidth, 16)
+
   end
 
 end
