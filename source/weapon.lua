@@ -33,7 +33,7 @@ function spawnWeapon(x, y)
 
     -- This weapon has a trail, which is spawned here
     spawnTrail(weapon.id, 3, 8, {1, 0, 0, 0.706})
-    
+
     -- Player laser sound effect
     soundManager:play("laser")
 
@@ -52,6 +52,8 @@ function spawnWeapon(x, y)
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(wep.sprite, wx, wy, nil, 1, 1, wep.sprite:getWidth()/2, wep.sprite:getHeight()/2)
     end
+
+    soundManager:play("bombShot")
 
   elseif weapon.type == 3 then
 

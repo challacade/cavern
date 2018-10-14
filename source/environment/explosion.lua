@@ -1,5 +1,7 @@
 function explode(x, y)
 
+  soundManager:play("explosion")
+
   local radius = 250
 
   -- Spawn the particles for the explosion
