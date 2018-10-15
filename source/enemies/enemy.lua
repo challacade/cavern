@@ -90,6 +90,7 @@ function spawnEnemy(x, y, type, arg)
   end
 
   function enemy:damage(d)
+    d = d + math.random(0, 1)
     self.health = self.health - d
     local ex, ey = self.physics:getPosition()
     damages:spawnDamage(ex, ey, d)

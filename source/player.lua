@@ -381,6 +381,7 @@ end
 
 -- Player takes damage
 function player:hurt(damage)
+  damage = damage + math.random(0, 1)
   if self.damaged == 0 then
     self.damaged = 1
     self.health = self.health - damage
