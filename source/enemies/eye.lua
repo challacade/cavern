@@ -17,7 +17,11 @@ function spawnEye(x, y, rot, scale, spr, args)
 
     eye.x = x
     eye.y = y
-    eye.rot = rot
+
+    -- Only look at the player if the player is alive
+    if player.health > 0 then
+      eye.rot = rot
+    end
 
   end
 
