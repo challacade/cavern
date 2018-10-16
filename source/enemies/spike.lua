@@ -142,7 +142,7 @@ local function spikeInit(enemy, x, y, arg)
       spawnSpike(ex, ey, 3, self.id, self.groundDir)
       spawnSpike(ex, ey, 4, self.id, self.groundDir)
       spawnSpike(ex, ey, 5, self.id, self.groundDir)
-      soundManager:play("spike")
+      soundManager:play("spikes")
 
       self.scaleTween = nil
       self.stateTimer = 1
