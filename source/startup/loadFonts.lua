@@ -19,3 +19,4 @@ fonts.menu.intro = love.graphics.newFont("fonts/vt323/VT323-Regular.ttf", 48 * s
 -- Misc fonts
 fonts.misc = {}
 fonts.misc.save = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 36 * scale)
+fonts.misc.tutorial = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 49 * scale)

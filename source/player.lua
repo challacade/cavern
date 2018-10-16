@@ -131,6 +131,11 @@ function player:update(dt)
     player.faded = 1
   end
 
+  -- Triggers the tutorial message to disappear
+  if gameState.tutorial and px > 1664 then
+    tutorial.active = false
+  end
+
   -- Update jetpack timer (for spawning fire particles)
   self.jetpackTimer = updateTimer(self.jetpackTimer, dt)
 
@@ -219,7 +224,8 @@ function player:update(dt)
 
   -- Pause, then show the tutorial message
   if self.state == -11 and self.stateTimer == 0 then
-    textBox:start("tutorial")
+    --textBox:start("tutorial")
+    tutorial:start()
     self.state = 1
   end
 

@@ -54,6 +54,9 @@ local function drawGameplay()
   -- Draw the player's healthbar
   player:drawHealth()
 
+  -- Draw the tutorial text (when applicable)
+  tutorial:draw()
+
   if gameState.room == "rmBoss" then
 
     -- find the boss object

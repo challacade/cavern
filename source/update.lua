@@ -75,6 +75,9 @@ local function updateGameplay(dt)
   -- Handle trail fade-away (when its weapon is destroyed)
   trails:fadeOut(dt)
 
+  -- Update the tutorial
+  tutorial:update(dt)
+
   -- Update the intro sequence (if necessary)
   intro:update(dt)
 

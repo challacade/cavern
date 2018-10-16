@@ -25,3 +25,6 @@ gameState.pickups.harpoon = false
 gameState.pickups.aquaPack = false
 gameState.pickups.health1 = false
 gameState.pickups.health2 = false
+
+-- Changes to false after the tutorial text disappears
+gameState.tutorial = true
