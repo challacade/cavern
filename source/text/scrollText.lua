@@ -40,7 +40,16 @@ function scroll:update(dt)
           self.charNum = self.charNum + 1
           self.text = string.sub(self.fullMessage, 1, self.charNum)
           self.charTimer = self.textSpeed
-          soundManager:play("text")
+
+          -- The "string.sub" will get the latest character.
+          -- The "string.byte" will convert that character into an integer
+          -- that represents its ASCII equivalent
+          -- All ASCII characters greater than 32 (visible characters) will
+          -- play the text sound effect
+          if string.byte( string.sub(self.text, self.charNum, self.charNum) ) > 32 then
+            soundManager:play("text")
+          end
+
         end
       else
         if love.keyboard.isDown("space","return", 'w', 'a', 's', 'd') or love.mouse.isDown(1,2) then
