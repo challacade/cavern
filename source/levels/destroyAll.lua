@@ -56,7 +56,13 @@ local function destroyAll()
     e.physics:destroy()
     enemies[i] = nil
   end
-  
+
+  -- Iterate through all weapons in reverse to remove dead weapons from table
+  for i=#weapons,1,-1 do
+    weapons[i].physics:destroy()
+    table.remove(weapons, i)
+  end
+
   -- Move the saveBlock offscreen so the player can't hit
   saveUtil.saveBlock.x = -1000
 
