@@ -77,6 +77,10 @@ function background:draw()
 
   love.graphics.setColor(1, 1, 1, 1)
 
+  if mapdata.map == maps.rmIntro then
+    love.graphics.setColor(0, 0, 0, 1)
+  end
+
   local imgW = self.img:getWidth()
   local imgH = self.img:getHeight()
 
