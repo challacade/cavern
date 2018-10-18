@@ -20,7 +20,13 @@ player.fadedTimer = 0 -- timer for flipping faded status
 player.barTimer = 0 -- timer for displaying the player's health bar
 
 player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
-player.shotCooldown = 0 -- timer for pause between weapon shots
+--player.shotCooldown = 0 -- timer for pause between weapon shots
+player.shotCooldown = {} -- Table that keeps track of all weapon cooldowns
+
+-- Initialize the shotCooldowns
+for itr=0, 3 do
+  player.shotCooldown[itr] = 0
+end
 
 player.submerged = false -- true if the player is underwater
 player.drowning = false -- true if the player is drowning
@@ -77,9 +83,14 @@ function player:update(dt)
   self.fadedTimer = updateTimer(self.fadedTimer, dt)
 
   -- Update shot cooldown timer
-  self.shotCooldown = updateTimer(self.shotCooldown, dt)
+  --self.shotCooldown = updateTimer(self.shotCooldown, dt)
 
-  if love.mouse.isDown(1) and self.shotCooldown <= 0 and self.state == 1 then
+  -- Update all cooldown timers (index 1, 2, and 3)
+  for itr=1, 3 do
+    self.shotCooldown[itr] = updateTimer(self.shotCooldown[itr], dt)
+  end
+
+  if love.mouse.isDown(1) and self.shotCooldown[self.weapon] <= 0 and self.state == 1 then
     player:shoot()
   end
 
@@ -307,7 +318,7 @@ function player:draw()
   if player.weapon == 0 then
     --love.graphics.draw(armSprite, px, py + moveDown, nil, player.facing, 1, ox, oy)
   else
-    if player.weapon ~= 3 or (self.shotCooldown <= 0) then
+    if player.weapon ~= 3 or (self.shotCooldown[3] <= 0) then
       love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
     end
   end
@@ -343,24 +354,24 @@ end
 -- Player shoots his equipped weapon
 function player:shoot()
   -- Don't spawn anything if the player doesn't have a weapon
-  if player.weapon == 0 then
+  if self.weapon == 0 then
     return nil
   end
 
   -- Can't shoot the blaster or rocket launcher if underwater
-  if (player.weapon == 1 or player.weapon == 2) and player.submerged then
+  if (self.weapon == 1 or self.weapon == 2) and self.submerged then
     -- put an "error" sound effect here
     return nil
   end
 
-  self.shotCooldown = 0 -- amount of time (in seconds) between each shot
+  self.shotCooldown[self.weapon] = 0 -- amount of time (in seconds) between each shot
 
   if self.weapon == 1 then -- Blaster
-    self.shotCooldown = 0.5
+    self.shotCooldown[self.weapon] = 0.5
   elseif self.weapon == 2 then -- Rocket
-    self.shotCooldown = 3
+    self.shotCooldown[self.weapon] = 3
   elseif self.weapon == 3 then -- Harpoon
-    self.shotCooldown = 1
+    self.shotCooldown[self.weapon] = 1
   end
 
   local px, py = self.physics:getPosition()
