@@ -256,7 +256,7 @@ function player:draw()
   -- Determine arm data
   local armSprite = sprites.player.armEmpty -- sprite to draw for the arm
   local moveX = -15
-  local moveY = -8
+  local moveY = -16
   local ox = 19 -- offset x
   local oy = 16 -- offset y
 
@@ -303,6 +303,11 @@ function player:draw()
     end
   end
 
+  -- Keeps the left-side angles negative
+  if headAngle > 2 then
+    headAngle = -1 * math.pi - (math.pi - headAngle)
+  end
+
   -- Jetpack data
   local jetSprite = sprites.player.jetpack
   if gameState.pickups.aquaPack then
@@ -310,19 +315,27 @@ function player:draw()
   end
 
   -- draw jetpack first
-  love.graphics.draw(jetSprite, px + (player.facing * -22), py + 18, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(jetSprite, px + (player.facing * -22), py + 10, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)
-  love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+16, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+8, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
-  love.graphics.draw(sprites.player.helmet, px + (player.facing * 2), py-36, headAngle, 1, flip, 24, 64)
+  love.graphics.draw(sprites.player.helmet, px + (player.facing * 2), py-44, headAngle, 1, flip, 24, 64)
+  
   -- only rotate the arm if it has a weapon equipped
   if player.weapon == 0 then
-    love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, nil, player.facing, 1, ox, oy)
+    armAngle = headAngle
+    if armAngle < -1.5 then
+      -- Fixes the angle when facing left
+      armAngle = armAngle + 3
+    end
+    love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, armAngle/3, flip, 1, ox, oy)
   else
     if player.weapon ~= 3 or (self.shotCooldown[3] <= 0) then
       love.graphics.draw(armSprite, px, py + moveY, armAngle, 1, flip, ox, oy)
     end
   end
+
+  debug2 = headAngle
 
 end
 
