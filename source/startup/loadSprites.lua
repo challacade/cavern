@@ -2,9 +2,9 @@ sprites = {}
 
 -- Images for drawing the player
 sprites.player = {}
-sprites.player.helmet = love.graphics.newImage('sprites/player/helmet.png')
-sprites.player.body = love.graphics.newImage('sprites/player/body.png')
-sprites.player.armEmpty = love.graphics.newImage('sprites/player/arm_empty.png')
+sprites.player.helmet = love.graphics.newImage('sprites/newPlayer/helmet.png')
+sprites.player.body = love.graphics.newImage('sprites/newPlayer/body.png')
+sprites.player.armEmpty = love.graphics.newImage('sprites/newPlayer/arm.png')
 sprites.player.armBlaster = love.graphics.newImage('sprites/player/arm_blaster2.png')
 sprites.player.rocketLauncher = love.graphics.newImage('sprites/player/rocketLauncherAlt.png')
 sprites.player.spear = love.graphics.newImage('sprites/player/spear.png')
@@ -12,6 +12,8 @@ sprites.player.bomb = love.graphics.newImage('sprites/player/bomb.png')
 sprites.player.armSpear = love.graphics.newImage('sprites/player/armSpear.png')
 sprites.player.jetpack = love.graphics.newImage('sprites/player/jetpack.png')
 sprites.player.aquaPack = love.graphics.newImage('sprites/player/aquapack.png')
+
+sprites.player.newPlayer = love.graphics.newImage('sprites/newPlayer/newPlayer.png')
 
 -- Images for everything relating to the environment and levels
 sprites.environment = {}

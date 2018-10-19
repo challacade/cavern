@@ -2,7 +2,7 @@ player = {}
 
 player.state = 1  -- 0 (cutscene), 1 (free to move)
 
-player.width = 96
+player.width = 80
 player.height = 192
 
 player.physics = world:newBSGRectangleCollider(1000, 600, player.width,
@@ -255,9 +255,10 @@ function player:draw()
 
   -- Determine arm data
   local armSprite = sprites.player.armEmpty -- sprite to draw for the arm
-  local moveDown = 14
-  local ox = 18 -- offset x
-  local oy = 18 -- offset y
+  local moveX = -15
+  local moveY = -8
+  local ox = 19 -- offset x
+  local oy = 16 -- offset y
 
   if player.weapon == 1 then
     armSprite = sprites.player.armBlaster
@@ -267,12 +268,12 @@ function player:draw()
     armSprite = sprites.player.rocketLauncher
     ox = sprites.player.rocketLauncher:getWidth()/2 - 20
     oy = sprites.player.rocketLauncher:getHeight()/2
-    moveDown = 22
+    moveY = 22
   elseif player.weapon == 3 then
     armSprite = sprites.player.armSpear
     ox = sprites.player.rocketLauncher:getWidth()/2
     oy = sprites.player.rocketLauncher:getHeight()/2
-    moveDown = 23
+    moveY = 23
   end
 
   -- flip is used to decide if the sprite needs to flip vertically
@@ -289,10 +290,10 @@ function player:draw()
   -- Don't want head looking straight up or straight down, want to limit
   -- this angle
   if flip == 1 then
-    if headAngle < -0.8 then
-      headAngle = -0.8
-    elseif headAngle > 0.65 then
-      headAngle = 0.65
+    if headAngle < -0.7 then
+      headAngle = -0.7
+    elseif headAngle > 0.7 then
+      headAngle = 0.7
     end
   else
     if headAngle < 0 and headAngle > -2.4 then
@@ -311,15 +312,15 @@ function player:draw()
   -- draw jetpack first
   love.graphics.draw(jetSprite, px + (player.facing * -22), py + 18, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)
-  love.graphics.draw(sprites.player.body, px, py+36, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+16, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
-  love.graphics.draw(sprites.player.helmet, px, py-50, headAngle, 1, flip, 50, 50)
+  love.graphics.draw(sprites.player.helmet, px + (player.facing * 2), py-36, headAngle, 1, flip, 24, 64)
   -- only rotate the arm if it has a weapon equipped
   if player.weapon == 0 then
-    --love.graphics.draw(armSprite, px, py + moveDown, nil, player.facing, 1, ox, oy)
+    love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, nil, player.facing, 1, ox, oy)
   else
     if player.weapon ~= 3 or (self.shotCooldown[3] <= 0) then
-      love.graphics.draw(armSprite, px, py + moveDown, armAngle, 1, flip, ox, oy)
+      love.graphics.draw(armSprite, px, py + moveY, armAngle, 1, flip, ox, oy)
     end
   end
 
