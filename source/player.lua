@@ -255,26 +255,10 @@ function player:draw()
 
   -- Determine arm data
   local armSprite = sprites.player.armEmpty -- sprite to draw for the arm
-  local moveX = -15
-  local moveY = -16
+  local moveX = -15 -- position in X direction
+  local moveY = -16 -- position in Y direction
   local ox = 19 -- offset x
   local oy = 16 -- offset y
-
-  if player.weapon == 1 then
-    armSprite = sprites.player.armBlaster
-    ox = 18
-    oy = 27
-  elseif player.weapon == 2 then
-    armSprite = sprites.player.rocketLauncher
-    ox = sprites.player.rocketLauncher:getWidth()/2 - 20
-    oy = sprites.player.rocketLauncher:getHeight()/2
-    moveY = 22
-  elseif player.weapon == 3 then
-    armSprite = sprites.player.armSpear
-    ox = sprites.player.rocketLauncher:getWidth()/2
-    oy = sprites.player.rocketLauncher:getHeight()/2
-    moveY = 23
-  end
 
   -- flip is used to decide if the sprite needs to flip vertically
   local flip = 1
@@ -320,8 +304,8 @@ function player:draw()
   love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+8, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
   love.graphics.draw(sprites.player.helmet, px + (player.facing * 2), py-44, headAngle, 1, flip, 24, 64)
-  
-  -- only rotate the arm if it has a weapon equipped
+
+  -- Draw arms / weapons
   if player.weapon == 0 then
     armAngle = headAngle
     if armAngle < -1.5 then
@@ -329,13 +313,27 @@ function player:draw()
       armAngle = armAngle + 3
     end
     love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, armAngle/3, flip, 1, ox, oy)
-  else
-    if player.weapon ~= 3 or (self.shotCooldown[3] <= 0) then
-      love.graphics.draw(armSprite, px, py + moveY, armAngle, 1, flip, ox, oy)
-    end
+  elseif player.weapon == 1 then
+    armSprite = sprites.player.armBlaster
+    moveX = -18
+    moveY = -20
+    ox = 8
+    oy = 20
+  elseif player.weapon == 2 then
+    armSprite = sprites.player.rocketLauncher
+    ox = sprites.player.rocketLauncher:getWidth()/2 - 20
+    oy = sprites.player.rocketLauncher:getHeight()/2
+    moveY = 22
+  elseif player.weapon == 3 then
+    armSprite = sprites.player.armSpear
+    ox = sprites.player.rocketLauncher:getWidth()/2
+    oy = sprites.player.rocketLauncher:getHeight()/2
+    moveY = 23
   end
 
-  debug2 = headAngle
+  if player.weapon > 0 then
+    love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, armAngle, 1, flip, ox, oy)
+  end
 
 end
 

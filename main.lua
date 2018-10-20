@@ -112,6 +112,10 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "l" then
     loadGame()
   end
+  if key == "0" then
+    player.weapon = 0
+    soundManager:play("blip")
+  end
   if key == "1" then
     player.weapon = 1
     soundManager:play("blip")
