@@ -315,6 +315,11 @@ function player:draw()
     jetSprite = sprites.player.aquaPack
   end
 
+  -- Draw one arm behind the player
+  if player.weapon == 1 then
+    love.graphics.draw(sprites.player.backArm, px + (6 * player.facing), py + moveY, armAngle, 1, flip, 14, 10)
+  end
+
   -- draw jetpack first
   love.graphics.draw(jetSprite, px + (player.facing * -22), py + 10, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)

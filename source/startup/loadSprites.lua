@@ -5,6 +5,7 @@ sprites.player = {}
 sprites.player.helmet = love.graphics.newImage('sprites/newPlayer/helmet.png')
 sprites.player.body = love.graphics.newImage('sprites/newPlayer/body.png')
 sprites.player.armEmpty = love.graphics.newImage('sprites/newPlayer/arm.png')
+sprites.player.backArm = love.graphics.newImage('sprites/newPlayer/backArm.png')
 sprites.player.armBlaster = love.graphics.newImage('sprites/newPlayer/armBlaster.png')
 sprites.player.rocketLauncher = love.graphics.newImage('sprites/player/rocketLauncherAlt.png')
 sprites.player.spear = love.graphics.newImage('sprites/player/spear.png')
