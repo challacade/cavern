@@ -66,7 +66,11 @@ function spawnWeapon(x, y)
 
   elseif weapon.type == 3 then
 
-    local offsetVec = weapon.dir * 100
+    -- Sets x and y to the player's shoulder
+    x = x + (player.facing * -12)
+    y = y - 15
+
+    local offsetVec = weapon.dir * 126
     local wx, wy = offsetVec:unpack()
 
     local width = 80

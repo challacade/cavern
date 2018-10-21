@@ -349,9 +349,10 @@ function player:draw()
     moveY = -11
   elseif player.weapon == 3 then
     armSprite = sprites.player.armSpear
-    ox = sprites.player.armRocket:getWidth()/2
-    oy = sprites.player.armRocket:getHeight()/2
-    moveY = 23
+    ox = 16
+    oy = 12
+    moveX = -12
+    moveY = -18
   end
 
   if player.weapon > 0 then
