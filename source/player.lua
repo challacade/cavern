@@ -342,14 +342,15 @@ function player:draw()
     ox = 8
     oy = 20
   elseif player.weapon == 2 then
-    armSprite = sprites.player.rocketLauncher
-    ox = sprites.player.rocketLauncher:getWidth()/2 - 20
-    oy = sprites.player.rocketLauncher:getHeight()/2
-    moveY = 22
+    armSprite = sprites.player.armRocket
+    ox = 16
+    oy = 42
+    moveX = -17
+    moveY = -11
   elseif player.weapon == 3 then
     armSprite = sprites.player.armSpear
-    ox = sprites.player.rocketLauncher:getWidth()/2
-    oy = sprites.player.rocketLauncher:getHeight()/2
+    ox = sprites.player.armRocket:getWidth()/2
+    oy = sprites.player.armRocket:getHeight()/2
     moveY = 23
   end
 
