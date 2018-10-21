@@ -27,6 +27,11 @@ function toPlayerVector(mx, my)
   end
 end
 
+function toMouseVector(px, py)
+  local mx, my = cam:mousePosition()
+  return vector.new(mx-px, my-py):normalized()
+end
+
 -- Gets radians needed to rotate towards the player
 function toPlayerRotate(mx, my)
   local dir = toPlayerVector(mx, my)

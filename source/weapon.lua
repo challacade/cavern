@@ -16,13 +16,19 @@ function spawnWeapon(x, y)
   weapon.dir = toPlayerVector()
 
   -- offset the weapon, to more accurately come from the barrel
-  y = y + 14
+  -- y = y + 4
 
   -- Checks which weapon is being spawned and sets appropriate properties
   if weapon.type == 1 then
 
+    -- Sets x and y to the player's shoulder
+    x = x + (player.facing * -22)
+    y = y - 12
+
+    weapon.dir = vector(1, 0):rotateInplace(player.armAngle)
+
     -- offset (in pixels) outside the center of the player
-    local offdir = weapon.dir * 86
+    local offdir = weapon.dir * 124
     local ox, oy = offdir:unpack()
     weapon.physics = world:newCircleCollider(x + ox, y + oy, 12)
     weapon.power = 4

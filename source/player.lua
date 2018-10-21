@@ -23,6 +23,8 @@ player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 --player.shotCooldown = 0 -- timer for pause between weapon shots
 player.shotCooldown = {} -- Table that keeps track of all weapon cooldowns
 
+player.armAngle = 0 -- Only used for calculating weapon direction
+
 -- Initialize the shotCooldowns
 for itr=0, 3 do
   player.shotCooldown[itr] = 0
@@ -267,9 +269,24 @@ function player:draw()
     flip = -1
   end
 
-  local vx, vy = (toPlayerVector(mx, my)*-1):unpack()
+  -- point that determines the angle towards the mouse
+  local armX = px
+  local armY = py
+  if player.weapon == 1 then
+    armX = armX + (player.facing * -22)
+    armY = armY - 12
+  end
+
+  --local vx, vy = (toPlayerVector(mx, my)*-1):unpack()
+  local vx, vy = (toMouseVector(armX, armY)):unpack()
   local armAngle = math.atan2(vy, vx) -- angle that the arm will rotate
-  local headAngle = armAngle          -- angle that the head will rotate
+  debug = armAngle
+
+  local headX = px
+  local headY = py - 68
+  vx, vy = (toMouseVector(headX, headY)):unpack()
+  local headAngle = math.atan2(vy, vx) -- angle that the head will rotate
+  debug2 = headAngle
 
   -- Don't want head looking straight up or straight down, want to limit
   -- this angle
@@ -334,6 +351,8 @@ function player:draw()
   if player.weapon > 0 then
     love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, armAngle, 1, flip, ox, oy)
   end
+
+  player.armAngle = armAngle
 
 end
 
