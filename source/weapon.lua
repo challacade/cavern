@@ -68,7 +68,7 @@ function spawnWeapon(x, y)
 
     -- Sets x and y to the player's shoulder
     x = x + (player.facing * -12)
-    y = y - 15
+    y = y - 24
 
     local offsetVec = weapon.dir * 126
     local wx, wy = offsetVec:unpack()

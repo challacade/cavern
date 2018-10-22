@@ -329,30 +329,43 @@ function player:draw()
 
   -- Draw arms / weapons
   if player.weapon == 0 then
+
     armAngle = headAngle
     if armAngle < -1.5 then
       -- Fixes the angle when facing left
       armAngle = armAngle + 3
     end
     love.graphics.draw(armSprite, px + (moveX * player.facing), py + moveY, armAngle/3, flip, 1, ox, oy)
+
   elseif player.weapon == 1 then
+
     armSprite = sprites.player.armBlaster
     moveX = -18
     moveY = -20
     ox = 8
     oy = 20
+
   elseif player.weapon == 2 then
+
     armSprite = sprites.player.armRocket
     ox = 16
     oy = 42
     moveX = -17
     moveY = -11
+
   elseif player.weapon == 3 then
-    armSprite = sprites.player.armSpear
+
+    -- If the weapon can fire, show the loaded sprite
+    if self.shotCooldown[self.weapon] == 0 then
+      armSprite = sprites.player.armSpearLoaded
+    else
+      armSprite = sprites.player.armSpear
+    end
     ox = 16
     oy = 12
     moveX = -12
     moveY = -18
+    
   end
 
   if player.weapon > 0 then

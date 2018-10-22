@@ -7,6 +7,9 @@ local function drawGameplay()
   -- Draw the credits (only in rmCredits)
   credits:draw()
 
+  -- draw all weapons
+  weapons:draw()
+
   -- Draw the player
   player:draw()
 
@@ -24,9 +27,6 @@ local function drawGameplay()
 
   -- draw final boss (boss must appear over other enemies)
   enemies:draw(true)
-
-  -- draw all weapons
-  weapons:draw()
 
   -- Draw trails
   trails:draw()
