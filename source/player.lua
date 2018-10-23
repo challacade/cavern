@@ -153,7 +153,7 @@ function player:update(dt)
   self.jetpackTimer = updateTimer(self.jetpackTimer, dt)
 
   if self.jetpackTimer <= 0 and player.submerged == false then
-    fires:spawnFire(px + (self.facing * -44), py + 50, 0.2, vector(0, 1))
+    fires:spawnFire(px + (self.facing * -44), py + 34, 0.2, vector(-0.5 * self.facing, 1))
   end
 
   -- Player death
@@ -280,13 +280,11 @@ function player:draw()
   --local vx, vy = (toPlayerVector(mx, my)*-1):unpack()
   local vx, vy = (toMouseVector(armX, armY)):unpack()
   local armAngle = math.atan2(vy, vx) -- angle that the arm will rotate
-  debug = armAngle
 
   local headX = px
   local headY = py - 68
   vx, vy = (toMouseVector(headX, headY)):unpack()
   local headAngle = math.atan2(vy, vx) -- angle that the head will rotate
-  debug2 = headAngle
 
   -- Don't want head looking straight up or straight down, want to limit
   -- this angle
@@ -316,12 +314,12 @@ function player:draw()
   end
 
   -- Draw one arm behind the player
-  if player.weapon == 1 then
+  if player.weapon == 1 or player.weapon == 3 then
     love.graphics.draw(sprites.player.backArm, px + (6 * player.facing), py + moveY, armAngle, 1, flip, 14, 10)
   end
 
   -- draw jetpack first
-  love.graphics.draw(jetSprite, px + (player.facing * -22), py + 10, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(jetSprite, px + (player.facing * -12), py + 10, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)
   love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+8, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
@@ -365,7 +363,7 @@ function player:draw()
     oy = 12
     moveX = -12
     moveY = -18
-    
+
   end
 
   if player.weapon > 0 then
