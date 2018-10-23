@@ -129,4 +129,7 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "n" then
     flash:flash(2)
   end
+  if key == "a" then
+    gameState.pickups.aquaPack = true
+  end
 end

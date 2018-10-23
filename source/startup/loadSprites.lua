@@ -13,7 +13,7 @@ sprites.player.armSpearLoaded = love.graphics.newImage('sprites/newPlayer/armSpe
 sprites.player.spear = love.graphics.newImage('sprites/newPlayer/spear.png')
 sprites.player.bomb = love.graphics.newImage('sprites/player/bomb.png')
 sprites.player.jetpack = love.graphics.newImage('sprites/newPlayer/jetpack.png')
-sprites.player.aquaPack = love.graphics.newImage('sprites/player/aquapack.png')
+sprites.player.aquaPack = love.graphics.newImage('sprites/newPlayer/aquapack.png')
 
 sprites.player.newPlayer = love.graphics.newImage('sprites/newPlayer/newPlayer.png')
 
