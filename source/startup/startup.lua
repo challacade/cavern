@@ -46,4 +46,7 @@ function startup()
 
   -- Sets first map of the game
   changeToMap("rmMainMenu")
+
+  -- Start the music!
+  soundManager:startMusic()
 end

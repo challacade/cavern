@@ -16,3 +16,8 @@ sounds.text = love.audio.newSource("sounds/ui/text.wav", "static")
 sounds.click = love.audio.newSource("sounds/ui/click.wav", "static")
 
 sounds.blip = love.audio.newSource("sounds/blip.wav", "static")
+
+
+-- Music
+sounds.music = {}
+sounds.music.cavern = love.audio.newSource("music/cavern.ogg", "stream")

@@ -28,15 +28,6 @@ function love.update(dt)
   scroll:update(dt)
   textBox:update(dt)
 
-  if soundOn then
-    debug = 1
-  else
-    debug = -1
-  end
-
-  --debug = scale
-  --debug2 = gameState.saveCount
-
 end
 
 function love.draw()
@@ -131,5 +122,9 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "a" then
     gameState.pickups.aquaPack = true
+  end
+
+  if key == "7" then
+    soundManager:musicFade()
   end
 end

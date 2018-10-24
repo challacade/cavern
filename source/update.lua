@@ -69,6 +69,9 @@ local function updateGameplay(dt)
   -- Update the blackScreen
   blackScreen:update(dt)
 
+  -- Update the Sound Manager
+  soundManager:update(dt)
+
   -- Update the flash
   flash:update(dt)
 
