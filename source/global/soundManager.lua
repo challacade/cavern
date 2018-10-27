@@ -11,6 +11,9 @@ soundManager.fading = false -- volume will fade down if true
 -- Used for the rooms leading up to the boss
 soundManager.danger = false
 
+-- Used to tell if the ending music has started
+soundManager.ending = false
+
 -- Use for Sound Effects
 function soundManager:play(snd)
 
@@ -30,7 +33,13 @@ function soundManager:startMusic(song)
     self.fading = false
     self.volume = 1
     self.music:setVolume(self.volume)
-    self.music:setLooping(true)
+
+    if song ~= "ending" then
+      self.music:setLooping(true)
+    else
+      self.music:setLooping(false)
+    end
+
     love.audio.play(self.music)
   end
 

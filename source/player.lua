@@ -505,6 +505,10 @@ function player:collisions(dt)
       soundManager:startMusic("cavern")
       soundManager.danger = false
     end
+    if t.collider.toMap == "rmCredits" and soundManager.ending == false then
+      soundManager:startMusic("ending")
+      soundManager.ending = true
+    end
 
     -- Change to the map (stored in the transition's name), and pass t.collider
     -- Note: t.collider is just the transition object

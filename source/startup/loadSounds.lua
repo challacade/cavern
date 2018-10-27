@@ -23,3 +23,4 @@ sounds.music = {}
 sounds.music.cavern = love.audio.newSource("music/cavern.ogg", "stream")
 sounds.music.boss = love.audio.newSource("music/boss.ogg", "stream")
 sounds.music.danger = love.audio.newSource("music/danger.ogg", "stream")
+sounds.music.ending = love.audio.newSource("music/ending.ogg", "stream")
