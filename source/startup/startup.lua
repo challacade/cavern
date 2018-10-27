@@ -48,5 +48,5 @@ function startup()
   changeToMap("rmMainMenu")
 
   -- Start the music!
-  soundManager:startMusic()
+  soundManager:startMusic("cavern")
 end

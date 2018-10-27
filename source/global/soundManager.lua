@@ -17,7 +17,11 @@ function soundManager:play(snd)
 
 end
 
-function soundManager:startMusic()
+function soundManager:startMusic(song)
+
+  if song ~= nil then
+    self.music = sounds.music[song]
+  end
 
   if soundOn then
     self.fading = false

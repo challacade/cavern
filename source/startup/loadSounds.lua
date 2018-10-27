@@ -21,3 +21,4 @@ sounds.blip = love.audio.newSource("sounds/blip.wav", "static")
 -- Music
 sounds.music = {}
 sounds.music.cavern = love.audio.newSource("music/cavern.ogg", "stream")
+sounds.music.boss = love.audio.newSource("music/boss.ogg", "stream")
