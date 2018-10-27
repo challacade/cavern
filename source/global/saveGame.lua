@@ -19,5 +19,9 @@ function loadGame()
   player.state = 1
   changeToMap(gameState.room)
 
+  if gameState.room ~= "rm27" then
+    soundManager:startMusic("cavern")
+  end
+
   blackScreen:fadeIn(1)
 end

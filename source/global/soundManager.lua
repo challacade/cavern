@@ -34,7 +34,7 @@ function soundManager:startMusic(song)
     self.volume = 1
     self.music:setVolume(self.volume)
 
-    if song ~= "ending" then
+    if song ~= "ending" and song ~= "intro" then
       self.music:setLooping(true)
     else
       self.music:setLooping(false)

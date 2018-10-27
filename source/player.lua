@@ -273,6 +273,7 @@ function player:update(dt)
     --textBox:start("tutorial")
     tutorial:start()
     self.state = 1
+    soundManager:startMusic("cavern")
   end
 
 end
