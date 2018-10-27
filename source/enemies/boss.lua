@@ -173,6 +173,7 @@ local function bossInit(enemy, x, y, arg)
       if player.state == 0 then
         player.state = 1
         soundManager:startMusic("boss")
+        love.audio.stop(sounds.music.danger)
       end
 
       if self.barAlpha < 1 then

@@ -5,7 +5,7 @@ player.state = 1  -- 0 (cutscene), 1 (free to move)
 player.width = 80
 player.height = 192
 
-player.physics = world:newBSGRectangleCollider(1000, 600, player.width,
+player.physics = world:newBSGRectangleCollider(1536, 600, player.width,
   player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
@@ -176,6 +176,9 @@ function player:update(dt)
       blackScreen:removeRed()
     end
 
+    -- Fade out the music
+    soundManager:musicFade()
+
   end
 
   -- Player has died, need to fadeout the screen
@@ -188,6 +191,36 @@ function player:update(dt)
   -- Fadeout completed, load the save file
   if self.stateTimer < 0 and self.state == -2 then
     loadGame()
+  end
+
+  -- Control the "danger" music in the rooms leading to the boss
+  if soundOn then
+
+    if gameState.room == "rm27" and px > 1280 then
+
+      if soundManager.danger == false then
+        soundManager:startMusic("danger")
+        soundManager.danger = true
+        soundManager.music:setVolume(0)
+      end
+
+      -- Increase volume as player goes right
+      soundManager.volume = (px - 1280) / 7552 * 0.5
+      soundManager.music:setVolume( soundManager.volume )
+
+    end
+
+    if gameState.room == "rm28" then
+
+      -- Increase volume as player goes down
+      soundManager.volume = 0.5 + (px / 3456 * 0.5)
+      if soundManager.volume > 1 then
+        soundManager.volume = 1
+      end
+      soundManager.music:setVolume( soundManager.volume )
+
+    end
+
   end
 
   -- At the end of the game, there is a section where the player is going down
@@ -463,6 +496,16 @@ function player:collisions(dt)
 
   if self.physics:enter('Transition') then
     local t = self.physics:getEnterCollisionData('Transition')
+
+    -- Change music in some situations
+    if mapdata.map == maps.rm26 and t.collider.toMap == "rm27" then
+      soundManager:musicFade()
+    end
+    if mapdata.map == maps.rm27 and t.collider.toMap == "rm26" then
+      soundManager:startMusic("cavern")
+      soundManager.danger = false
+    end
+
     -- Change to the map (stored in the transition's name), and pass t.collider
     -- Note: t.collider is just the transition object
     changeToMap(t.collider.toMap, t.collider)

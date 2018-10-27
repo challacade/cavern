@@ -8,6 +8,9 @@ soundManager.music = sounds.music.cavern -- replace with menu music
 soundManager.volume = 1 -- volume of the music
 soundManager.fading = false -- volume will fade down if true
 
+-- Used for the rooms leading up to the boss
+soundManager.danger = false
+
 -- Use for Sound Effects
 function soundManager:play(snd)
 
@@ -30,6 +33,8 @@ function soundManager:startMusic(song)
     self.music:setLooping(true)
     love.audio.play(self.music)
   end
+
+  self.danger = false
 
 end
 
