@@ -14,8 +14,8 @@ local function spikeInit(enemy, x, y, arg)
   enemy.physics.parent = enemy
 
   -- Properties
-  enemy.health = 10
-  enemy.hitPower = 2
+  enemy.health = 12
+  enemy.hitPower = 5
   enemy.barY = 90
   enemy.groundDir = arg
   enemy.id = math.random()

@@ -9,7 +9,7 @@ local function fishInit(enemy, x, y, arg)
   enemy.physics.parent = enemy
 
   -- Properties
-  enemy.health = 10
+  enemy.health = 18
   enemy.hitPower = 6
   enemy.moveForce = 5000
   enemy.maxSpeed = 500

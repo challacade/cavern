@@ -52,7 +52,7 @@ function spawnWeapon(x, y)
     local wx, wy = offsetVec:unpack()
 
     weapon.physics = world:newCircleCollider(x + wx, y + wy, 30)
-    weapon.power = 22
+    weapon.power = 0
     weapon.speed = 8000
     weapon.sprite = sprites.player.bomb
 
@@ -84,7 +84,7 @@ function spawnWeapon(x, y)
     weapon.physics = world:newRectangleCollider(x + wx - width/2,
       y + wy - height/2, width, height)
     weapon.physics:setAngle(angle)
-    weapon.power = 14
+    weapon.power = 12
     weapon.speed = 12000
 
     weapon.draw = function(wep)

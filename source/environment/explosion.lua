@@ -28,7 +28,7 @@ function explode(x, y)
   local ens = world:queryCircleArea(x, y, radius, {'Enemy'})
   for i,e in ipairs(ens) do
     if e.parent.type ~= "fish" then
-      e.parent:damage(100)
+      e.parent:damage(25)
     end
   end
 

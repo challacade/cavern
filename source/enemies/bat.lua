@@ -9,8 +9,8 @@ local function batInit(enemy, x, y, arg)
   enemy.physics.parent = enemy
 
   -- Properties
-  enemy.health = 10
-  enemy.hitPower = 2
+  enemy.health = 12
+  enemy.hitPower = 5
   enemy.moveForce = 11000
   enemy.maxSpeed = 400
   enemy.barY = 62
@@ -22,7 +22,7 @@ local function batInit(enemy, x, y, arg)
   enemy.spriteTimer = enemy.spriteTimerBase
 
   enemy.eye = spawnEye(x, y, 0, 1, sprites.enemies.flyerEye)
-  
+
   -- Final boss can spawn these, and they shoot down
   -- if arg is true
   if arg then

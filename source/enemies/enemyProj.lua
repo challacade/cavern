@@ -14,19 +14,19 @@ function spawnEnemyProj(x, y, dir, type)
 
   if type == "fish" then
     enProj.rad = 20
-    enProj.power = 8
+    enProj.power = 6
     enProj.sprite = sprites.player.armEmpty
     enProj.impulse = 2500
   end
-  
+
   if type == "bossLaser" then
     enProj.rad = 10
-    enProj.power = 5
+    enProj.power = 7
     enProj.sprite = nil
     enProj.impulse = 3000
     -- This projectil has a trail, which is spawned here
     spawnTrail(enProj.id, 12, 16, {1, 0, 0, 0.706})
-    
+
     -- Offset the starting location of the laser
     -- so it appears in the eye's pupil
     local offsetVec = enProj.dir * 100
@@ -69,9 +69,9 @@ function enemyProjectiles:update(dt)
   -- Iterate through all enemyProjectiles in reverse to remove dead ones
   -- Update trails before removal
   for i=#enemyProjectiles,1,-1 do
-    
+
     local proj = enemyProjectiles[i]
-    
+
     -- Updates the projectile's trail (if it has one)
     if proj.dead ~= true then
       for _,t in ipairs(trails) do
@@ -80,12 +80,12 @@ function enemyProjectiles:update(dt)
         end
       end
     end
-    
+
     if proj.dead then
       proj.physics:destroy()
       table.remove(enemyProjectiles, i)
     end
-  
+
   end
 
 end
@@ -95,14 +95,14 @@ function enemyProjectiles:draw()
   love.graphics.setColor(1, 1, 1, 1)
 
   for i,p in ipairs(self) do
-    
+
     if p.sprite ~= nil then
       local sprX, sprY = p.physics:getPosition()
       local sprW = p.sprite:getWidth()
       local sprH = p.sprite:getHeight()
       love.graphics.draw(p.sprite, sprX, sprY, nil, 1, 1, sprW/2, sprH/2)
     end
-  
+
   end
 
 end

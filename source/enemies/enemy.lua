@@ -90,11 +90,20 @@ function spawnEnemy(x, y, type, arg)
   end
 
   function enemy:damage(d)
-    d = d + math.random(0, 1)
+
+    if d <= 0 then
+      return nil
+    end
+
+    -- Add some randomness to the damage (if it isn't an explosion)
+    if d < 20 then
+      d = d + math.random(0, 1)
+    end
     self.health = self.health - d
     local ex, ey = self.physics:getPosition()
     damages:spawnDamage(ex, ey, d)
     soundManager:play("enemyHurt")
+
   end
 
   -- Checks if the player can be seen by the enemy
