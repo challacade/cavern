@@ -113,7 +113,6 @@ function buttons:click()
     if buttons:mouseCheck(b) then
 
       -- The button has been clicked
-      soundManager:play("click")
 
       if i == 1 then -- New Game button
 
@@ -121,6 +120,7 @@ function buttons:click()
         intro.state = 1
         intro.timer = 1
         buttons.message = ""
+        soundManager:musicFade()
         changeToMap("rmIntro")
 
       elseif i == 2 then -- Continue button
@@ -129,12 +129,18 @@ function buttons:click()
         intro.state = 100
         intro.timer = 1.5
         buttons.message = ""
+        soundManager:musicFade()
         changeToMap("rmIntro")
 
       elseif i == 3 then -- Sound button
 
         -- Toggle sound to be on/off
         soundOn = not soundOn
+        if soundOn then
+          soundManager:startMusic("menu")
+        else
+          soundManager:musicFade()
+        end
 
       elseif i == 4 then -- GitHub button
 
@@ -142,6 +148,8 @@ function buttons:click()
         love.system.openURL("https://github.com/kyleschaub/cavern")
 
       end
+
+      soundManager:play("click")
 
     end
 
