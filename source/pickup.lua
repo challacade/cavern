@@ -15,19 +15,31 @@ function spawnPickup(name, x, y)
   pickup.float = true
   pickup.radius = 40
   pickup.timer = 0.1
-  
+  pickup.scale = 0.16
+
   -- used for floating
   pickup.state = 0
   pickup.tween = nil
   pickup.startY = y
   pickup.y = y
-  
+
   pickup.physics = world:newCircleCollider(x, y, pickup.radius)
 
   pickup.sprite = sprites.pickups.item
-  
-  if name == "health1" or name == "health2" then
+
+  if name == "blaster" then
+    pickup.sprite = sprites.pickups.blaster
+  elseif name == "rocket" then
+    pickup.sprite = sprites.pickups.rocketLauncher
+    pickup.scale = 0.2
+  elseif name == "harpoon" then
+    pickup.sprite = sprites.pickups.spearGun
+  elseif name == "aquaPack" then
+    pickup.sprite = sprites.pickups.aquaPack
+    pickup.scale = 0.21
+  elseif name == "health1" or name == "health2" then
     pickup.sprite = sprites.pickups.health
+    pickup.scale = 1
   end
 
   -- Set the pickup's collision class
@@ -63,7 +75,7 @@ function pickups:update(dt)
         p.state = 1
       end
     end
-    
+
     p.physics:setY(p.y)
 
     -- colliding with the player
@@ -90,27 +102,27 @@ function pickups:update(dt)
         textBox:start("health")
       end
     end
-    
+
     p.timer = updateTimer(p.timer, dt)
-    
+
     --[[
-    
+
     -- Spawn a sparkle
     if p.timer == 0 then
-      
+
       local px, py = p.physics:getPosition()
-      
+
       -- Seed the randomness with the pickup's Y position
       -- (since it is constantly moving)
       math.randomseed(py)
-      
+
       local moveVector = vector(10, 0)
       moveVector:rotateInplace(math.random(0, 2 * math.pi))
       spawnParticle(px, py, "pickupSparkle", moveVector)
       p.timer = 0.2
-    
+
     end
-    
+
     ]]
 
   end
@@ -129,12 +141,12 @@ function pickups:draw()
   for _,p in ipairs(self) do
     local px, py = p.physics:getPosition()
     love.graphics.setColor(1, 1, 1, 1)
-    
+
     -- Background sprite
     local bg = sprites.pickups.pickup_back
     love.graphics.draw(bg, px, py, nil, 1, 1, bg:getWidth()/2, bg:getHeight()/2)
-      
+
     -- Actual pickup sprite
-    love.graphics.draw(p.sprite, px, py, nil, 1, 1, p.sprite:getWidth()/2, p.sprite:getHeight()/2)
+    love.graphics.draw(p.sprite, px, py, nil, p.scale, nil, p.sprite:getWidth()/2, p.sprite:getHeight()/2)
   end
 end

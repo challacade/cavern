@@ -10,14 +10,14 @@ messages.blaster.img = sprites.pickups.blaster
 
 messages.rocket = {
   "You got the Rocket Launcher!",
-  "<LEFT CLICK> to launch a missile\nthat explodes upon impact,\ndealing massive damage."
+  "<LEFT CLICK> to launch a missile\nthat explodes upon impact,\ndealing massive damage.",
+  "Press the <SPACEBAR> or scroll\nthe mouse wheel to switch\nyour equipped weapon."
 }
 messages.rocket.img = sprites.pickups.rocketLauncher
 
 messages.harpoon = {
-  "You got the Spear!",
-  "<LEFT CLICK> to throw a spear\nthat slices through enemies.",
-  "The spear can be used to\nfight enemies while underwater."
+  "You got the Spear Gun!",
+  "<LEFT CLICK> to shoot a spear,\neven while underwater.",
 }
 messages.harpoon.img = sprites.pickups.spearGun
 
@@ -25,6 +25,7 @@ messages.aquaPack = {
   "You got the Aqua Pack!",
   "Your suit is now capable of\ngoing underwater.",
 }
+messages.aquaPack.img = sprites.pickups.aquaPack
 
 messages.health = {
   "You got a Health Upgrade!",

@@ -5,7 +5,7 @@ player.state = 1  -- 0 (cutscene), 1 (free to move)
 player.width = 80
 player.height = 192
 
-player.physics = world:newBSGRectangleCollider(600, 1000, player.width,
+player.physics = world:newBSGRectangleCollider(1500, 700, player.width,
   player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
