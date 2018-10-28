@@ -7,7 +7,9 @@ fonts.boss = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 52 * s
 
 -- Fonts used during the credits
 fonts.credits = {}
-fonts.credits.word = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 62 * scale)
+fonts.credits.word = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 48 * scale)
+fonts.credits.title = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 118 * scale)
+fonts.credits.me = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 56 * scale)
 
 -- Fonts used for the Main Menu and Intro
 fonts.menu = {}

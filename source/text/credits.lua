@@ -18,13 +18,23 @@ credits.bottom = 10112
 -- Example: if Y position was 100, text would be
 -- displayed at credits.bottom - 100
 
-table.insert(credits, {"Hello World!", "center", 0})
+table.insert(credits, {"CAVERN", "center", 2304, fonts.credits.title})
+table.insert(credits, {"Created by Kyle Schaub", "center", 4608, fonts.credits.me})
+table.insert(credits, {"All code, art, and music is available on GitHub.", "center", 6912})
+table.insert(credits, {"This is an open-source Love2D project.", "center", 7040})
+table.insert(credits, {"Thank you for playing!", "center", 9264, fonts.credits.me})
 
 function credits:draw()
 
   -- Only draw if we are in rmCredits
   if gameState.room == "rmCredits" then
     for _,w in ipairs(self) do
+
+      if w[4] == nil then
+        love.graphics.setFont(fonts.credits.word)
+      else
+        love.graphics.setFont(w[4])
+      end
 
       love.graphics.setColor(1, 1, 1, 1)
 
