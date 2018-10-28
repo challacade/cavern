@@ -305,58 +305,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
-        },
-        {
-          id = 150,
-          name = "rocket",
-          type = "",
-          shape = "rectangle",
-          x = 845.091,
-          y = 875.394,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 151,
-          name = "harpoon",
-          type = "",
-          shape = "rectangle",
-          x = 1332.97,
-          y = 775.394,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 152,
-          name = "health1",
-          type = "",
-          shape = "rectangle",
-          x = 939.03,
-          y = 496.606,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 153,
-          name = "aquaPack",
-          type = "",
-          shape = "rectangle",
-          x = 1211.76,
-          y = 432.97,
-          width = 128,
-          height = 128,
-          rotation = 0,
-          visible = true,
-          properties = {}
         }
       }
     },

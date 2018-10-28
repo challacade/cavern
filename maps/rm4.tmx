@@ -67,10 +67,6 @@
  </objectgroup>
  <objectgroup id="6" name="Pickups">
   <object id="149" name="blaster" x="1280" y="1088" width="128" height="128"/>
-  <object id="150" name="rocket" x="845.091" y="875.394" width="128" height="128"/>
-  <object id="151" name="harpoon" x="1332.97" y="775.394" width="128" height="128"/>
-  <object id="152" name="health1" x="939.03" y="496.606" width="128" height="128"/>
-  <object id="153" name="aquaPack" x="1211.76" y="432.97" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="7" name="Enemies"/>
  <objectgroup id="8" name="Breakables"/>

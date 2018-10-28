@@ -366,6 +366,13 @@ function player:draw()
     jetSprite = sprites.player.aquaPack
   end
 
+  if player.state == -10 or player.state == -11 then
+    headAngle = 0
+    armAngle = 0
+    flip = 1
+    player.facing = 1
+  end
+
   -- Draw one arm behind the player
   if player.weapon == 1 or player.weapon == 3 then
     love.graphics.draw(sprites.player.backArm, px + (6 * player.facing), py + moveY, armAngle, 1, flip, 14, 10)
