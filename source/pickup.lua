@@ -39,7 +39,6 @@ function spawnPickup(name, x, y)
     pickup.scale = 0.21
   elseif name == "health1" or name == "health2" then
     pickup.sprite = sprites.pickups.health
-    pickup.scale = 1
   end
 
   -- Set the pickup's collision class
