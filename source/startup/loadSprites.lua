@@ -46,6 +46,9 @@ sprites.pickups = {}
 sprites.pickups.health = love.graphics.newImage('sprites/items/healthPickup.png')
 sprites.pickups.item = love.graphics.newImage('sprites/items/itemPickup.png')
 sprites.pickups.pickup_back = love.graphics.newImage('sprites/items/pickup_back.png')
+sprites.pickups.blaster = love.graphics.newImage('sprites/items/blaster.png')
+sprites.pickups.rocketLauncher = love.graphics.newImage('sprites/items/rocketLauncher.png')
+sprites.pickups.spearGun = love.graphics.newImage('sprites/items/spearGun.png')
 
 -- Individual blob shapes for drawing fire
 sprites.fire = {}

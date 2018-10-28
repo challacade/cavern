@@ -6,17 +6,20 @@ messages.blaster = {
   "You got the blaster!",
   "Use the mouse to aim, and\n<LEFT CLICK> to shoot!"
 }
+messages.blaster.img = sprites.pickups.blaster
 
 messages.rocket = {
   "You got the Rocket Launcher!",
   "<LEFT CLICK> to launch a missile\nthat explodes upon impact,\ndealing massive damage."
 }
+messages.rocket.img = sprites.pickups.rocketLauncher
 
 messages.harpoon = {
   "You got the Spear!",
   "<LEFT CLICK> to throw a spear\nthat slices through enemies.",
   "The spear can be used to\nfight enemies while underwater."
 }
+messages.harpoon.img = sprites.pickups.spearGun
 
 messages.aquaPack = {
   "You got the Aqua Pack!",

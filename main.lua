@@ -75,7 +75,7 @@ function love.keypressed(key, scancode, isrepeat)
   end
   if key == "m" then
     --scroll:showMessage("blaster")
-    textBox:start("blaster")
+    textBox:start("harpoon")
   end
   if key == "p" then
     local px, py = player.physics:getPosition()
