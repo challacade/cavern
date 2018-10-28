@@ -24,8 +24,10 @@ function spawnEnemyProj(x, y, dir, type)
     enProj.power = 7
     enProj.sprite = nil
     enProj.impulse = 3000
-    -- This projectil has a trail, which is spawned here
+    -- This projectile has a trail, which is spawned here
     spawnTrail(enProj.id, 12, 16, {1, 0, 0, 0.706})
+
+    soundManager:play("bossLaser")
 
     -- Offset the starting location of the laser
     -- so it appears in the eye's pupil
