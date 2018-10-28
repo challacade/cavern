@@ -5,7 +5,7 @@ player.state = 1  -- 0 (cutscene), 1 (free to move)
 player.width = 80
 player.height = 192
 
-player.physics = world:newBSGRectangleCollider(600, 9856, player.width,
+player.physics = world:newBSGRectangleCollider(600, 1000, player.width,
   player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
@@ -243,6 +243,12 @@ function player:update(dt)
     end
   end
 
+  -- Transition back to the main menu after the credits
+  if gameState.room == "rmCredits" and py < -8 and self.state > -12 then
+    self.state = -12
+    self.stateTimer = 2
+  end
+
   -- Freeze the player offscreen if at the main menu
   if gameState.room == "rmMainMenu" then
     player.state = 0
@@ -274,6 +280,19 @@ function player:update(dt)
     tutorial:start()
     self.state = 1
     soundManager:startMusic("cavern")
+  end
+
+  -- After flying above the credits room:
+  if self.state == -12 and self.stateTimer == 0 then
+    blackScreen:fadeOut(3)
+    self.stateTimer = 5
+    self.state = -13
+  end
+
+  if self.state == -13 and self.stateTimer == 0 then
+    blackScreen:fadeIn(1)
+    self.state = 0
+    changeToMap("rmMainMenu")
   end
 
 end
