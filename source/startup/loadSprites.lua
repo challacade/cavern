@@ -36,6 +36,7 @@ sprites.enemies.flyerWing2 = love.graphics.newImage('sprites/enemies/flyerWing2.
 sprites.enemies.spikeBody = love.graphics.newImage('sprites/enemies/spikeBody.png')
 sprites.enemies.spikeProj = love.graphics.newImage('sprites/enemies/spikeProj.png')
 sprites.enemies.starfish = love.graphics.newImage('sprites/enemies/starfish.png')
+sprites.enemies.evilBubble = love.graphics.newImage('sprites/enemies/evilBubble.png')
 sprites.enemies.bossBody = love.graphics.newImage('sprites/enemies/bossBody.png')
 sprites.enemies.bigBossEye = love.graphics.newImage('sprites/enemies/bigBossEye.png')
 sprites.enemies.egg = love.graphics.newImage('sprites/enemies/egg.png')
