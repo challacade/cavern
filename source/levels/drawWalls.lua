@@ -50,19 +50,19 @@ local function drawWalls()
     if w.dontDraw == false then
 
       -- Draw the full rectangle for each wall
-      love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
-      
+      --love.graphics.rectangle("fill", w.x, w.y, w.width, w.height)
+
       --[[
       love.graphics.setColor(1, 1, 1, 1)
-      
+
       local spr = sprites.environment.wall
-      
+
       for itrX=0, (w.width/128)-1 do
         for itrY = 0, (w.height/128)-1 do
           love.graphics.draw(spr, w.x + (itrX * 128), w.y + (itrY * 128))
         end
       end
-      
+
       ]]
 
       -- Note: this is done in a different for loop than the one above because
@@ -77,9 +77,15 @@ local function drawWalls()
 
   for i,b in ipairs(breakables) do
 
-    -- Draw the full rectangle for each breakable (same as walls)
-    love.graphics.setColor(0.247, 0.176, 0.114, 1)
-    love.graphics.rectangle("fill", b.x, b.y, b.width, b.height)
+    love.graphics.setColor(1, 1, 1, 1)
+
+    local spr = sprites.environment.wall
+
+    for itrX=0, 1 do
+      for itrY = 0, 1 do
+        love.graphics.draw(spr, b.x + (itrX * 128), b.y + (itrY * 128))
+      end
+    end
 
     love.graphics.setColor(0, 0, 0, 1)
     love.graphics.draw(sprites.environment.crack, b.x + 128, b.y + 128, b.crackRot, 1, 1, 90, 90)
