@@ -3,7 +3,7 @@ particles = {}
 
 -- Particles use gravWorld, since they are affected by gravity
 
-function spawnParticle(x, y, type, dir)
+function spawnParticle(x, y, type, dir, time)
 
   local particle = {}
 
@@ -42,7 +42,7 @@ function spawnParticle(x, y, type, dir)
     particle.timer = 0.5
     particle.alpha = 0.314
   end
-  
+
   if type == "pickupSparkle" then
     particle.width = 4
     particle.height = 4
@@ -51,9 +51,21 @@ function spawnParticle(x, y, type, dir)
     particle.alpha = 0.314
     particle.gravity = false
   end
-  
+
+  if type == "splash" then
+    particle.width = 12
+    particle.height = 12
+    particle.radius = 12
+    particle.corner = 3
+    particle.timer = math.abs(player.velY) / 450
+    particle.alpha = 0.5
+    particle.gravity = true
+  end
+
+  particle.timer = time or particle.timer
+
   local particleWorld = gravWorld
-  
+
   if particle.gravity == false then
     particleWorld = world
   end
@@ -61,7 +73,7 @@ function spawnParticle(x, y, type, dir)
   particle.physics = particleWorld:newBSGRectangleCollider(x, y, particle.width,
     particle.height, particle.corner)
   particle.physics:setFixedRotation(true)
-  
+
   if particle.gravity then
     particle.physics:setCollisionClass('Particle')
   else
@@ -122,12 +134,48 @@ function particles:draw()
       love.graphics.setColor(1, 0, 0, p.alpha)
       love.graphics.rectangle("fill", px-4, py-4, 8, 8)
     end
-    
+
     if p.type == "pickupSparkle" then
       love.graphics.setColor(1, 1, 1, p.alpha)
       love.graphics.circle("fill", px, py, 4)
     end
 
+    if p.type == "splash" then
+      local add = 1 - p.alpha
+      if add < 0 then
+        add = 0
+      end
+      love.graphics.setColor(0.388 + add, 0.502 + add, 0.541 + add, p.alpha)
+      love.graphics.circle("fill", px, py, p.radius)
+    end
+
   end
 
+end
+
+function particles:splash(x, y)
+  local mag = math.abs(player.velY) * -0.35
+
+  if player.velY > 0 then
+    spawnParticle(x, y, "splash", vector(0, mag))
+
+    spawnParticle(x-15, y, "splash", vector(-10, mag*0.97))
+    spawnParticle(x+15, y, "splash", vector(10, mag*0.97))
+
+    spawnParticle(x-30, y, "splash", vector(-25, mag*0.84))
+    spawnParticle(x+30, y, "splash", vector(25, mag*0.84))
+
+  --[[
+    spawnParticle(x-15, y, "splash", vector(-10, mag*0.8))
+    spawnParticle(x+15, y, "splash", vector(10, mag*0.8))
+
+    spawnParticle(x, y, "splash", vector(0, mag * 0.86))
+    ]]
+  else
+    spawnParticle(x-15, y, "splash", vector(-35, mag*0.97))
+    spawnParticle(x+15, y, "splash", vector(35, mag*0.97))
+
+    spawnParticle(x-30, y, "splash", vector(-50, mag*0.84))
+    spawnParticle(x+30, y, "splash", vector(50, mag*0.84))
+  end
 end

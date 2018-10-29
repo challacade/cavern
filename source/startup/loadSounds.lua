@@ -1,6 +1,7 @@
 sounds = {}
 
 sounds.playerHurt = love.audio.newSource("sounds/player/playerHurt.wav", "static")
+sounds.splash = love.audio.newSource("sounds/player/splash.wav", "static")
 
 -- There are multiple laser sound effects, was originally planning to have
 -- it randomly play one, but I decided I like laser2.wav the best.

@@ -5,7 +5,7 @@ player.state = 1  -- 0 (cutscene), 1 (free to move)
 player.width = 80
 player.height = 192
 
-player.physics = world:newBSGRectangleCollider(1500, 700, player.width,
+player.physics = world:newBSGRectangleCollider(1500, 3000, player.width,
   player.height, 22)
 player.physics:setCollisionClass('Player')
 player.physics:setLinearDamping(2)
@@ -24,6 +24,8 @@ player.weapon = 0 -- 0 (none), 1 (blaster), 2 (rocket), 3 (harpoon)
 player.shotCooldown = {} -- Table that keeps track of all weapon cooldowns
 
 player.armAngle = 0 -- Only used for calculating weapon direction
+player.velX = 0
+player.velY = 0
 
 -- Initialize the shotCooldowns
 for itr=0, 3 do
@@ -105,7 +107,10 @@ function player:update(dt)
   local ripples = world:queryCircleArea(px, py, 40, {'Ripple'})
   if #ripples > 0 and #waters == 0 then
 
-    player.submerged = false
+    if player.submerged then
+      player.submerged = false
+      player:splash()
+    end
 
     -- Stop drowning (if they were)
     if gameState.pickups.aquaPack == false and blackScreen.alpha == blackScreen.fullRedAlpha then
@@ -115,7 +120,10 @@ function player:update(dt)
 
   elseif #ripples > 0 and #waters > 0 then
 
-    player.submerged = true
+    if player.submerged == false then
+      player.submerged = true
+      player:splash()
+    end
 
     -- Drown if the player does not have the aquaPack
     if gameState.pickups.aquaPack == false and blackScreen.red == false then
@@ -294,6 +302,8 @@ function player:update(dt)
     self.state = 0
     changeToMap("rmMainMenu")
   end
+
+  self.velX, self.velY = self.physics:getLinearVelocity()
 
 end
 
@@ -515,6 +525,16 @@ function player:hurt(damage)
     shake:start(0.05, 6, 0.01, 0.3)
     player.barTimer = 3 -- healthbar is visibile for 3 seconds
     soundManager:play("playerHurt")
+  end
+end
+
+-- When the player enters or exits water
+function player:splash()
+  -- only "splash" if the player is moving fast enough into the water
+  local px, py = self.physics:getPosition()
+  if math.abs(self.velY) > 150 then
+    soundManager:play("splash")
+    particles:splash(px, py)
   end
 end
 
