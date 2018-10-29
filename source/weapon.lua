@@ -84,7 +84,7 @@ function spawnWeapon(x, y)
     weapon.physics = world:newRectangleCollider(x + wx - width/2,
       y + wy - height/2, width, height)
     weapon.physics:setAngle(angle)
-    weapon.power = 12
+    weapon.power = 500--12
     weapon.speed = 12000
 
     weapon.draw = function(wep)
@@ -92,6 +92,8 @@ function spawnWeapon(x, y)
       love.graphics.setColor(1, 1, 1, 1)
       love.graphics.draw(wep.sprite, wx, wy, angle, 1, 1, wep.sprite:getWidth()-40, wep.sprite:getHeight()/2)
     end
+
+    soundManager:play("spear")
   end
 
   -- Set the weapon's collision class

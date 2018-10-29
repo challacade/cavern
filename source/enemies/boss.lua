@@ -154,6 +154,7 @@ local function bossInit(enemy, x, y, arg)
         blackScreen:fadeIn(5)
         self.stateTimer = 5
         self.state = 0.1
+        soundManager:play("helloBoss")
       end
 
     end
@@ -282,6 +283,7 @@ local function bossInit(enemy, x, y, arg)
         shake:start(30, 10, 0.01, false, nil)
         self.state = 10.5
         self.stateTimer = 3
+        soundManager:play("bossDie")
       end
 
     end
@@ -304,6 +306,7 @@ local function bossInit(enemy, x, y, arg)
         local blastX = ex + math.random(-772, 772)
         local blastY = ey + math.random(-120, 120)
         spawnBlast(blastX, blastY, 500, {1, 0, 0}, 0.4)
+        soundManager:play("bossExplode")
 
         self.stateTimer = explodeTime
       end

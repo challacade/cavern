@@ -55,7 +55,7 @@ function spawnParticle(x, y, type, dir, time)
   if type == "splash" then
     particle.width = 12
     particle.height = 12
-    particle.radius = 12
+    particle.radius = 7
     particle.corner = 3
     particle.timer = math.abs(player.velY) / 450
     particle.alpha = 0.5
