@@ -135,8 +135,8 @@ function textBox:init(type)
     textBox.y = -100
     textBox.width = gameWidth + 200
     textBox.height = gameHeight + 200
-    textBox.textX = 100
-    textBox.textY = 100
+    textBox.textX = 58
+    textBox.textY = 104
     textBox.font = fonts.menu.intro
     textBox.visible = false
   end

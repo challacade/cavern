@@ -39,7 +39,28 @@ function scroll:update(dt)
         if self.charTimer == 0 then
           self.charNum = self.charNum + 1
           self.text = string.sub(self.fullMessage, 1, self.charNum)
+
           self.charTimer = self.textSpeed
+
+          -- an "@" represents a spot to wait longer to display the next letter
+          -- Wait 30 times longer than normal, and replace the @ with a space
+          -- If the current letter is a comma, wait only slightly longer
+          local nextLetter = string.sub(self.fullMessage, self.charNum+1, self.charNum+1)
+          local curLetter = string.sub(self.fullMessage, self.charNum, self.charNum)
+          if nextLetter == "@" then
+
+            -- Wait longer
+            self.charTimer = self.textSpeed * 30
+
+            -- replace the @ with a space
+            self.fullMessage = string.sub(self.fullMessage, 1, self.charNum) ..
+              " " .. string.sub(self.fullMessage, self.charNum+2,
+                string.len(self.fullMessage))
+
+          end
+          if curLetter == "," then
+            self.charTimer = self.textSpeed * 15
+          end
 
           -- The "string.sub" will get the latest character.
           -- The "string.byte" will convert that character into an integer
