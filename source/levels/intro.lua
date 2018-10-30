@@ -3,6 +3,7 @@
 intro = {}
 intro.state = 0
 intro.timer = 0
+intro.skipMessage = false
 
 function intro:update(dt)
 
@@ -66,6 +67,35 @@ function intro:update(dt)
 
     end
 
+  end
+
+end
+
+function intro:interrupt()
+
+  if gameState.room ~= "rmIntro" then
+    return
+  end
+
+  if self.skipMessage then
+    scroll.text = ""
+    scroll.messageObj = nil
+    scroll.charTimer = 0
+    self.state = 2
+    self.timer = 0
+    self.skipMessage = false
+  else
+    self.skipMessage = true
+  end
+
+end
+
+function intro:drawInterrupt()
+
+  if self.skipMessage and textBox.active and scroll.text ~= scroll.fullMessage then
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.setFont(fonts.menu.intro)
+    love.graphics.print("Skip?", 1182, 800)
   end
 
 end

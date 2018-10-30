@@ -51,6 +51,7 @@ function love.draw()
   menuDraw()
 
   textBox:draw()
+  intro:drawInterrupt()
 
   saveUtil:drawMessage()
 
@@ -64,12 +65,22 @@ function love.draw()
 end
 
 function love.mousepressed( x, y, button, istouch )
+
+  -- Interrupts the intro text
+  intro:interrupt()
+
+  -- Checks for button clicks on the main menu
   if button == 1 and gameState.room == "rmMainMenu" then
     buttons:click()
   end
+
 end
 
 function love.keypressed(key, scancode, isrepeat)
+
+  -- Interrupts the intro text
+  intro:interrupt()
+
   if key == "space" then
     player:swapWeapon()
   end
