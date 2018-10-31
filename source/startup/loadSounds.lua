@@ -1,5 +1,6 @@
 sounds = {}
 
+sounds.itemGet = love.audio.newSource("sounds/itemGet.wav", "static")
 sounds.playerHurt = love.audio.newSource("sounds/player/playerHurt.wav", "static")
 sounds.splash = love.audio.newSource("sounds/player/splash.wav", "static")
 

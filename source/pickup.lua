@@ -83,6 +83,7 @@ function pickups:update(dt)
       gameState.pickups[p.name] = true
       p.physics:destroy()
       p.dead = true
+      soundManager:play("itemGet")
 
       if p.name == "blaster" then
         player.weapon = 1
