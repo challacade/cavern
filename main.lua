@@ -136,6 +136,7 @@ function love.keypressed(key, scancode, isrepeat)
   end
 
   if key == "7" then
-    soundManager:musicFade()
+    local px, py = player.physics:getPosition()
+    spawnParticle(px + 100, py, "droplet", vector(0, 0))
   end
 end

@@ -45,8 +45,8 @@ function startup()
   getGlobals()
 
   -- Sets first map of the game
-  changeToMap("rmMainMenu")
+  changeToMap("rm16")
 
   -- Start the music!
-  soundManager:startMusic("menu")
+  --soundManager:startMusic("menu")
 end

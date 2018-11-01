@@ -15,6 +15,7 @@ function spawnParticle(x, y, type, dir, time)
   particle.sprite = nil
   particle.type = type
   particle.fade = true
+  particle.fadeIn = false
   particle.gravity = true
 
   -- dir is a vector value used for applying an impulse upon creation
@@ -62,6 +63,17 @@ function spawnParticle(x, y, type, dir, time)
     particle.gravity = true
   end
 
+  if type == "droplet" then
+    particle.width = 6
+    particle.height = 6
+    particle.radius = 3
+    particle.corner = 1
+    particle.timer = 0.5
+    particle.alpha = 0.15
+    particle.gravity = true
+    particle.fadeIn = true
+  end
+
   particle.timer = time or particle.timer
 
   local particleWorld = gravWorld
@@ -85,7 +97,11 @@ function spawnParticle(x, y, type, dir, time)
   end
 
   if particle.fade then
-    particle.fadeTween = flux.to(particle, particle.timer, {alpha = 0}):ease("cubicin")
+    if particle.fadeIn then
+      particle.fadeTween = flux.to(particle, particle.timer, {alpha = 0}):ease("backin")
+    else
+      particle.fadeTween = flux.to(particle, particle.timer, {alpha = 0}):ease("cubicin")
+    end
   end
 
   function particle:update(dt)
@@ -140,7 +156,7 @@ function particles:draw()
       love.graphics.circle("fill", px, py, 4)
     end
 
-    if p.type == "splash" then
+    if p.type == "splash" or p.type == "droplet" then
       local add = 1 - p.alpha
       if add < 0 then
         add = 0

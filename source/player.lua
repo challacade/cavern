@@ -34,6 +34,12 @@ end
 
 player.submerged = false -- true if the player is underwater
 player.drowning = false -- true if the player is drowning
+player.wet = false
+player.wetTimer = 0
+player.wetCount = 0
+player.dropletInterval = 0.3
+player.totalDroplet = 6
+
 player.facing = 1 -- 1 = right, -1 = left
 
 player.jetpackTimer = 0
@@ -72,6 +78,9 @@ function player:update(dt)
   -- Healthbar timer
   self.barTimer = updateTimer(self.barTimer, dt)
 
+  -- Wet timer (for water droplets)
+  self.wetTimer = updateTimer(self.wetTimer, dt)
+
   -- Drowning timer
   if self.drowning then
     self.drownTimer = updateTimer(self.drownTimer, dt)
@@ -109,6 +118,8 @@ function player:update(dt)
 
     if player.submerged then
       player.submerged = false
+      player.wet = true
+      player.wetTimer = player.dropletInterval
       player:splash()
     end
 
@@ -130,6 +141,26 @@ function player:update(dt)
       blackScreen:setRed()
       self.drowning = true
       self.drownTimer = 3 -- 3 seconds until death!
+    end
+
+  end
+
+  if player.wet then
+    debug = player.wetTimer
+
+    if player.wetCount < player.totalDroplet then
+      if player.wetTimer <= 0 then
+        math.randomseed(dt)
+        local dx = math.random(-26, 26)
+        local dy = math.random(40, 80)
+        spawnParticle(px + dx, py + dy, "droplet")
+        player.wetCount = player.wetCount + 1
+        player.wetTimer = player.dropletInterval
+      end
+    else
+      player.wet = false
+      player.wetTimer = 0
+      player.wetCount = 0
     end
 
   end
