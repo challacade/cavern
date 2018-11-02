@@ -14,6 +14,7 @@ sounds.explosion = love.audio.newSource("sounds/player/explosion.wav", "static")
 
 sounds.enemyHurt = love.audio.newSource("sounds/enemies/enemyHurt.wav", "static")
 sounds.spikes = love.audio.newSource("sounds/enemies/spikes.wav", "static")
+sounds.starfish = love.audio.newSource("sounds/enemies/starfish.wav", "static")
 sounds.helloBoss = love.audio.newSource("sounds/enemies/helloBoss.wav", "static")
 sounds.bossLaser = love.audio.newSource("sounds/enemies/bossLaser.wav", "static")
 sounds.bossDie = love.audio.newSource("sounds/enemies/bossDie.wav", "static")

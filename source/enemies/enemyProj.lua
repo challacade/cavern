@@ -17,6 +17,7 @@ function spawnEnemyProj(x, y, dir, type)
     enProj.power = 6
     enProj.sprite = sprites.enemies.evilBubble
     enProj.impulse = 2500
+    soundManager:play("starfish")
   end
 
   if type == "bossLaser" then
