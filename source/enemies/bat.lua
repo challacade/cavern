@@ -11,8 +11,8 @@ local function batInit(enemy, x, y, arg)
   -- Properties
   enemy.health = 12
   enemy.hitPower = 5
-  enemy.moveForce = 11000
-  enemy.maxSpeed = 400
+  enemy.moveForce = 17000
+  enemy.maxSpeed = 800
   enemy.barY = 62
 
   -- Sprite info

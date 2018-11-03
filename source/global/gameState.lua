@@ -19,6 +19,7 @@ function gameStateInit()
   gameState.player.x = 0
   gameState.player.y = 0
   gameState.player.maxHealth = 20
+  gameState.player.weapon = 0
 
   -- Which pickups have been obtained
   gameState.pickups.blaster = false
