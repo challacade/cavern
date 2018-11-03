@@ -9,6 +9,8 @@ function getGlobals()
   require("source/global/utilities")
   require("source/global/collision_classes")
   require("source/global/gameState")
+  gameStateInit()
+
   require("source/global/saveGame")
   require("source/global/saveUtil")
   require("source/global/soundManager")

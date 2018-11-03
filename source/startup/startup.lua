@@ -40,18 +40,15 @@ function startup()
   -- Global sound variable, game starts with it on
   soundOn = true
 
-  -- Initialize gameState (the savefile)
-  gameStateInit()
-
   -- Requires all global source files
   require("source/startup/main_require")
   getGlobals()
 
   -- Sets first map of the game
-  changeToMap("rm16")
+  changeToMap("rmMainMenu")
 
   -- Start the music!
-  --soundManager:startMusic("cavern")
+  soundManager:startMusic("menu")
 end
 
 -- This function resets all values after the game is completed
