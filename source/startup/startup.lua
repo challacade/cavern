@@ -40,6 +40,9 @@ function startup()
   -- Global sound variable, game starts with it on
   soundOn = true
 
+  -- Initialize gameState (the savefile)
+  gameStateInit()
+
   -- Requires all global source files
   require("source/startup/main_require")
   getGlobals()
@@ -49,4 +52,11 @@ function startup()
 
   -- Start the music!
   --soundManager:startMusic("cavern")
+end
+
+-- This function resets all values after the game is completed
+function reinit()
+  gameStateInit()
+  player.weapon = 0
+  player.health = gameState.player.maxHealth
 end

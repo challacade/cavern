@@ -284,6 +284,7 @@ function player:update(dt)
 
   -- Transition back to the main menu after the credits
   if gameState.room == "rmCredits" and py < -8 and self.state > -12 then
+    reinit()
     self.state = -12
     self.stateTimer = 2
   end
