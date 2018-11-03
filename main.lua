@@ -86,23 +86,7 @@ function love.keypressed(key, scancode, isrepeat)
   if key == "space" then
     player:swapWeapon()
   end
-  if key == "m" then
-    --scroll:showMessage("blaster")
-    textBox:start("harpoon")
-  end
-  if key == "p" then
-    local px, py = player.physics:getPosition()
-    damages:spawnDamage(px, py, 13)
-  end
-  if key == "z" then
-    shake:start(1, 16, 0.01, 2)
-  end
-  if key == "k" then
-    spawnParticle(player.physics:getX(), player.physics:getY(), "break", vector(-3500, -3500))
-  end
-  if key == "3" then
-    player.weapon = 3
-  end
+
   if key == "backspace" then
     if drawPhysics then
       drawPhysics = false
@@ -110,35 +94,5 @@ function love.keypressed(key, scancode, isrepeat)
       drawPhysics = true
     end
   end
-  if key == "k" then
-    saveGame()
-  end
-  if key == "l" then
-    loadGame()
-  end
-  if key == "0" then
-    player.weapon = 0
-    soundManager:play("blip")
-  end
-  if key == "1" then
-    player.weapon = 1
-    soundManager:play("blip")
-  end
-  if key == "2" then
-    player.weapon = 2
-  end
-  if key == "b" then
-    flash:fadeIn(1)
-  end
-  if key == "n" then
-    flash:flash(2)
-  end
-  if key == "a" then
-    gameState.pickups.aquaPack = true
-  end
-
-  if key == "7" then
-    local px, py = player.physics:getPosition()
-    spawnParticle(px + 100, py, "droplet", vector(0, 0))
-  end
+  
 end

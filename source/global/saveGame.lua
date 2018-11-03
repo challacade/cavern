@@ -7,6 +7,9 @@ function saveGame()
   love.filesystem.write("savefile.txt", temp)
   saveUtil:startMessage()
   saveUtil:destroySave()
+
+  -- Restore the player's health when the game saves
+  player.health = gameState.player.maxHealth
 end
 
 function loadGame()

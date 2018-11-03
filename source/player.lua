@@ -284,7 +284,6 @@ function player:update(dt)
 
   -- Transition back to the main menu after the credits
   if gameState.room == "rmCredits" and py < -8 and self.state > -12 then
-    reinit()
     self.state = -12
     self.stateTimer = 2
   end
@@ -310,6 +309,9 @@ function player:update(dt)
       -- After saving the first time, spawn a new save block
       -- (it's the one in this same starting room)
       saveUtil:spawnSave(2816, 1)
+
+      -- Make sure the "Skip?" text won't show up again.
+      intro.skipMessage = false
     end
 
   end
@@ -332,6 +334,7 @@ function player:update(dt)
   if self.state == -13 and self.stateTimer == 0 then
     blackScreen:fadeIn(1)
     self.state = 0
+    reinit()
     changeToMap("rmMainMenu")
   end
 

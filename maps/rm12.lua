@@ -1,13 +1,14 @@
 return {
-  version = "1.1",
+  version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.0.3",
+  tiledversion = "1.2.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
   height = 14,
   tilewidth = 128,
   tileheight = 128,
+  nextlayerid = 11,
   nextobjectid = 154,
   properties = {},
   tilesets = {
@@ -18,6 +19,7 @@ return {
       tileheight = 128,
       spacing = 0,
       margin = 0,
+      columns = 1,
       image = "tilesheets/sheet1.png",
       imagewidth = 128,
       imageheight = 128,
@@ -42,6 +44,7 @@ return {
       tileheight = 128,
       spacing = 0,
       margin = 4,
+      columns = 3,
       image = "tilesheets/3by3_1.png",
       imagewidth = 392,
       imageheight = 392,
@@ -66,6 +69,7 @@ return {
       tileheight = 128,
       spacing = 0,
       margin = 4,
+      columns = 2,
       image = "tilesheets/darkCorners_sheet.png",
       imagewidth = 264,
       imageheight = 264,
@@ -87,6 +91,7 @@ return {
   layers = {
     {
       type = "tilelayer",
+      id = 1,
       name = "Main_Tiles",
       x = 0,
       y = 0,
@@ -102,6 +107,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 2,
       name = "Window_Size",
       visible = true,
       opacity = 1,
@@ -113,6 +119,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 3,
       name = "Room",
       visible = true,
       opacity = 1,
@@ -138,6 +145,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 4,
       name = "Walls",
       visible = true,
       opacity = 1,
@@ -173,8 +181,8 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["right"] = false,
-            ["up"] = false
+            ["right"] = true,
+            ["up"] = true
           }
         },
         {
@@ -244,6 +252,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 5,
       name = "Transitions",
       visible = true,
       opacity = 1,
@@ -292,6 +301,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 6,
       name = "Pickups",
       visible = true,
       opacity = 1,
@@ -317,6 +327,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 7,
       name = "Enemies",
       visible = true,
       opacity = 1,
@@ -328,6 +339,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 8,
       name = "Breakables",
       visible = true,
       opacity = 1,
@@ -379,6 +391,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 9,
       name = "Water",
       visible = true,
       opacity = 1,
@@ -390,6 +403,7 @@ return {
     },
     {
       type = "objectgroup",
+      id = 10,
       name = "Vines",
       visible = true,
       opacity = 1,
