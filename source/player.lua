@@ -391,8 +391,8 @@ function player:draw()
   else
     if headAngle < 0 and headAngle > -2.4 then
       headAngle = -2.4
-    elseif headAngle > 0 and headAngle < 2.6 then
-      headAngle = 2.6
+    elseif headAngle > 0 and headAngle < 2.4 then
+      headAngle = 2.4
     end
   end
 
@@ -422,7 +422,7 @@ function player:draw()
   -- draw jetpack first
   love.graphics.draw(jetSprite, px + (player.facing * -12), py + 10, nil, player.facing, 1, 38, 60)
   -- body uses player.facing to turn the correct direction (towards the mouse)
-  love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+8, nil, player.facing, 1, 38, 60)
+  love.graphics.draw(sprites.player.body, px + (player.facing * -14), py+3, nil, player.facing, 1, 38, 60)
   -- helmet rotates towards the mouse, flips vertically if facing left
   love.graphics.draw(sprites.player.helmet, px + (player.facing * 2), py-44, headAngle, 1, flip, 24, 64)
 

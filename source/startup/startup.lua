@@ -48,5 +48,5 @@ function startup()
   changeToMap("rm16")
 
   -- Start the music!
-  soundManager:startMusic("cavern")
+  --soundManager:startMusic("cavern")
 end

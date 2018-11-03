@@ -2,9 +2,9 @@ sprites = {}
 
 -- Images for drawing the player
 sprites.player = {}
-sprites.player.helmet = love.graphics.newImage('sprites/newPlayer/helmet.png')
-sprites.player.body = love.graphics.newImage('sprites/newPlayer/body.png')
-sprites.player.armEmpty = love.graphics.newImage('sprites/newPlayer/arm.png')
+sprites.player.helmet = love.graphics.newImage('sprites/newPlayer2/helmet.png')
+sprites.player.body = love.graphics.newImage('sprites/newPlayer2/body.png')
+sprites.player.armEmpty = love.graphics.newImage('sprites/newPlayer2/arm.png')
 sprites.player.backArm = love.graphics.newImage('sprites/newPlayer/backArm.png')
 sprites.player.armBlaster = love.graphics.newImage('sprites/newPlayer/armBlaster.png')
 sprites.player.armRocket = love.graphics.newImage('sprites/newPlayer/armRocket.png')
