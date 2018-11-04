@@ -93,9 +93,11 @@ end
 function intro:drawInterrupt()
 
   if self.skipMessage and textBox.active and scroll.text ~= scroll.fullMessage then
+    local w = gameWidth * scale
+    local h = gameHeight * scale
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.setFont(fonts.menu.intro)
-    love.graphics.print("Skip?", 1182, 800)
+    love.graphics.print("Skip?", w - 96 * scale, h - 52 * scale)
   end
 
 end

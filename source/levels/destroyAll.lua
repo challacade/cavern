@@ -63,6 +63,10 @@ local function destroyAll()
     table.remove(weapons, i)
   end
 
+  for i=#fires,1,-1 do
+    table.remove(fires, i)
+  end
+
   -- Move the saveBlock offscreen so the player can't hit
   saveUtil.saveBlock.x = -1000
 

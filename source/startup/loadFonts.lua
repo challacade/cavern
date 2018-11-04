@@ -2,14 +2,14 @@ fonts = {}
 
 -- fonts.pickup = love.graphics.newFont(34 * scale)
 fonts.pickup = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 42 * scale)
-fonts.damage = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 42 * scale)
+fonts.damage = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 42)
 fonts.boss = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 52 * scale)
 
 -- Fonts used during the credits
 fonts.credits = {}
-fonts.credits.word = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 48 * scale)
-fonts.credits.title = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 118 * scale)
-fonts.credits.me = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 56 * scale)
+fonts.credits.word = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 48)
+fonts.credits.title = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 118)
+fonts.credits.me = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 56)
 
 -- Fonts used for the Main Menu and Intro
 fonts.menu = {}
@@ -21,4 +21,4 @@ fonts.menu.intro = love.graphics.newFont("fonts/vt323/VT323-Regular.ttf", 42 * s
 -- Misc fonts
 fonts.misc = {}
 fonts.misc.save = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 36 * scale)
-fonts.misc.tutorial = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 49 * scale)
+fonts.misc.tutorial = love.graphics.newFont("fonts/russoone/RussoOne-Regular.ttf", 49)

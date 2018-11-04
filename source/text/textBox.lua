@@ -133,8 +133,8 @@ function textBox:init(type)
   if type == "intro" then
     textBox.x = -100
     textBox.y = -100
-    textBox.width = gameWidth + 200
-    textBox.height = gameHeight + 200
+    textBox.width = gameWidth * scale + 200
+    textBox.height = gameHeight * scale + 200
     textBox.textX = 58
     textBox.textY = 104
     textBox.font = fonts.menu.intro
