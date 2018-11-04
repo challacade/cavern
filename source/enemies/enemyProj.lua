@@ -13,7 +13,7 @@ function spawnEnemyProj(x, y, dir, type)
   enProj.impulse = 2000
 
   if type == "fish" then
-    enProj.rad = 20
+    enProj.rad = 19
     enProj.power = 6
     enProj.sprite = sprites.enemies.evilBubble
     enProj.impulse = 2500

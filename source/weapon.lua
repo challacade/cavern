@@ -51,9 +51,9 @@ function spawnWeapon(x, y)
     local offsetVec = weapon.dir * 168
     local wx, wy = offsetVec:unpack()
 
-    weapon.physics = world:newCircleCollider(x + wx, y + wy, 30)
+    weapon.physics = world:newCircleCollider(x + wx, y + wy, 21)
     weapon.power = 0
-    weapon.speed = 8000
+    weapon.speed = 4000
     weapon.sprite = sprites.player.bomb
 
     weapon.draw = function(wep)
@@ -109,7 +109,7 @@ function spawnWeapon(x, y)
 
   -- Rocket Launcher kickback
   if weapon.type == 2 then
-    player.physics:applyLinearImpulse((weapon.dir * -3):unpack())
+    player.physics:applyLinearImpulse((weapon.dir * -6):unpack())
   end
 
   table.insert(weapons, weapon)
@@ -125,7 +125,7 @@ function weapons:update(dt)
 
     -- Spawn the smoke (for Rocket Launcher)
     if w.type == 2 then
-      fires:spawnFire(w.x, w.y, 0.5, vector(0, 0), 4, nil, nil, true)
+      fires:spawnFire(w.x, w.y, 0.5, vector(0, 0), 3, nil, nil, true)
     end
 
     -- Update the hand timer (for spears)

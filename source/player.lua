@@ -551,7 +551,7 @@ function player:swapWeapon(up)
       end
     end
 
-  else    
+  else
 
     if player.weapon == 1 and gameState.pickups.rocket then
       player.weapon = 2
