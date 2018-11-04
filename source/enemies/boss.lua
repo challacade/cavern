@@ -117,7 +117,7 @@ local function bossInit(enemy, x, y, arg)
 
   -- State
   enemy.state = 0
-  enemy.stateTimer = 1
+  enemy.stateTimer = 2.5
   enemy.stateCounter = 0
 
   function enemy:update(dt)

@@ -1,7 +1,7 @@
 -- This table contains words that will be displayed
 -- in the credits room
 credits = {}
-credits.bottom = 10112
+credits.bottom = 12752
 
 -- Words follow this format:
 -- { Word Text, X position, Y position, Font }
@@ -22,7 +22,10 @@ table.insert(credits, {"CAVERN", "center", 2304, fonts.credits.title})
 table.insert(credits, {"Created by Kyle Schaub", "center", 4608, fonts.credits.me})
 table.insert(credits, {"All code, art, and music is available on GitHub.", "center", 6912})
 table.insert(credits, {"This is an open-source Love2D project.", "center", 7040})
-table.insert(credits, {"Thank you for playing!", "center", 9264, fonts.credits.me})
+table.insert(credits, {"All of my supportive students on Udemy", "center", 9344})
+table.insert(credits, {"Everyone who helped with testing and reporting bugs", "center", 9472})
+table.insert(credits, {"Special Thanks to:", "center", 9600})
+table.insert(credits, {"Thank you for playing!", "center", 11904, fonts.credits.me})
 
 function credits:draw()
 

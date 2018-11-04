@@ -2,6 +2,13 @@ function startup()
 
   -- GAME WINDOW CONFIGURATION
 
+  -- Window title
+  love.window.setTitle("CAVERN")
+
+  -- Window icon
+  local icon = love.image.newImageData('sprites/newPlayer2/helmet.png')
+  love.window.setIcon(icon)
+
   -- Game resolution
   gameWidth = 1152
   gameHeight = 768
