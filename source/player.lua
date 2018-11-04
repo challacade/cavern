@@ -533,19 +533,38 @@ function player:shoot()
 end
 
 -- Cycle between each weapon
-function player:swapWeapon()
+-- Order is Blaster, then Rocket, then Harpoon, then back to Blaster
+function player:swapWeapon(up)
 
-  -- Order is Blaster, then Rocket, then Harpoon, then back to Blaster
-  if player.weapon == 1 and gameState.pickups.rocket then
-    player.weapon = 2
-  elseif player.weapon == 2 then
-    if gameState.pickups.harpoon then
-      player.weapon = 3
+  -- "up" is the opposite direction
+  if up then
+
+    if player.weapon == 3 then
+      player.weapon = 2
+    elseif player.weapon == 2 then
+      player.weapon = 1
     else
+      if gameState.pickups.harpoon then
+        player.weapon = 3
+      elseif gameState.pickups.rocket then
+        player.weapon = 2
+      end
+    end
+
+  else    
+
+    if player.weapon == 1 and gameState.pickups.rocket then
+      player.weapon = 2
+    elseif player.weapon == 2 then
+      if gameState.pickups.harpoon then
+        player.weapon = 3
+      else
+        player.weapon = 1
+      end
+    elseif player.weapon == 3 then
       player.weapon = 1
     end
-  elseif player.weapon == 3 then
-    player.weapon = 1
+
   end
 
 end

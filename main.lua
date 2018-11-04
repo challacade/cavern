@@ -62,7 +62,7 @@ function love.draw()
   love.graphics.setColor(1, 1, 1, 1)
   love.graphics.print(debug, 0, 100)
   love.graphics.print(debug2, 0, 120)
-  
+
 
 end
 
@@ -93,6 +93,17 @@ function love.keypressed(key, scancode, isrepeat)
     else
       drawPhysics = true
     end
+  end
+
+end
+
+function love.wheelmoved(x, y)
+
+  -- Change weapons
+  if y < 0 then
+      player:swapWeapon()
+  elseif y > 0 then
+      player:swapWeapon(true)
   end
 
 end
