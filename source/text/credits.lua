@@ -25,7 +25,7 @@ table.insert(credits, {"This is an open-source Love2D project.", "center", 7040}
 table.insert(credits, {"All of my supportive students on Udemy", "center", 9344})
 table.insert(credits, {"Everyone who helped with testing and reporting bugs", "center", 9472})
 table.insert(credits, {"Special Thanks to:", "center", 9600})
-table.insert(credits, {"Thank you for playing!", "center", 11952, fonts.credits.me})
+table.insert(credits, {"Thank you for playing!", "center", 11892, fonts.credits.me})
 
 function credits:draw()
 

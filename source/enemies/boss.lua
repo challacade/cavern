@@ -9,7 +9,7 @@ local function bossInit(enemy, x, y, arg)
   enemy.physics.parent = enemy
 
   -- Properties
-  enemy.maxHealth = 500
+  enemy.maxHealth = 400
   enemy.health = enemy.maxHealth
   enemy.hitPower = 12
   enemy.moveForce = 11000
