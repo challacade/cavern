@@ -220,11 +220,8 @@ local function bossInit(enemy, x, y, arg)
 
       local toSpawn = 2
 
+      -- spawn an extra enemy if boss is below half health
       if self.health < self.maxHealth / 2 then
-        toSpawn = toSpawn + 1
-      end
-
-      if self.health < self.maxHealth / 4 then
         toSpawn = toSpawn + 1
       end
 
