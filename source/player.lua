@@ -215,6 +215,9 @@ function player:update(dt)
       blackScreen:removeRed()
     end
 
+    -- If the player was underwater, remove the submerged status
+    player.submerged = false
+
     -- Fade out the music
     soundManager:musicFade()
 
