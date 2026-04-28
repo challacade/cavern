@@ -16,23 +16,28 @@ function startup()
   scale = 1 -- adjusts game window to screen size
   offset = 0.8 -- window size relative to scale
 
-  local screen_width, screen_height = love.window.getDesktopDimensions()
-  local w_scale = screen_width / gameWidth
-  local h_scale = screen_height / gameHeight
+  -- On the web (love.js), the canvas size is fixed by conf.lua and there is
+  -- no desktop to query, so skip the dynamic resize. Native LÖVE behavior is
+  -- unchanged.
+  if love.system.getOS() ~= "Web" then
+    local screen_width, screen_height = love.window.getDesktopDimensions()
+    local w_scale = screen_width / gameWidth
+    local h_scale = screen_height / gameHeight
 
-  -- scale set to be the lesser of w_scale and h_scale
-  -- this way, the game window will not ever exceed screen size
-  if w_scale < h_scale then
-    scale = w_scale
-  else
-    scale = h_scale
+    -- scale set to be the lesser of w_scale and h_scale
+    -- this way, the game window will not ever exceed screen size
+    if w_scale < h_scale then
+      scale = w_scale
+    else
+      scale = h_scale
+    end
+
+    scale = scale * offset
+
+    love.window.setMode(gameWidth * scale, gameHeight * scale, {fullscreen = false,
+      fullscreentype = "desktop", resizable = false, borderless = false,
+      vsync = true})
   end
-
-  scale = scale * offset
-
-  love.window.setMode(gameWidth * scale, gameHeight * scale, {fullscreen = false,
-    fullscreentype = "desktop", resizable = false, borderless = false,
-    vsync = true})
 
 
   -- GAME SETUP

@@ -1,0 +1,9 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# LÖVE / packaging artifacts (any stray copies outside build/)
+*.love

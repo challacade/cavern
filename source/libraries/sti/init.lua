@@ -210,7 +210,8 @@ end
 function Map:setLayer(layer, path)
 	if layer.encoding then
 		if layer.encoding == "base64" then
-			assert(require "ffi", "Compressed maps require LuaJIT FFI.\nPlease Switch your interperator to LuaJIT or your Tile Layer Format to \"CSV\".")
+			-- Note: STI originally required LuaJIT's FFI here. utils.lua now
+			-- has a pure-Lua fallback so this works on love.js as well.
 			local fd = love.data.decode("string", "base64", layer.data)
 
 			if not layer.compression then

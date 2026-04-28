@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1">
+    <title>__TITLE__</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #canvas, #loadingCanvas {
+        display: block;
+        /* Size the canvas DOM element itself to the game's aspect ratio so it
+           fills the viewport without internal letterboxing. Using object-fit
+           on the canvas would letterbox inside the element, which throws off
+           emscripten's mouse-coordinate mapping (mouse->element scales
+           proportionally and is unaware of object-fit padding). */
+        aspect-ratio: 1152 / 768;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: auto;
+        height: auto;
+        outline: none;
+      }
+      /* Hide the game canvas until love.js signals all downloads complete. */
+      #canvas { visibility: hidden; }
+    </style>
+  </head>
+  <body>
+    <canvas id="loadingCanvas" oncontextmenu="event.preventDefault()" width="800" height="600"></canvas>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+
+    <script type="text/javascript">
+      var loadingContext = document.getElementById('loadingCanvas').getContext('2d');
+      function drawLoadingText(text) {
+        var canvas = loadingContext.canvas;
+        loadingContext.fillStyle = "#000";
+        loadingContext.fillRect(0, 0, canvas.width, canvas.height);
+        loadingContext.font = '2em sans-serif';
+        loadingContext.textAlign = 'center';
+        loadingContext.textBaseline = 'middle';
+        loadingContext.fillStyle = "#fff";
+        loadingContext.fillText(text, canvas.width / 2, canvas.height / 2);
+      }
+
+      window.onload  = function () { window.focus(); };
+      window.onclick = function () { document.getElementById('canvas').focus(); };
+
+      // Prevent the page from scrolling when the player uses arrow keys / space.
+      window.addEventListener("keydown", function (e) {
+        if ([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) e.preventDefault();
+      }, false);
+
+      var Module = {
+        arguments: ["./game.love"],
+        INITIAL_MEMORY: __MEMORY__,
+        printErr: console.error.bind(console),
+        canvas: (function () {
+          var canvas = document.getElementById('canvas');
+          canvas.addEventListener("webglcontextlost", function (e) {
+            alert('WebGL context lost. You will need to reload the page.');
+            e.preventDefault();
+          }, false);
+          return canvas;
+        })(),
+        setStatus: function (text) {
+          if (text) {
+            drawLoadingText(text);
+          } else if (Module.remainingDependencies === 0) {
+            document.getElementById('loadingCanvas').style.display = 'none';
+            document.getElementById('canvas').style.visibility = 'visible';
+            document.getElementById('canvas').focus();
+          }
+        },
+        totalDependencies: 0,
+        remainingDependencies: 0,
+        monitorRunDependencies: function (left) {
+          this.remainingDependencies = left;
+          this.totalDependencies = Math.max(this.totalDependencies, left);
+          Module.setStatus(left
+            ? 'Loading... (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')'
+            : '');
+        }
+      };
+      Module.setStatus('Loading...');
+      window.onerror = function () {
+        Module.setStatus('Error — see JavaScript console.');
+        Module.setStatus = function (text) {
+          if (text) Module.printErr('[post-exception status] ' + text);
+        };
+      };
+
+      var applicationLoad = function () { Love(Module); };
+    </script>
+    <script type="text/javascript" src="game.js"></script>
+    <script async type="text/javascript" src="love.js" onload="applicationLoad(this)"></script>
+  </body>
+</html>

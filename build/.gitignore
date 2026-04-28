@@ -1,0 +1,3 @@
+# Build artifacts produced by web-build scripts.
+game.love
+web-output/

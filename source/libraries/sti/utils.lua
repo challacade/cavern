@@ -66,13 +66,26 @@ function utils.get_tiles(imageW, tileW, margin, spacing)
 end
 
 -- Decompress tile layer data
+-- Reads a raw byte string as a sequence of little-endian uint32 tile GIDs.
+-- Uses LuaJIT's ffi when available (faster), and falls back to pure Lua so
+-- the library works on vanilla Lua 5.1 interpreters such as love.js.
 function utils.get_decompressed_data(data)
-	local ffi     = require "ffi"
-	local d       = {}
-	local decoded = ffi.cast("uint32_t*", data)
+	local d  = {}
+	local ok, ffi = pcall(require, "ffi")
 
-	for i = 0, data:len() / ffi.sizeof("uint32_t") do
-		table.insert(d, tonumber(decoded[i]))
+	if ok and ffi then
+		local decoded = ffi.cast("uint32_t*", data)
+		for i = 0, data:len() / ffi.sizeof("uint32_t") do
+			table.insert(d, tonumber(decoded[i]))
+		end
+	else
+		local byte = string.byte
+		for i = 1, #data, 4 do
+			local b1, b2, b3, b4 = byte(data, i, i + 3)
+			if b4 then
+				d[#d + 1] = b1 + b2 * 256 + b3 * 65536 + b4 * 16777216
+			end
+		end
 	end
 
 	return d
