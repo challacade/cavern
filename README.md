@@ -1,6 +1,6 @@
 # Cavern
 
-A 2D adventure game made with Lua and LÖVE
+A 2D adventure game made with Lua and LÖVE. Playable in browser: <https://www.challacade.com/games/cavern/>
 
 ## About this project
 
