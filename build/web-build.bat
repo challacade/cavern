@@ -16,6 +16,17 @@ set OUTPUT_DIR=web-output
 :: bundled assets. Cavern's assets are ~18 MB; 64 MB leaves comfortable
 :: headroom for runtime allocations.
 set LOVEJS_MEMORY=67108864
+:: Optional <base href> for the generated index.html. Leave blank for local
+:: testing (web-run.bat serves web-output/ at the server root, so relative
+:: URLs work as-is). Set this when producing a deploy build for a sub-path,
+:: so the page works regardless of trailing slashes.
+::
+:: Override per-invocation, e.g.:
+::   set BASE_HREF=/games/cavern/ ^&^& web-build.bat
+:: or pass as the first argument:
+::   web-build.bat /games/cavern/
+if not "%~1"=="" set BASE_HREF=%~1
+if not defined BASE_HREF set BASE_HREF=
 
 :: Run from build/ regardless of where the script is invoked from.
 cd /d %~dp0
@@ -90,7 +101,9 @@ echo.
 echo Applying clean index.html template...
 powershell -NoProfile -ExecutionPolicy Bypass -Command ^
     "$tpl = Get-Content -Raw 'index.template.html';" ^
-    "$tpl = $tpl.Replace('__TITLE__', '%PROJECT_NAME%').Replace('__MEMORY__', '%LOVEJS_MEMORY%');" ^
+    "$base = '%BASE_HREF%';" ^
+    "$baseTag = if ($base) { '<base href=\"' + $base + '\">' } else { '' };" ^
+    "$tpl = $tpl.Replace('__TITLE__', '%PROJECT_NAME%').Replace('__MEMORY__', '%LOVEJS_MEMORY%').Replace('__BASE_TAG__', $baseTag);" ^
     "Set-Content -NoNewline -Encoding UTF8 -Path '%OUTPUT_DIR%\index.html' -Value $tpl"
 if errorlevel 1 (
     echo ERROR: Failed to apply index.html template.
