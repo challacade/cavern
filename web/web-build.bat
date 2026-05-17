@@ -15,7 +15,7 @@
 
 setlocal
 set PROJECT_NAME=Cavern
-set LOVE_FILE=game.love
+set LOVE_FILE=cavern.love
 set OUTPUT_DIR=web-output
 if not defined BASE_HREF set BASE_HREF=
 if not "%~1"=="" set BASE_HREF=%~1

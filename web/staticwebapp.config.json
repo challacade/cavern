@@ -17,7 +17,7 @@
       }
     },
     {
-      "route": "/game.love",
+      "route": "/cavern.love",
       "headers": {
         "Cache-Control": "no-cache"
       }
