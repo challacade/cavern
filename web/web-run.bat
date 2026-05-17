@@ -1,5 +1,5 @@
 @echo off
-:: Serve build/web-output/ on http://localhost:8080 for local testing.
+:: Serve web/web-output/ on http://localhost:8080 for local testing.
 setlocal
 cd /d %~dp0
 if not exist web-output\index.html (
