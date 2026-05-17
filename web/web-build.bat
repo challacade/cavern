@@ -104,10 +104,11 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: Copy Azure Static Web Apps config (CORS + cache headers).
-if exist "staticwebapp.config.json" (
-    copy /y "staticwebapp.config.json" "%OUTPUT_DIR%\staticwebapp.config.json" >nul
-)
+:: NOTE: web-build.bat does NOT copy staticwebapp.config.json into the output.
+:: The challacade homepage repo owns the root SWA config; shipping a per-game
+:: config inside games/<name>/ causes Azure to apply an unintended secondary
+:: config. The standalone staticwebapp.config.json in this folder is kept for
+:: reference only (e.g. if this game is ever deployed to its own SWA).
 
 echo.
 echo ========================================
