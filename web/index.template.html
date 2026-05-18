@@ -50,7 +50,15 @@
       })();
     </script>
     <!-- player.js fetches game.love, boots the love2d WASM runtime, and handles
-         save-data persistence (periodic IDB sync + pagehide keepalive). -->
-    <script src="player.js?g=cavern.love"></script>
+         save-data persistence (periodic IDB sync + pagehide keepalive).
+
+         The `&n=1` flag disables player.js's IndexedDB cache of the .love
+         archive (EM_PRELOAD_CACHE / PACKAGES). That cache is keyed by URI
+         and replays the FIRST bytes ever served FOREVER -- it silently
+         ignores rebuilds and skips ZIP-header validation, which cost hours
+         of debugging. End-user caching is unaffected: the browser's normal
+         HTTP disk cache still serves the .love on return visits per the
+         server's Cache-Control headers. Keep `&n=1` on. -->
+    <script src="player.js?g=cavern.love&n=1"></script>
   </body>
 </html>

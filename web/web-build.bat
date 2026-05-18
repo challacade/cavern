@@ -11,6 +11,14 @@
 :: Usage:
 ::   web-build.bat               -- local build (no <base href>)
 ::   web-build.bat /games/cavern/ -- deploy build with explicit base path
+::
+:: !! IMPORTANT: love.js player.js caches the .love archive in IndexedDB
+:: (EM_PRELOAD_CACHE / PACKAGES) keyed by URI. The first bytes ever served
+:: for a given .love filename are replayed FOREVER -- rebuilds are silently
+:: ignored. index.template.html appends `&n=1` to the player.js script src
+:: to disable that cache. End-user caching is unaffected (browser HTTP cache
+:: still applies). DO NOT remove `&n=1`. See the extended comment in
+:: web/index.template.html for the full backstory.
 :: ============================================================================
 
 setlocal
@@ -104,11 +112,22 @@ if errorlevel 1 (
     exit /b 1
 )
 
-:: NOTE: web-build.bat does NOT copy staticwebapp.config.json into the output.
-:: The challacade homepage repo owns the root SWA config; shipping a per-game
-:: config inside games/<name>/ causes Azure to apply an unintended secondary
-:: config. The standalone staticwebapp.config.json in this folder is kept for
-:: reference only (e.g. if this game is ever deployed to its own SWA).
+:: Copy staticwebapp.config.json into the output ONLY for local builds
+:: (no BASE_HREF). The COOP/COEP headers in that file are required for the
+:: love.js WASM runtime to boot (SharedArrayBuffer). Locally, `python -m
+:: http.server` does not serve those headers, but having the config present
+:: lets tools like `swa start` apply them.
+::
+:: For deploy builds (BASE_HREF set, e.g. /games/cavern/) we deliberately
+:: skip this: the challacade homepage repo owns the root SWA config, and
+:: shipping a per-game config inside games/<name>/ causes Azure to apply an
+:: unintended secondary config.
+if "%BASE_HREF%"=="" (
+    if exist "%BUILD_DIR%\staticwebapp.config.json" (
+        echo Copying staticwebapp.config.json into output...
+        copy /y "%BUILD_DIR%\staticwebapp.config.json" "%BUILD_DIR%\%OUTPUT_DIR%\staticwebapp.config.json" >nul
+    )
+)
 
 echo.
 echo ========================================
