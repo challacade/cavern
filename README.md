@@ -1,5 +1,7 @@
 # Cavern
 
+<img width="1920" height="540" alt="cavern" src="https://github.com/user-attachments/assets/092958ef-ec6b-4252-b23a-5a2576a05d23" />
+
 A 2D adventure game made with Lua and LÖVE. Playable in browser: <https://www.challacade.com/games/cavern/>
 
 ## About this project
